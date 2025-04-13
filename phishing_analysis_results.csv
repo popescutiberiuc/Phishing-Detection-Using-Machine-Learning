@@ -1,0 +1,530 @@
+sender,receiver,date,subject,body,urls,label,is_phishing,phishing_probability,confidence
+noreply@pay.pluxee.ro,popescu.tiberiuc@gmail.com,"Fri, 11 Apr 2025 12:40:11 +0000 (UTC)",Notificare Pluxee," @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Bold.ttf') format('truetype'); font-weight: bold; font-style: normal; } @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-DemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; } @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; } @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Regular.ttf') format('truetype'); font-weight: normal; font-style: normal; }                    Salutare, Tiberiu-costin       Pe data de 11.04.2025 15:40, ai plătit  -5.39 lei  cu cardul tău Pluxee Gusto la  MEGAIMAGE 0189 B.NOV13 BUCURESTI     ROM . Suma rămasă pe cardul tău Pluxee este de  9.35 lei .    De acum poți efectua plățile cu telefonul mobil sau smartwatch-ul la toți comercianții care fac parte din rețeaua Pluxee prin:         Google Pay , dacă dispozitivul tău rulează cu sistem de operare Android.         Apple Pay , dacă dispozitivul folosește sistem de operare iOS.     Dacă dorești să efectuezi plățile cu telefonul mobil sau smartwatch-ul și nu ai înrolat cardul tău Pluxee în Google Wallet sau Apple Wallet, te invităm să urmărești pașii de înrolare  din această pagină.    Descarcă aplicația Pluxee:                    Serviciul Consumatori Pluxee / Pluxee Consumer Care Team  T: +4021 207 27 27 | E:  Apphelp.RO@pluxeegroup.com       Securitatea datelor tale este una dintre preocupările noastre principale. Acesta este motivul pentru care depunem eforturi suplimentare pentru a-ți menține datele în siguranță și mereu actualizate. Dorești mai multe informații despre modul în care Pluxee procesează datele tale? Te rugăm să vizitezi pagina  Politicii de Confidențialitate .   Contactează-ne  dacă dorești să accesezi sau să modifici informațiile tale personale sau să le elimini complet din baza noastră de date.  Acest email este generat automat, te rugăm să nu răspunzi la el.           
+",1,,True,0.71,Medium
+no-reply@glovoapp.com,popescu.tiberiuc@gmail.com,"Sat, 05 Apr 2025 11:13:58 +0000",Your order has been refunded," 
+ 
+ 
+   
+   
+   
+   
+   
+   Order Refunded 
+   
+    .header {
+      background-color: #FFF3DA;
+      border-radius: 0 0 120px 0;
+      max-width: 1200px;
+    }
+    .header__container {
+      background: url(""https://glovo.dhmedia.io/image/customer-assets-glovo/emails/transactional-emails/header_refunded.png"") no-repeat bottom right;
+      background-size: 256px;
+      border-radius: 0 0 120px 0;
+    }
+    @media (prefers-color-scheme: dark) {
+      .header {
+        background-color: #33270E !important;
+        color: white !important;
+      }
+      .header__container {
+        background: url(""https://glovo.dhmedia.io/image/customer-assets-glovo/emails/transactional-emails/header_refunded_dark.png"") no-repeat bottom right !important;
+        background-size: 256px !important;
+      }
+    }
+:root {
+  color-scheme: light dark;
+  supported-color-schemes: light dark;
+}
+.main {
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, sans-serif !important;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+table {
+  width: 100%;
+}
+td {
+  font-family: Verdana, sans-serif !important;
+}
+td a {
+  color: #2ABB9B;
+  text-decoration: none;
+}
+a.no-color {
+  color: inherit;
+}
+.header__title {
+  font-size: 2.25em;
+  font-weight: bold;
+  padding: 24px 75px 24px 0;
+  letter-spacing: -1px;
+}
+.header__subtitle {
+  padding-right: 150px;
+}
+td a.header__rate-order {
+  color: white;
+  background-color: #017963;
+  padding: 12px 12px 12px 16px;
+  font-size: 0.75em;
+  border-radius: 24px;
+  font-weight: bold;
+}
+td a.header__rate-order img {
+  vertical-align: middle;
+  padding: 0 0 4px 1px;
+}
+.header__inner-container {
+  padding-top: 40px;
+  padding-bottom: 80px;
+  margin: 0 24px;
+}
+.header__margin-bottom {
+  font-size: 0;
+  height: 0;
+  padding-top: 40px;
+}
+.body__details {
+  padding: 12px;
+}
+.body__background {
+  background-color: #F5F5F5;
+}
+.body__courier-margin-top {
+  font-size: 0;
+  height: 0;
+}
+.body__courier-padding-top {
+  font-size: 0;
+  height: 0;
+  padding-top: 12px;
+}
+.advertisement {
+  background-color: #FFDE99;
+  max-width: 600px;
+  border-radius: 8px;
+  padding: 12px;
+}
+.advertisement__margin-top {
+  font-size: 0;
+  height: 0;
+  padding-top: 48px;
+}
+.table__padded td {
+  padding: 12px;
+}
+.table__padded td td {
+  padding: 0;
+}
+.indent {
+  background-color: white;
+}
+.modify-order {
+  background-color: #E0F0ED;
+  color: #035949;
+}
+.highlight {
+  color: #6E6E6E;
+  background-color: #EEEEEE;
+  border:none;
+  padding:3px 5px;
+  border-radius:5px;
+  font-size:0.75em;
+  font-weight:500;
+}
+td a.advertisement__button {
+  color:white;
+  background-color:#017963;
+}
+.company-info {
+  color:#4A4A4A;
+}
+.label {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+.label-details {
+  color: #6E6E6E !important;
+  text-decoration: none !important;
+}
+.table__padded td.product {
+  padding: 12px 0;
+}
+.product__promotion {
+  background-color: #FFC244;
+  color: black;
+  font-size: 0.7em;
+  padding: 1px 3px;
+  border-radius: 4px;
+}
+.product__packaging {
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  display: inline-table;
+  margin-top: 5px;
+}
+.product__notice {
+  background-color: #F9EFDC;
+  color: #896110;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  display: inline-table;
+  margin-top: 5px;
+}
+.product__notice img {
+  padding-top: 2px !important;
+}
+.product__original-price {
+  text-align: right;
+  font-size: 0.9em;
+  padding-top: 5px;
+  text-decoration: line-through;
+}
+.strikethrough {
+  text-decoration: line-through;
+}
+.dark-mode {
+  display: none;
+}
+span.im {
+  color: inherit !important;
+}
+.compensation {
+  padding: 20px 28px;
+  background-color: #F9EFDC;
+  border: 2px dashed #FFC042;
+  border-radius: 12px;
+  line-height: 16px;
+}
+.compensation__title {
+  color: #00A082;
+  font-size: 1.375em;
+  font-weight: bold;
+  line-height: 24px !important;
+}
+.compensation__subtitle {
+  line-height: 20px;
+  color: black;
+}
+.dark-mode {
+  display: none;
+}
+.light-mode {
+  padding: 0 1px !important;
+  border-radius: 5px;
+}
+.weight_banner {
+  background-color: #e0f0ed !important;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: left;
+  font-size: 12px;
+  line-height: 16px;
+  color: black;
+  display: block;
+}
+@media (prefers-color-scheme: light) {
+  .dark-mode {
+    display: none;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    display: initial !important;
+  }
+  .main {
+    color: #EAEAEA !important;
+    background-color: black !important;
+  }
+  .light-mode {
+    display: none !important;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
+  .body__background {
+    background-color: #292929 !important;
+    color: white !important;
+  }
+  .indent {
+    background-color: black !important;
+  }
+  .modify-order {
+    background-color: #063C32 !important;
+    color: #62DAC4 !important;
+  }
+  .highlight {
+    background-color: #3D3D40 !important;
+    color: #9B9B9B !important;
+  }
+  .advertisement {
+    background-color: #33270E !important;
+  }
+  td a.advertisement__button {
+    background-color: #0ACDA9 !important;
+    color: black !important;
+  }
+  .company-info {
+    color: white !important;
+  }
+  td.label {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  .label-details {
+    color: #9B9B9B !important;
+    text-decoration: none !important;
+  }
+  .product__notice {
+    background-color: #3B2F16 !important;
+    color: #EC9F04 !important;
+  }
+  .compensation {
+    background-color: #3B2F16 !important;
+    border: 2px dashed #B87E0A !important;
+  }
+  .compensation__subtitle {
+    color: white !important;
+  }
+  .weight_banner {
+    background-color: #063C32 !important;
+    color: white !important;
+  }
+}
+@media (max-width:600px) {
+  .body {
+    font-size: 0.9em;
+  }
+  .header__container {
+    background-size: 180px !important;
+  }
+  .header__inner-container {
+    padding: 40px 16px 80px;
+    margin: 0;
+  }
+  .header__margin-bottom {
+    font-size: 0;
+    height: 0;
+    padding-top: 24px;
+  }
+  .header__title {
+    font-size: 1.5em;
+  }
+  .header__subtitle {
+    padding-right: 140px;
+  }
+  .body {
+    border: 0 solid white;
+    padding: 0;
+  }
+  .body__details {
+    border: none;
+  }
+  .body__delivery-details {
+    border: 0 solid #F5F5F5;
+  }
+  .body__courier-margin-top {
+    height: 0;
+    font-size: 0;
+  }
+  .body__courier-padding-top {
+    font-size: 0;
+    height: 0;
+    padding-top: 0;
+  }
+  .body__courier-margin-bottom {
+    font-size: 0;
+    height: 0;
+    padding-top: 4px;
+  }
+  .advertisement {
+    border: none;
+  }
+  .advertisement__margin-top {
+    font-size: 0;
+    height: 0;
+    padding-top: 48px;
+  }
+
+}
+   
+ 
+ 
+   
+
+   
+ 
+  
+   
+      
+       
+          
+           
+             
+               
+                 
+                  
+                 
+                 
+               
+             
+               Order refunded   
+              Here are the details of your refunded order:  
+           
+          
+       
+      
+   
+  
+    
+ 
+     
+        
+         
+    
+    Hi Tiberiu Popescu
+, we’re sorry you had trouble with your order BU6FZ1WKA.  We have issued a refund of 24.00 RON in Glovo credits. They're in your Glovo account right now, so you can use them on your next order.
+    
+
+      
+       
+         
+           
+             24.00 RON Promo code 
+              
+             You can use it on your next order. 
+           
+           
+             
+              
+             
+             
+           
+         
+       
+      
+      &nbsp;  
+         
+         
+         
+ 
+    &nbsp;  
+ 
+
+ 
+    
+     
+        
+         
+           
+             
+             
+           
+           
+              Delivery details  
+             
+               Glovo ID: 101280351011 
+             
+           
+         
+        
+        
+         
+           
+             
+             
+             
+             
+             
+           
+           
+             
+                 
+                   
+                      
+                     
+                       
+                        
+                       
+                       
+                     
+                      
+                     
+                       
+                           Deliver from   
+                          
+                                    Rainbowls
+                            
+                          
+                                    Strada Maximilian Popper 23, București 030167, România
+                            
+                       
+                     
+                   
+                 
+
+                 
+                   
+                     &nbsp; 
+                     &nbsp; 
+                   
+                 
+
+                 
+                   
+                      
+                     
+                       
+                        
+                       
+                       
+                     
+                      
+                     
+                       
+                           Deliver to   
+                          Strada Baba Novac, 13A, Bloc 2 Scara A, 4, 14  
+                              Interfon 14  
+                       
+                     
+                   
+                 
+             
+           
+         
+        
+
+     
+    
+         
+     
+
+ 
+  
+     
+        
+           
+              Got questions?  
+              Please visit our  FAQ  page or contact support in the Glovo iOS or Android app.  
+           
+          
+     
+    
+    GlovoAppRo S.R.L., Sector 4, U Center, Calea Serban Voda 206-218, 040215, Bucuresti, Romania, RO39053728
+    
+
+ 
+ 
+ 
+
+",1,,True,0.98,High

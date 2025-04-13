@@ -1,0 +1,320 @@
+Delivered-To: popescu.tiberiuc@gmail.com
+Received: by 2002:a05:7300:1493:b0:166:b966:532a with SMTP id b19csp1328372dyh;
+        Sat, 5 Apr 2025 04:14:00 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGzQvv9UmC6sWdRoX1ZB23gX+ODAH7a/SvL6VqYzYRWDyUfTpQk27n5maGBgdmj9Uu576MM
+X-Received: by 2002:a05:690c:3385:b0:6fb:8461:e828 with SMTP id 00721157ae682-703f4294ff2mr43952077b3.30.1743851640075;
+        Sat, 05 Apr 2025 04:14:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1743851640; cv=none;
+        d=google.com; s=arc-20240605;
+        b=SXEih5C5ZHEBDfLpVy57BqWFhQzrUzGJYBX/L51Acavf5qqfpXQYR5nT2uf8jhJWJn
+         VaekrGgqMN4GGQRojbQ8nVMpJIYVlV6v3O4Y9ioGWt/PhO5jHxgIYjlYa54V2a8DwHRg
+         mor0jyB7NfQXIWsWCcwlRsJVbVdQ9SPA0Q6GQ+o1OmpPolNknzoBjyhBmY0lnEV/q4TC
+         sfN0hCRv07LcEeb2CB1e/mPNm1FJi+rBmgPPMGWvAfZpTttqBm+iCb9TkTwIUpGlQgFy
+         yrNHOlDCDc0HbnVwE1fY+Dzwul7VpXFwctqLAJHRBipt/hzW5jl0AddeJrU10ebyiofT
+         60Vw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=from:subject:mime-version:date:message-id:to
+         :content-transfer-encoding:dkim-signature;
+        bh=00yVaxK+C33HuE2PaZ8+9qovFVTh55ujdTdJBI9mdEA=;
+        fh=izrfyEdEP/E6akGl6iS3iao+EOeaMPBwhypGmqs2mxw=;
+        b=N5FIzRzTJHssFxU/iefXWJvhHwOKEL/mq08Yd9zX+SN9PipLRCYvACy32jIh8G2Sz4
+         tVWlbFsQ+o1cFXvYVFDo9DFhNz8daKLlwaRhTAgQll2aaOO/vUPmimZtIaxPzXvja5Uz
+         Ulf2D0cyzee3F71crRyGbwxWAxGWHMPALqqE+h1zcsqeQrwZ9StTBnf9uXjxFqHqpK5G
+         +SbQVysgt7I7BVTTFgsJEsNTTC/fPenuSYV1rsVoijlkCQjyyuQfVM9queM29QOXnK7q
+         K/ktJHhBXW1aTl617lMWI4mVKePX85mK4Wmd+oZmJ0oRdrE33pVdVo+CIpl5i6JE5orR
+         KwVg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@glovoapp.com header.s=scph0923 header.b=TuadGNc5;
+       spf=pass (google.com: domain of msprvs1=201907figubfs=bounces-22830-2@bouncemail.glovoapp.com designates 199.15.227.162 as permitted sender) smtp.mailfrom="msprvs1=201907FIgUBfS=bounces-22830-2@bouncemail.glovoapp.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=glovoapp.com
+Return-Path: <msprvs1=201907FIgUBfS=bounces-22830-2@bouncemail.glovoapp.com>
+Received: from mta-15-227-162.glovoapp.com.sparkpostmail.com (mta-15-227-162.glovoapp.com.sparkpostmail.com. [199.15.227.162])
+        by mx.google.com with ESMTPS id 00721157ae682-703d1e3f8f8si82435187b3.34.2025.04.05.04.13.59
+        for <popescu.tiberiuc@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 05 Apr 2025 04:14:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=201907figubfs=bounces-22830-2@bouncemail.glovoapp.com designates 199.15.227.162 as permitted sender) client-ip=199.15.227.162;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@glovoapp.com header.s=scph0923 header.b=TuadGNc5;
+       spf=pass (google.com: domain of msprvs1=201907figubfs=bounces-22830-2@bouncemail.glovoapp.com designates 199.15.227.162 as permitted sender) smtp.mailfrom="msprvs1=201907FIgUBfS=bounces-22830-2@bouncemail.glovoapp.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=glovoapp.com
+Return-Path: <msprvs1=201907FIgUBfS=bounces-22830-2@bouncemail.glovoapp.com>
+X-MSFBL: /IpIEYfEvxYF8xlaLcM/vHAP+fnRjTQkqJH65522KQY=|eyJ0ZW5hbnRfaWQiOiJ
+	zcGNldSIsIm1lc3NhZ2VfaWQiOiI2N2VjNzYxMGYxNjcyMTQ1NzNkYyIsInN1YmF
+	jY291bnRfaWQiOiIyIiwiciI6InBvcGVzY3UudGliZXJpdWNAZ21haWwuY29tIiw
+	iY3VzdG9tZXJfaWQiOiIyMjgzMCJ9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=glovoapp.com;
+	s=scph0923; t=1743851638; i=@glovoapp.com;
+	bh=00yVaxK+C33HuE2PaZ8+9qovFVTh55ujdTdJBI9mdEA=;
+	h=Content-Type:To:Message-ID:Date:Subject:From:From:To:Cc:Subject;
+	b=TuadGNc5u5kxihdgXpRVlOeqLvDPkUh1W3ygFtfibjrSdhibQQwgwPj7DYCh+CIb7
+	 zCmt2tMvVh5Yk+E/85WyVN4CaBcyfATdI3QIqSwQwhtoGs0eikzd9x3rZaXzI8truq
+	 S1ssQn6tQShlpiocbvsLpUAtfRlRs0tZ/rsK6VZ3b+yZh3H46lIRFVTJceWg+sfERA
+	 iDWq+49JgB6vwEr1QvL2qNC3wFbxuFTr6dkmOT9jadC8z3ONj495M8FS80ctt94Ga8
+	 LgYB6xpd3/doZaKBSfNM4djc1IHQIWimom9JQLq0slwwj2a/w0e2VfMV03mSrxc4gk
+	 jkWXiqi0sXqmA==
+Received: from [10.95.198.158] ([10.95.198.158])
+	by i-0e7ab2fdf9aa000f5.mta3vrest.sd.prd.sparkpost (ecelerity 4.8.0.74368 r(msys-ecelerity:tags/4.8.0.17)) with REST
+	id CD/37-45895-67011F76; Sat, 05 Apr 2025 11:13:58 +0000
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+To: popescu.tiberiuc@gmail.com
+Message-ID: <CD.37.45895.67011F76@i-0e7ab2fdf9aa000f5.mta3vrest.sd.prd.sparkpost>
+Date: Sat, 05 Apr 2025 11:13:58 +0000
+MIME-Version: 1.0
+Subject: Your order has been refunded
+From: "Glovo" <no-reply@glovoapp.com>
+
+<!doctype html>=0A<html lang=3D"en">=0A<head>=0A  <meta http-equiv=3D"Conte=
+nt-Type" content=3D"text/html charset=3DUTF-8"/>=0A  <meta name=3D"viewport=
+" content=3D"width=3Ddevice-width, user-scalable=3Dno, initial-scale=3D1.0,=
+ maximum-scale=3D1.0, minimum-scale=3D1.0">=0A  <meta http-equiv=3D"X-UA-Co=
+mpatible" content=3D"ie=3Dedge">=0A  <meta name=3D"color-scheme" content=3D=
+"light dark">=0A  <meta name=3D"supported-color-schemes" content=3D"light d=
+ark only">=0A  <title>Order Refunded</title>=0A  <style type=3D"text/CSS">=
+=0A    .header {=0A      background-color: #FFF3DA;=0A      border-radius: =
+0 0 120px 0;=0A      max-width: 1200px;=0A    }=0A    .header__container {=
+=0A      background: url("https://glovo.dhmedia.io/image/customer-assets-gl=
+ovo/emails/transactional-emails/header_refunded.png") no-repeat bottom righ=
+t;=0A      background-size: 256px;=0A      border-radius: 0 0 120px 0;=0A  =
+  }=0A    @media (prefers-color-scheme: dark) {=0A      .header {=0A       =
+ background-color: #33270E !important;=0A        color: white !important;=
+=0A      }=0A      .header__container {=0A        background: url("https://=
+glovo.dhmedia.io/image/customer-assets-glovo/emails/transactional-emails/he=
+ader_refunded_dark.png") no-repeat bottom right !important;=0A        backg=
+round-size: 256px !important;=0A      }=0A    }=0A:root {=0A  color-scheme:=
+ light dark;=0A  supported-color-schemes: light dark;=0A}=0A.main {=0A  pad=
+ding: 0;=0A  margin: 0;=0A  font-family: Verdana, sans-serif !important;=0A=
+  font-size: 16px;=0A  letter-spacing: 0;=0A  line-height: 1.4;=0A}=0Atable=
+ {=0A  width: 100%;=0A}=0Atd {=0A  font-family: Verdana, sans-serif !import=
+ant;=0A}=0Atd a {=0A  color: #2ABB9B;=0A  text-decoration: none;=0A}=0Aa.no=
+-color {=0A  color: inherit;=0A}=0A.header__title {=0A  font-size: 2.25em;=
+=0A  font-weight: bold;=0A  padding: 24px 75px 24px 0;=0A  letter-spacing: =
+-1px;=0A}=0A.header__subtitle {=0A  padding-right: 150px;=0A}=0Atd a.header=
+__rate-order {=0A  color: white;=0A  background-color: #017963;=0A  padding=
+: 12px 12px 12px 16px;=0A  font-size: 0.75em;=0A  border-radius: 24px;=0A  =
+font-weight: bold;=0A}=0Atd a.header__rate-order img {=0A  vertical-align: =
+middle;=0A  padding: 0 0 4px 1px;=0A}=0A.header__inner-container {=0A  padd=
+ing-top: 40px;=0A  padding-bottom: 80px;=0A  margin: 0 24px;=0A}=0A.header_=
+_margin-bottom {=0A  font-size: 0;=0A  height: 0;=0A  padding-top: 40px;=0A=
+}=0A.body__details {=0A  padding: 12px;=0A}=0A.body__background {=0A  backg=
+round-color: #F5F5F5;=0A}=0A.body__courier-margin-top {=0A  font-size: 0;=
+=0A  height: 0;=0A}=0A.body__courier-padding-top {=0A  font-size: 0;=0A  he=
+ight: 0;=0A  padding-top: 12px;=0A}=0A.advertisement {=0A  background-color=
+: #FFDE99;=0A  max-width: 600px;=0A  border-radius: 8px;=0A  padding: 12px;=
+=0A}=0A.advertisement__margin-top {=0A  font-size: 0;=0A  height: 0;=0A  pa=
+dding-top: 48px;=0A}=0A.table__padded td {=0A  padding: 12px;=0A}=0A.table_=
+_padded td td {=0A  padding: 0;=0A}=0A.indent {=0A  background-color: white=
+;=0A}=0A.modify-order {=0A  background-color: #E0F0ED;=0A  color: #035949;=
+=0A}=0A.highlight {=0A  color: #6E6E6E;=0A  background-color: #EEEEEE;=0A  =
+border:none;=0A  padding:3px 5px;=0A  border-radius:5px;=0A  font-size:0.75=
+em;=0A  font-weight:500;=0A}=0Atd a.advertisement__button {=0A  color:white=
+;=0A  background-color:#017963;=0A}=0A.company-info {=0A  color:#4A4A4A;=0A=
+}=0A.label {=0A  color: inherit !important;=0A  text-decoration: none !impo=
+rtant;=0A}=0A.label-details {=0A  color: #6E6E6E !important;=0A  text-decor=
+ation: none !important;=0A}=0A.table__padded td.product {=0A  padding: 12px=
+ 0;=0A}=0A.product__promotion {=0A  background-color: #FFC244;=0A  color: b=
+lack;=0A  font-size: 0.7em;=0A  padding: 1px 3px;=0A  border-radius: 4px;=
+=0A}=0A.product__packaging {=0A  padding: 1px 5px;=0A  border-radius: 4px;=
+=0A  font-size: 0.75em;=0A  display: inline-table;=0A  margin-top: 5px;=0A}=
+=0A.product__notice {=0A  background-color: #F9EFDC;=0A  color: #896110;=0A=
+  padding: 1px 5px;=0A  border-radius: 4px;=0A  font-size: 0.75em;=0A  disp=
+lay: inline-table;=0A  margin-top: 5px;=0A}=0A.product__notice img {=0A  pa=
+dding-top: 2px !important;=0A}=0A.product__original-price {=0A  text-align:=
+ right;=0A  font-size: 0.9em;=0A  padding-top: 5px;=0A  text-decoration: li=
+ne-through;=0A}=0A.strikethrough {=0A  text-decoration: line-through;=0A}=
+=0A.dark-mode {=0A  display: none;=0A}=0Aspan.im {=0A  color: inherit !impo=
+rtant;=0A}=0A.compensation {=0A  padding: 20px 28px;=0A  background-color: =
+#F9EFDC;=0A  border: 2px dashed #FFC042;=0A  border-radius: 12px;=0A  line-=
+height: 16px;=0A}=0A.compensation__title {=0A  color: #00A082;=0A  font-siz=
+e: 1.375em;=0A  font-weight: bold;=0A  line-height: 24px !important;=0A}=0A=
+.compensation__subtitle {=0A  line-height: 20px;=0A  color: black;=0A}=0A.=
+dark-mode {=0A  display: none;=0A}=0A.light-mode {=0A  padding: 0 1px !impo=
+rtant;=0A  border-radius: 5px;=0A}=0A.weight_banner {=0A  background-color:=
+ #e0f0ed !important;=0A  border-radius: 8px;=0A  padding: 12px;=0A  text-al=
+ign: left;=0A  font-size: 12px;=0A  line-height: 16px;=0A  color: black;=0A=
+  display: block;=0A}=0A@media (prefers-color-scheme: light) {=0A  .dark-mo=
+de {=0A    display: none;=0A    width: 0;=0A    height: 0;=0A    visibility=
+: hidden;=0A    overflow: hidden;=0A  }=0A}=0A@media (prefers-color-scheme:=
+ dark) {=0A  .dark-mode {=0A    display: initial !important;=0A  }=0A  .mai=
+n {=0A    color: #EAEAEA !important;=0A    background-color: black !importa=
+nt;=0A  }=0A  .light-mode {=0A    display: none !important;=0A    width: 0;=
+=0A    height: 0;=0A    visibility: hidden;=0A    overflow: hidden;=0A  }=
+=0A  .body__background {=0A    background-color: #292929 !important;=0A    =
+color: white !important;=0A  }=0A  .indent {=0A    background-color: black =
+!important;=0A  }=0A  .modify-order {=0A    background-color: #063C32 !impo=
+rtant;=0A    color: #62DAC4 !important;=0A  }=0A  .highlight {=0A    backgr=
+ound-color: #3D3D40 !important;=0A    color: #9B9B9B !important;=0A  }=0A  =
+.advertisement {=0A    background-color: #33270E !important;=0A  }=0A  td =
+a.advertisement__button {=0A    background-color: #0ACDA9 !important;=0A   =
+ color: black !important;=0A  }=0A  .company-info {=0A    color: white !imp=
+ortant;=0A  }=0A  td.label {=0A    color: inherit !important;=0A    text-de=
+coration: none !important;=0A  }=0A  .label-details {=0A    color: #9B9B9B =
+!important;=0A    text-decoration: none !important;=0A  }=0A  .product__not=
+ice {=0A    background-color: #3B2F16 !important;=0A    color: #EC9F04 !imp=
+ortant;=0A  }=0A  .compensation {=0A    background-color: #3B2F16 !importan=
+t;=0A    border: 2px dashed #B87E0A !important;=0A  }=0A  .compensation__su=
+btitle {=0A    color: white !important;=0A  }=0A  .weight_banner {=0A    ba=
+ckground-color: #063C32 !important;=0A    color: white !important;=0A  }=0A=
+}=0A@media (max-width:600px) {=0A  .body {=0A    font-size: 0.9em;=0A  }=0A=
+  .header__container {=0A    background-size: 180px !important;=0A  }=0A  .=
+header__inner-container {=0A    padding: 40px 16px 80px;=0A    margin: 0;=
+=0A  }=0A  .header__margin-bottom {=0A    font-size: 0;=0A    height: 0;=0A=
+    padding-top: 24px;=0A  }=0A  .header__title {=0A    font-size: 1.5em;=
+=0A  }=0A  .header__subtitle {=0A    padding-right: 140px;=0A  }=0A  .body =
+{=0A    border: 0 solid white;=0A    padding: 0;=0A  }=0A  .body__details {=
+=0A    border: none;=0A  }=0A  .body__delivery-details {=0A    border: 0 so=
+lid #F5F5F5;=0A  }=0A  .body__courier-margin-top {=0A    height: 0;=0A    f=
+ont-size: 0;=0A  }=0A  .body__courier-padding-top {=0A    font-size: 0;=0A =
+   height: 0;=0A    padding-top: 0;=0A  }=0A  .body__courier-margin-bottom =
+{=0A    font-size: 0;=0A    height: 0;=0A    padding-top: 4px;=0A  }=0A  .a=
+dvertisement {=0A    border: none;=0A  }=0A  .advertisement__margin-top {=
+=0A    font-size: 0;=0A    height: 0;=0A    padding-top: 48px;=0A  }=0A=0A}=
+=0A  </style>=0A</head>=0A<body class=3D"main">=0D=0A<div style=3D"color:tr=
+ansparent;visibility:hidden;opacity:0;font-size:0px;border:0;max-height:1px=
+;width:1px;margin:0px;padding:0px;border-width:0px!important;display:none!i=
+mportant;line-height:0px!important;"><img border=3D"0" width=3D"1" height=
+=3D"1" src=3D"https://post.eu.spmailtechnol.com/q/3vUyLc_7YtT3GOY6hKNlHw~~/=
+AABZLhA~/bKvAIa0tHNa-_Xw-Vwbv7MR9_SvMTtxX3OPXWdc-LYiaAVzYk8rbAe3B-dl4flpMXd=
+zXlHjk_efUZUsyBOem2w~~" alt=3D""/></div>=0D=0A=0A  <table style=3D"max-widt=
+h:100%;" role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">=0A<thead>=0A<tr><td align=3D"center">=0A  <table role=
+=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"max-width:1200px">=0A    <tr><td class=3D"header">=0A      =
+<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">=0A        <tr><td align=3D"center" class=3D"header__co=
+ntainer" background=3D"https://glovo.dhmedia.io/image/customer-assets-glovo=
+/emails/transactional-emails/header_refunded.png">=0A          <table style=
+=3D"max-width: 600px" class=3D"header__inner-container" role=3D"presentatio=
+n" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=0A     =
+       <tr>=0A              <td>=0A                <img class=3D"light-mode=
+" alt=3D"logo" src=3D"https://glovo.dhmedia.io/image/customer-assets-glovo/=
+emails/transactional-emails/header_logo.png" width=3D"73" height=3D"24" sty=
+le=3D"width:73px;height:24px;background-image: none !important;">=0A       =
+         <!--[if !mso]><!-->=0A                <img class=3D"dark-mode" alt=
+=3D"logo" src=3D"https://glovo.dhmedia.io/image/customer-assets-glovo/email=
+s/transactional-emails/header_logo_dark.png" width=3D"73" height=3D"24" sty=
+le=3D"width:73px;height:24px;">=0A                <!--<![endif]-->=0A      =
+        </td>=0A            </tr>=0A            <tr><td class=3D"header__ti=
+tle"><a class=3D"no-color" rel=3D"nofollow">Order refunded</a></td></tr>=0A=
+            <tr><td class=3D"header__subtitle">Here are the details of your=
+ refunded order:</td></tr>=0A          </table>=0A        </td></tr>=0A    =
+  </table>=0A    </td></tr>=0A  </table>=0A</td></tr>=0A<tr><td class=3D"he=
+ader__margin-bottom"></td></tr>=0A</thead>=0A    <tbody>=0A      <tr><td al=
+ign=3D"center" class=3D"body">=0A        <table style=3D"max-width:600px" r=
+ole=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0">=0A  <tr><td style=3D"padding: 0 0 36px;">=0A    Hi Tiberiu Popes=
+cu=0A, we=E2=80=99re sorry you had trouble with your order BU6FZ1WKA.<br><b=
+r>We have issued a refund of 24.00 RON in Glovo credits. They're in your Gl=
+ovo account right now, so you can use them on your next order.=0A  </td></t=
+r>=0A=0A    <tr><td class=3D"compensation">=0A      <table style=3D"max-wid=
+th:600px" role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0">=0A        <tr>=0A          <td>=0A            <span c=
+lass=3D"compensation__title">24.00 RON Promo code</span>=0A            <br>=
+<br>=0A            <span class=3D"compensation__subtitle">You can use it on=
+ your next order.</span>=0A          </td>=0A          <td style=3D"float:r=
+ight">=0A            <img class=3D"light-mode" src=3D"https://glovo.dhmedia=
+.io/image/customer-assets-glovo/emails/transactional-emails/promocode.png"=
+ alt=3D"compensationImage" width=3D"96" height=3D"96" style=3D"width:96px; =
+height:96px">=0A            <!--[if !mso]><!-->=0A            <img class=3D=
+"dark-mode" src=3D"https://glovo.dhmedia.io/image/customer-assets-glovo/ema=
+ils/transactional-emails/promocode_dark.png" alt=3D"compensationImage" widt=
+h=3D"96" height=3D"96" style=3D"width:96px; height:96px">=0A            <!-=
+-<![endif]-->=0A          </td>=0A        </tr>=0A      </table>=0A    </td=
+></tr>=0A    <tr><td style=3D"padding-top: 24px;">&nbsp;</td></tr>=0A      =
+  </table>=0A        <table style=3D"max-width:600px" role=3D"presentation"=
+ width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=0A       =
+ </table>=0A<table role=3D"presentation" width=3D"100%" cellpadding=3D"0" c=
+ellspacing=3D"0" border=3D"0">=0A  <tr><td style=3D"padding-top: 24px;font-=
+size: 0;height: 0;">&nbsp;</td></tr>=0A</table>=0A=0A<table style=3D"max-wi=
+dth:600px" role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspaci=
+ng=3D"0" border=3D"0">=0A  <tr><td class=3D"body__details body__background"=
+ style=3D"border-radius:16px;">=0A    <table role=3D"presentation" width=3D=
+"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=0A      <tr><td>=
+=0A        <table class=3D"table__padded" role=3D"presentation" width=3D"10=
+0%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=0A          <colgroup=
+>=0A            <col span=3D"1">=0A            <col span=3D"1" style=3D"wid=
+th:180px">=0A          </colgroup>=0A          <tr>=0A            <td><stro=
+ng>Delivery details</strong></td>=0A            <td align=3D"right" style=
+=3D"white-space: nowrap; vertical-align: top">=0A              <span class=
+=3D"highlight">Glovo ID: 101280351011</span>=0A            </td>=0A        =
+  </tr>=0A        </table>=0A      </td></tr>=0A      <tr><td>=0A        <t=
+able role=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0" style=3D"height:1px" class=3D"body__delivery-details">=0A  =
+        <colgroup>=0A            <col span=3D"1" style=3D"width:12px">=0A  =
+          <col span=3D"1" style=3D"width:24px">=0A            <col span=3D"=
+1" style=3D"width:12px">=0A            <col span=3D"1">=0A            <col =
+span=3D"1" style=3D"width:12px">=0A          </colgroup>=0A          <tr>=
+=0A            <td style=3D"vertical-align: top; padding: 12px 0 24px 0;">=
+=0A                <table role=3D"presentation" width=3D"100%" cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0">=0A                  <tr>=0A         =
+           <td style=3D"width:12px"></td>=0A                    <td style=
+=3D"width:24px">=0A                      <img class=3D"light-mode" src=3D"h=
+ttps://glovo.dhmedia.io/image/customer-assets-glovo/emails/transactional-em=
+ails/location_pin.png" alt=3D"location" width=3D"24" height=3D"24" style=3D=
+"width:24px; height:24px;">=0A                      <!--[if !mso]><!-->=0A =
+                     <img class=3D"dark-mode" src=3D"https://glovo.dhmedia.=
+io/image/customer-assets-glovo/emails/transactional-emails/location_pin_dar=
+k.png" alt=3D"courier" width=3D"24" height=3D"24" style=3D"width:24px; heig=
+ht:24px;">=0A                      <!--<![endif]-->=0A                    <=
+/td>=0A                    <td style=3D"width:12px"></td>=0A               =
+     <td>=0A                      <table role=3D"presentation" width=3D"100=
+%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=0A                    =
+    <tr><td><span class=3D"highlight" style=3D"font-size:0.75em">Deliver fr=
+om</span></td></tr>=0A                        <tr><td class=3D"label" style=
+=3D"padding-top:5px; color: inherit !important; text-decoration: none !impo=
+rtant;">=0A                                    Rainbowls=0A                =
+          </td></tr>=0A                        <tr><td class=3D"label-detai=
+ls" style=3D"font-size:0.875em; padding-top:5px; color: #6E6E6E !important;=
+ text-decoration: none !important;">=0A                                    =
+Strada Maximilian Popper 23, Bucure=C8=99ti 030167, Rom=C3=A2nia=0A        =
+                  </td></tr>=0A                      </table>=0A           =
+         </td>=0A                  </tr>=0A                </table>=0A=0A  =
+              <table border=3D"0" width=3D"100%" cellpadding=3D"0" cellspac=
+ing=3D"0">=0A                  <tr>=0A                    <td style=3D"widt=
+h:23px">&nbsp;</td>=0A                    <td class=3D"body__delivery-detai=
+ls__separator" style=3D"height:24px">&nbsp;</td>=0A                  </tr>=
+=0A                </table>=0A=0A                <table role=3D"presentatio=
+n" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=0A     =
+             <tr>=0A                    <td style=3D"width:12px"></td>=0A  =
+                  <td style=3D"width:24px;">=0A                      <img c=
+lass=3D"light-mode" src=3D"https://glovo.dhmedia.io/image/customer-assets-g=
+lovo/emails/transactional-emails/location_pin.png" alt=3D"location" width=
+=3D"24" height=3D"24" style=3D"width:24px; height:24px;">=0A               =
+       <!--[if !mso]><!-->=0A                      <img class=3D"dark-mode"=
+ src=3D"https://glovo.dhmedia.io/image/customer-assets-glovo/emails/transac=
+tional-emails/location_pin_dark.png" alt=3D"courier" width=3D"24" height=3D=
+"24" style=3D"width:24px; height:24px;">=0A                      <!--<![end=
+if]-->=0A                    </td>=0A                    <td style=3D"width=
+:12px"></td>=0A                    <td>=0A                      <table role=
+=3D"presentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0">=0A                        <tr><td><span class=3D"highlight" style=
+=3D"font-size:0.75em">Deliver to</span></td></tr>=0A                       =
+ <tr><td style=3D"padding-top:5px; color: inherit !important; text-decorati=
+on: none !important;">Strada Baba Novac, 13A, Bloc 2 Scara A, 4, 14</td></t=
+r>=0A                            <tr><td style=3D"color:#6E6E6E !important;=
+ font-size:0.875em; padding-top:5px; text-decoration: none !important;">Int=
+erfon 14</td></tr>=0A                      </table>=0A                    <=
+/td>=0A                  </tr>=0A                </table>=0A            </t=
+d>=0A          </tr>=0A        </table>=0A      </td></tr>=0A=0A    </table=
+>=0A  </td></tr>=0A</table>      </td></tr>=0A    </tbody>=0A=0A<tfoot>=0A<=
+tr><td align=3D"center" style=3D"padding-top:48px;">=0A    <table style=3D"=
+max-width: 1200px;" role=3D"presentation" width=3D"100%" cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0">=0A      <tr><td align=3D"center" style=3D"b=
+ackground-color:#1C1C1C; border: 0 solid #1C1C1C;">=0A          <table styl=
+e=3D"max-width: 600px; text-align:center; color:white" role=3D"presentation=
+" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=0A      =
+      <tr><td style=3D"padding: 40px 12px 8px;font-size:1.5em">Got question=
+s=3F</td></tr>=0A            <tr><td style=3D"padding: 0 24px 40px; line-he=
+ight: 24px;">Please visit our <a href=3D"https://glovoapp.com/en/faq/">FAQ<=
+/a> page or contact support in the Glovo iOS or Android app.</td></tr>=0A  =
+        </table>=0A        </td></tr>=0A    </table>=0A  </td></tr>=0A  <tr=
+><td class=3D"company-info" style=3D"padding: 10px 0;font-size:0.6em; text-=
+align: center">GlovoAppRo S.R.L., Sector 4, U Center, Calea Serban Voda 206=
+-218, 040215, Bucuresti, Romania, RO39053728=0A</tfoot>  </table>=0A=0D=0A<=
+img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://post.eu.s=
+pmailtechnol.com/q/cvskibFL90qeFPKvecDQLQ~~/AABZLhA~/iUCa5cJ4RaYkiB1tPFa9Y_=
+MNCyh6S8sxzGy1oQq0aqUC9c6duY8egGxBmWEyUrZIIaKsS0seBFUx2UERYl5nrg~~">=0D=0A<=
+/body>=0A</html>
+

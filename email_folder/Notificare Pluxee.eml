@@ -1,0 +1,207 @@
+Delivered-To: popescu.tiberiuc@gmail.com
+Received: by 2002:a05:693c:3108:b0:166:b966:532a with SMTP id sd8csp358472dyc;
+        Fri, 11 Apr 2025 05:40:11 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE+rLSvsCMVBHA/tDgvtsEnggeM8rIkch1cYBBVyyKytsyzfp4WnNSrldZeVUPWmtJo33Qs
+X-Received: by 2002:a05:620a:25cb:b0:7c5:5d4b:e63c with SMTP id af79cd13be357-7c7af20b1b1mr400435785a.47.1744375211506;
+        Fri, 11 Apr 2025 05:40:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1744375211; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ZeA6JH3PjkQTa7nBwSSAwwUOfR4rs6zGQoBrePDOLjxMrgue10RM3uFo2bkzrQc/HY
+         Iw2Vxa/MuUdF0m8C5elMdWdDbewXiej6rMcnxT3/whE9gOwQxzGPOvnioFLk9woLEJie
+         2sLwRwwJ2BQXki6Dl6/p/E+tRWr+RnVbOec3KEZ7VOHo/DqybYnSr6xkd4nvOUcdwE6e
+         aeyOyO8ZgmliyOnqXok9fzV2v7GbxSksAcnbABuVgs61wzEA9UPCnHl4uPzhP/TG+1xq
+         qs7irNQsrwlIh3Iba+/CLXIq8RGWD2PYj+pu1guMO+kLhjA6jzUpBTpAfVVOz39DLSfb
+         S8cg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:mime-version:from:date
+         :content-transfer-encoding:dkim-signature:dkim-signature;
+        bh=Sz8ZoUDw2+iBklcC9g5+u0/UezH/R0G7t7CWvNBdyog=;
+        fh=izrfyEdEP/E6akGl6iS3iao+EOeaMPBwhypGmqs2mxw=;
+        b=R3OLSgVw9rZsDCWOeBZiQm1KoVnZdVRVk1dHtBpV4YLVLb2iwD8E1UGaIMefcujQkD
+         8MewqInE9EGt036UVcjdc8HttrRbIx4rQOTaElceDpYpnCdH3FcN64OQfqW87/y8wsLn
+         L8Uujfmz/eOie9jNC2Nel0U+SDwulPnS7bf5C9I6+aMCc3nq46EatcGbLXO6LBq5oTkC
+         Ztm03+i8zsfuBGlJbEGmachU8zEeagxjlDTp3bZcrdc/hpuJsBnFQwzO1Dk+5Z9hrxUk
+         eIav3MBuQXAN6ORxmEUEbw0gXjRGkXJxPDk5PegD2o/FQS7WlixCsZgPLNCRCsR9w+59
+         8igg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pay.pluxee.ro header.s=s1 header.b="SBuQ/Zpr";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="zdU/+D0E";
+       spf=pass (google.com: domain of bounces+38422296-d679-popescu.tiberiuc=gmail.com@em1410.pay.pluxee.ro designates 149.72.249.27 as permitted sender) smtp.mailfrom="bounces+38422296-d679-popescu.tiberiuc=gmail.com@em1410.pay.pluxee.ro";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pluxee.ro
+Return-Path: <bounces+38422296-d679-popescu.tiberiuc=gmail.com@em1410.pay.pluxee.ro>
+Received: from wrqvfwkb.outbound-mail.sendgrid.net (wrqvfwkb.outbound-mail.sendgrid.net. [149.72.249.27])
+        by mx.google.com with ESMTPS id d75a77b69052e-4796edebf20si29809741cf.574.2025.04.11.05.40.11
+        for <popescu.tiberiuc@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Apr 2025 05:40:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+38422296-d679-popescu.tiberiuc=gmail.com@em1410.pay.pluxee.ro designates 149.72.249.27 as permitted sender) client-ip=149.72.249.27;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pay.pluxee.ro header.s=s1 header.b="SBuQ/Zpr";
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b="zdU/+D0E";
+       spf=pass (google.com: domain of bounces+38422296-d679-popescu.tiberiuc=gmail.com@em1410.pay.pluxee.ro designates 149.72.249.27 as permitted sender) smtp.mailfrom="bounces+38422296-d679-popescu.tiberiuc=gmail.com@em1410.pay.pluxee.ro";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=pluxee.ro
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pay.pluxee.ro;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:to:
+	cc:content-type:feedback-id:from:subject:to;
+	s=s1; bh=Sz8ZoUDw2+iBklcC9g5+u0/UezH/R0G7t7CWvNBdyog=;
+	b=SBuQ/Zpr4DlafeJBBOPVM/aX2Hlw6+Pa7HK9wPpdk60DDG0TV2tqOtxVQoUCOYTGjDqp
+	VEPKAGZrqcacqWhfXzlZ6hAArghw7Di9hH8P0Qu2/RQScadQhw5HExdmmHCbn9w5Ma9LnE
+	P2rcVAHZDCiJNmTaoEGJCs++kWxFDHJOwQfqhVhsvgDDB0EbE3ovHmZM9q07rwcyNLbarP
+	ovnF61fh/gcxt5w7it3RyOV5jCx6UbIKdCDKDUeGJk9Zd5oZPmHrcE7P44a7iuFSeRpaud
+	4hlHJ6cxPuN/o78iTL86m6y0yMrTr2Sz+WYkfVhHePjW+ApBf8gebAV9EsChw2cQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:to:
+	cc:content-type:feedback-id:from:subject:to;
+	s=smtpapi; bh=Sz8ZoUDw2+iBklcC9g5+u0/UezH/R0G7t7CWvNBdyog=;
+	b=zdU/+D0EFp69P4Zo7xxQc+iwBJFeWoGuxoRQVeGbBC09wsWrmPgz5m0xshYmIIzUWcwX
+	i1oc7VwUqyBGll2wonlncVrMxZLgDKIvtp/xzLx8LPXQUvj5gMwTLf+o504aZei6Yy7pwo
+	6Qmqdf52n+lLXTrTZdQvkDzg9yTn4C0Dw=
+Received: by recvd-844cf59c47-4gqld with SMTP id recvd-844cf59c47-4gqld-1-67F90DAA-17
+	2025-04-11 12:40:10.987516649 +0000 UTC m=+225134.460474316
+Received: from Mzg0MjIyOTY (unknown)
+	by geopod-ismtpd-2 (SG) with HTTP
+	id xuc7vdukTfa_mtjo0s73LQ
+	Fri, 11 Apr 2025 12:40:10.945 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Date: Fri, 11 Apr 2025 12:40:11 +0000 (UTC)
+From: Pluxee <noreply@pay.pluxee.ro>
+Mime-Version: 1.0
+Message-ID: <xuc7vdukTfa_mtjo0s73LQ@geopod-ismtpd-2>
+Subject: Notificare Pluxee
+X-SG-EID: 
+ =?us-ascii?Q?u001=2Eaoz2DP1pJwJ+pE=2FtFq0V2V7+HloXyqWuCHURc=2Ffw6KUQX6UHjSlE8isfz?=
+ =?us-ascii?Q?bolnTMEz96u4HOYjw8ebFZDs2twp5pdwwoM9G=2Fr?=
+ =?us-ascii?Q?QHRpOW0ibLnEl=2Fv774TUKmNZC=2FZ3pmJ+EBQPX6S?=
+ =?us-ascii?Q?W9Fo8xwq0wf06uGT9fqCh4TLDUhRLztk80u1SgM?=
+ =?us-ascii?Q?tnX=2FG1y2lpiZNwlQG1Cly2nREnBAfIVcwPfjeTA?=
+ =?us-ascii?Q?wTHELVEHpusJl=2FgG7n4pUbgiQWNHisfpv9tX=2FZp?=
+ =?us-ascii?Q?NmYK?=
+To: popescu.tiberiuc@gmail.com
+X-Entity-ID: u001.NgkEf+5cPzOgpJonyeh/Wg==
+
+<style >@font-face { font-family: 'TT Travels'; src: url('https://dev.logic=
+ware.ro/pluxee/TTTravels-Bold.ttf') format('truetype'); font-weight: bold; =
+font-style: normal; } @font-face { font-family: 'TT Travels'; src: url('htt=
+ps://dev.logicware.ro/pluxee/TTTravels-DemiBold.ttf') format('truetype'); f=
+ont-weight: 600; font-style: normal; } @font-face { font-family: 'TT Travel=
+s'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Medium.ttf') format=
+('truetype'); font-weight: 500; font-style: normal; } @font-face { font-fam=
+ily: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Regu=
+lar.ttf') format('truetype'); font-weight: normal; font-style: normal; }</s=
+tyle><div class=3D"container" style=3D"width: 100%;max-width: 700px;margin:=
+ 0 auto;background-color: #ffffff;"><table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0"><tbody><tr style=3D"background-color: #1e1656;"><td><img=
+ style=3D"width: 100%;" src=3D"https://images.contentstack.io/v3/assets/blt=
+35a81e0af02ec022/bltf6ae6aecee1de56a/67d1cbb89c4fec82fee65587/headerpluxee.=
+png" width=3D"100%"/> </td></tr><tr><td class=3D"header" style=3D"backgroun=
+d-color: #1e1656;color: #ffffff;padding: 18px 20px 20px 20px;display: flex;=
+justify-content: flex-end;align-items: center;" bgcolor=3D"#1e1656"> <img s=
+rc=3D"https://images.contentstack.io/v3/assets/blt35a81e0af02ec022/blte66b0=
+9f58c05f236/67d1cbbc4f5f9a4d005dab01/logo.png" alt=3D"Pluxee Logo" style=3D=
+"width: 100;" width=3D"100"/></td></tr><tr><td class=3D"content"><div class=
+=3D"contact-info" style=3D"padding: 15px;padding-left: 50px;margin: 10px 0;=
+border-radius: 5px;"><h1 style=3D"font-weight: bold;">Salutare, Tiberiu-cos=
+tin </h1></div><div class=3D"highlight" style=3D"background-color: #e8f6ff;=
+padding: 15px;padding-left: 0px;margin: 10px 0;border-radius: 5px;display: =
+flex;align-items: center;"><div class=3D"arrow" style=3D"width: 0;height: 0=
+;border-left: 30px solid #17ccf9;border-top: 25px solid transparent;border-=
+bottom: 25px solid transparent;margin-right: 20px;margin-left: 0px;"></div>=
+<p style=3D"margin: 0;font-weight: normal;">Pe data de 11.04.2025 15:40, ai=
+ pl=C4=83tit <b>-5.39 lei</b> cu cardul t=C4=83u Pluxee Gusto la <b>MEGAIMA=
+GE 0189 B.NOV13 BUCURESTI     ROM</b>. Suma r=C4=83mas=C4=83 pe cardul t=C4=
+=83u Pluxee este de <b>9.35 lei</b>.</p></div><div class=3D"contact-info" s=
+tyle=3D"padding: 15px 15px 0 15px;padding-left: 50px;margin: 10px 0;border-=
+radius: 5px;"><p style=3D"margin: 0;font-weight: normal;">De acum po=C8=9Bi=
+ efectua pl=C4=83=C8=9Bile cu telefonul mobil sau smartwatch-ul la to=C8=9B=
+i comercian=C8=9Bii care fac parte din re=C8=9Beaua Pluxee prin:</p><br /><=
+/div><div style=3D"display: flex;"><div><img style=3D"width: 20;margin-left=
+: 15px;margin-right: 15px;" src=3D"https://images.contentstack.io/v3/assets=
+/blt35a81e0af02ec022/blt90d62299a19e9255/67d1cbbad7ad1604a4b75de7/special_x=
+.png" width=3D"20"/></div><p style=3D"margin: 0;font-weight: normal;"><b>Go=
+ogle Pay</b>, dac=C4=83 dispozitivul t=C4=83u ruleaz=C4=83 cu sistem de ope=
+rare Android.</p><br /></div><div style=3D"display: flex;"><div><img style=
+=3D"width: 20;margin-left: 15px;margin-right: 15px;" src=3D"https://images.=
+contentstack.io/v3/assets/blt35a81e0af02ec022/blt90d62299a19e9255/67d1cbbad=
+7ad1604a4b75de7/special_x.png" width=3D"20"/></div><p style=3D"margin: 0;fo=
+nt-weight: normal;"><b>Apple Pay</b>, dac=C4=83 dispozitivul folose=C8=99te=
+ sistem de operare iOS.</p><br /></div><div class=3D"contact-info" style=3D=
+"padding: 0 15px;padding-left: 50px;margin: 10px 0;border-radius: 5px;"><p =
+style=3D"margin: 0;font-weight: normal;">Dac=C4=83 dore=C8=99ti s=C4=83 efe=
+ctuezi pl=C4=83=C8=9Bile cu telefonul mobil sau smartwatch-ul =C8=99i nu ai=
+ =C3=AEnrolat cardul t=C4=83u Pluxee =C3=AEn Google Wallet sau Apple Wallet=
+, te invit=C4=83m s=C4=83 urm=C4=83re=C8=99ti pa=C8=99ii de =C3=AEnrolare <=
+a href=3D"https://u38422296.ct.sendgrid.net/ls/click?upn=3Du001.MGIp0FmH-2B=
+XvgytZE0NHzKdN-2FkzFH-2B7H1jTC3dcK9X8pxxXGAmsU-2BOTHYpOw5W17DXMziGh8PmxAKi5=
+rBrjsHhg-3D-3DzWZ0_ZMkiGlQihs2wxORyTsu-2BkXPwYCd8XuBe5vGHWOPxz-2BadtAfwvPeJ=
+V2gbpbwhm-2BQ7gEvBhSXJBn5WZa7dU7VHVTnK-2BKoG2t3GwJFfu8U5WVSWGdQB9R7FIfFQRcC=
+5SA1mkBKDsMlHqPDzHOE58Q3-2Ff-2BpHulbvdR5ZlEIY7zywJTuMEgbKnBAnmU8CXM56DR5I-2=
+BNKKcNnC5hPgmXWgOgr5Ew-3D-3D" style=3D"color: #17ccf9;font-weight: bold;">d=
+in aceast=C4=83 pagin=C4=83.</a></p><br /><p style=3D"margin: 0;margin-bott=
+om: 10px;font-weight: normal;">Descarc=C4=83 aplica=C8=9Bia Pluxee:</p><a h=
+ref=3D"https://u38422296.ct.sendgrid.net/ls/click?upn=3Du001.MGIp0FmH-2BXvg=
+ytZE0NHzKYJ8N1Sc9S-2FUOA5YuRx8sI5hczlaFyq9W86ApuZv6DFHEO6Zu3H6u8IbwCMXc2LG4=
+A-3D-3D4PAr_ZMkiGlQihs2wxORyTsu-2BkXPwYCd8XuBe5vGHWOPxz-2BadtAfwvPeJV2gbpbw=
+hm-2BQ7gEvBhSXJBn5WZa7dU7VHVdx3hdtaLueEIVOhnTNU5CuhGpJqacBqn142-2FdG042Kd-2=
+Fs8WnJfTxHiIXMl-2BlieJgOWovIVZ-2B7ts4LvvvkmUJfQh0V53qLD3hfpcGYHIqoDQntxZ4GC=
+C6vk9-2F2bJ5Qv6vA-3D-3D"><img style=3D"height: 40;" src=3D"https://images.c=
+ontentstack.io/v3/assets/blt35a81e0af02ec022/blt9eab8352b8784318/67d1cbbb15=
+ce6458b135ae08/getapp_apple.jpg" height=3D"40"/></a><a href=3D"https://u384=
+22296.ct.sendgrid.net/ls/click?upn=3Du001.MGIp0FmH-2BXvgytZE0NHzKQATZKIJi2W=
+Rg1XLbSzsBXnRJyvgZshGjFqNFU6AD9qjcdYhW9N-2BF4OENHr5b-2B-2F3-2B8I2HFyd-2FSq5=
+AcWaGOsZ4xsgxESgVEWQByPw-2BpYpZSSoL4o-_ZMkiGlQihs2wxORyTsu-2BkXPwYCd8XuBe5v=
+GHWOPxz-2BadtAfwvPeJV2gbpbwhm-2BQ7gEvBhSXJBn5WZa7dU7VHVaixvvWcS5b-2FGTiN7-2=
+Bfx4agKUNIGTtlo8SJ2C9-2FpBXhAOFOTkeXq4CkuNa1j3xmeuJFUY-2FWkrQQsYscFfWhaC7yJ=
+EnFvfDtIuLz0lg8l3ba-2BPyMbJm1IVGrR9mMyXs2hzA-3D-3D"><img style=3D"height: 4=
+0;" src=3D"https://images.contentstack.io/v3/assets/blt35a81e0af02ec022/blt=
+8927aa6096259dd5/67d1cbba3f4fe92c0da3dd0c/getapp_android.jpg" height=3D"40"=
+/></a></div></td></tr><tr><td class=3D"footer" style=3D"background-color: #=
+1e1656;color: #ffffff;padding: 20px;" bgcolor=3D"#1e1656"><table class=3D"f=
+ooter-table" style=3D"width: 100%;" width=3D"100%"><tbody><tr><td rowspan=
+=3D"2" style=3D"vertical-align: top;padding: 5px 0;" valign=3D"top"><img sr=
+c=3D"https://images.contentstack.io/v3/assets/blt35a81e0af02ec022/blte66b09=
+f58c05f236/67d1cbbc4f5f9a4d005dab01/logo.png" alt=3D"Pluxee Logo" class=3D"=
+footer-logo" style=3D"width: 50;margin-right: 10px;margin-top: 15px;" width=
+=3D"50"/></td><td style=3D"vertical-align: top;padding: 5px 0;padding-left:=
+ 40px;" valign=3D"top"><p style=3D"margin: 5px 0;font-size: 12px;font-weigh=
+t: normal;color: #ffffff;">Serviciul Consumatori Pluxee / Pluxee Consumer C=
+are Team</p><p style=3D"margin: 5px 0;font-size: 12px;font-weight: normal;c=
+olor: #ffffff;">T: +4021 207 27 27 | E: <a href=3D"mailto:Apphelp.RO@pluxee=
+group.com" style=3D"text-decoration: underline;color: #ffffff;">Apphelp.RO@=
+pluxeegroup.com</a></p></td></tr><tr><td style=3D"vertical-align: top;paddi=
+ng: 5px 0;" valign=3D"top"><p style=3D"margin: 5px 0;font-size: 12px;font-w=
+eight: normal;color: #ffffff;">Securitatea datelor tale este una dintre pre=
+ocup=C4=83rile noastre principale. Acesta este motivul pentru care depunem =
+eforturi suplimentare pentru a-=C8=9Bi men=C8=9Bine datele =C3=AEn siguran=
+=C8=9B=C4=83 =C8=99i mereu actualizate. Dore=C8=99ti mai multe informa=C8=
+=9Bii despre modul =C3=AEn care Pluxee proceseaz=C4=83 datele tale? Te rug=
+=C4=83m s=C4=83 vizitezi pagina <a href=3D"https://u38422296.ct.sendgrid.ne=
+t/ls/click?upn=3Du001.MGIp0FmH-2BXvgytZE0NHzKdN-2FkzFH-2B7H1jTC3dcK9X8rPjrl=
+Po-2FBiPpKe9m-2FMUYQAiABWKEaXN7WyNsQPx8-2FyQw-3D-3Dp4Qi_ZMkiGlQihs2wxORyTsu=
+-2BkXPwYCd8XuBe5vGHWOPxz-2BadtAfwvPeJV2gbpbwhm-2BQ7gEvBhSXJBn5WZa7dU7VHVTK4=
+ewiMiuSYBnHrF59dAvBM5uO5jNR2g-2F3ol1Qo4huCaDRDy2qJrGT1Au94kzABedshapMkeFfyl=
+PILxyWhvGA8W2KylledOCbRbEBkOsN7q0kXUPaxhQcqVXPPoISaKg-3D-3D" style=3D"text-=
+decoration: underline;color: #ffffff;">Politicii de Confiden=C8=9Bialitate<=
+/a>.</p><p style=3D"margin: 5px 0;font-size: 12px;font-weight: normal;color=
+: #ffffff;"><a href=3D"https://u38422296.ct.sendgrid.net/ls/click?upn=3Du00=
+1.MGIp0FmH-2BXvgytZE0NHzKbzRSjyb4mlfAKnib-2B6gzaTK4aXZb-2BqoqHfLTfHyle4rfar=
+m_ZMkiGlQihs2wxORyTsu-2BkXPwYCd8XuBe5vGHWOPxz-2BadtAfwvPeJV2gbpbwhm-2BQ7gEv=
+BhSXJBn5WZa7dU7VHVeT-2FuASzN69uUcHgtNyb2EW3sEwuwNNl2FHq3FypdNamD-2Fopx3ORAQ=
+tWns6ssLNxRzIcajmRi06mfEHPHY2yWmMXauh3MWaUFcbnO73iFjPMx-2F1eTIvaZO8aItEhQlQ=
+MQg-3D-3D" style=3D"text-decoration: underline;color: #ffffff;">Contacteaz=
+=C4=83-ne</a> dac=C4=83 dore=C8=99ti s=C4=83 accesezi sau s=C4=83 modifici =
+informa=C8=9Biile tale personale sau s=C4=83 le elimini complet din baza no=
+astr=C4=83 de date.</p><p style=3D"margin: 5px 0;font-size: 12px;font-weigh=
+t: normal;color: #ffffff;">Acest email este generat automat, te rug=C4=83m =
+s=C4=83 nu r=C4=83spunzi la el.</p></td></tr></tbody></table></td></tr></tb=
+ody></table></div><img src=3D"https://u38422296.ct.sendgrid.net/wf/open?upn=
+=3Du001.3UFZ5tUcbvwSVDZIncLkygTcR-2Bp1m9nOiSKgnzVUmyqhmuwRyjabU-2FVhum07rd8=
+LX-2F7UlZOX4UNNSdGWIHgPQ-2FsmuHIEd5hy4r7XFPty-2FrAxel1YpbyXNP46-2FkWYm2hypS=
+ABtWGVskIqySfLHz7IFdYeDI-2BoOzsWS7Up6VnkNPWiEa-2Beqk7SWGvWipC0gKyii8ceq5s4N=
+BFoq0dND9RPL7FwjgJ36P5-2FZ8fbFzrh3tQ-3D" alt=3D"" width=3D"1" height=3D"1" =
+border=3D"0" style=3D"height:1px !important;width:1px !important;border-wid=
+th:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-r=
+ight:0 !important;margin-left:0 !important;padding-top:0 !important;padding=
+-bottom:0 !important;padding-right:0 !important;padding-left:0 !important;"=
+/>
