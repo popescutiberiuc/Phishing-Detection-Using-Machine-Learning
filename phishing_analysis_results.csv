@@ -1,7 +1,17 @@
-sender,receiver,date,subject,body,urls,label,is_phishing,phishing_probability,confidence
-noreply@pay.pluxee.ro,popescu.tiberiuc@gmail.com,"Fri, 11 Apr 2025 12:40:11 +0000 (UTC)",Notificare Pluxee," @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Bold.ttf') format('truetype'); font-weight: bold; font-style: normal; } @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-DemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; } @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; } @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Regular.ttf') format('truetype'); font-weight: normal; font-style: normal; }                    Salutare, Tiberiu-costin       Pe data de 11.04.2025 15:40, ai plătit  -5.39 lei  cu cardul tău Pluxee Gusto la  MEGAIMAGE 0189 B.NOV13 BUCURESTI     ROM . Suma rămasă pe cardul tău Pluxee este de  9.35 lei .    De acum poți efectua plățile cu telefonul mobil sau smartwatch-ul la toți comercianții care fac parte din rețeaua Pluxee prin:         Google Pay , dacă dispozitivul tău rulează cu sistem de operare Android.         Apple Pay , dacă dispozitivul folosește sistem de operare iOS.     Dacă dorești să efectuezi plățile cu telefonul mobil sau smartwatch-ul și nu ai înrolat cardul tău Pluxee în Google Wallet sau Apple Wallet, te invităm să urmărești pașii de înrolare  din această pagină.    Descarcă aplicația Pluxee:                    Serviciul Consumatori Pluxee / Pluxee Consumer Care Team  T: +4021 207 27 27 | E:  Apphelp.RO@pluxeegroup.com       Securitatea datelor tale este una dintre preocupările noastre principale. Acesta este motivul pentru care depunem eforturi suplimentare pentru a-ți menține datele în siguranță și mereu actualizate. Dorești mai multe informații despre modul în care Pluxee procesează datele tale? Te rugăm să vizitezi pagina  Politicii de Confidențialitate .   Contactează-ne  dacă dorești să accesezi sau să modifici informațiile tale personale sau să le elimini complet din baza noastră de date.  Acest email este generat automat, te rugăm să nu răspunzi la el.           
-",1,,True,0.71,Medium
-no-reply@glovoapp.com,popescu.tiberiuc@gmail.com,"Sat, 05 Apr 2025 11:13:58 +0000",Your order has been refunded," 
+combined_text,is_phishing,phishing_probability,confidence
+"From: noreply@pay.pluxee.ro
+To: popescu.tiberiuc@gmail.com
+Date: Fri, 11 Apr 2025 12:40:11 +0000 (UTC)
+Subject: Notificare Pluxee
+
+ @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Bold.ttf') format('truetype'); font-weight: bold; font-style: normal; } @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-DemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; } @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; } @font-face { font-family: 'TT Travels'; src: url('https://dev.logicware.ro/pluxee/TTTravels-Regular.ttf') format('truetype'); font-weight: normal; font-style: normal; }                    Salutare, Tiberiu-costin       Pe data de 11.04.2025 15:40, ai plătit  -5.39 lei  cu cardul tău Pluxee Gusto la  MEGAIMAGE 0189 B.NOV13 BUCURESTI     ROM . Suma rămasă pe cardul tău Pluxee este de  9.35 lei .    De acum poți efectua plățile cu telefonul mobil sau smartwatch-ul la toți comercianții care fac parte din rețeaua Pluxee prin:         Google Pay , dacă dispozitivul tău rulează cu sistem de operare Android.         Apple Pay , dacă dispozitivul folosește sistem de operare iOS.     Dacă dorești să efectuezi plățile cu telefonul mobil sau smartwatch-ul și nu ai înrolat cardul tău Pluxee în Google Wallet sau Apple Wallet, te invităm să urmărești pașii de înrolare  din această pagină.    Descarcă aplicația Pluxee:                    Serviciul Consumatori Pluxee / Pluxee Consumer Care Team  T: +4021 207 27 27 | E:  Apphelp.RO@pluxeegroup.com       Securitatea datelor tale este una dintre preocupările noastre principale. Acesta este motivul pentru care depunem eforturi suplimentare pentru a-ți menține datele în siguranță și mereu actualizate. Dorești mai multe informații despre modul în care Pluxee procesează datele tale? Te rugăm să vizitezi pagina  Politicii de Confidențialitate .   Contactează-ne  dacă dorești să accesezi sau să modifici informațiile tale personale sau să le elimini complet din baza noastră de date.  Acest email este generat automat, te rugăm să nu răspunzi la el.           
+",0.0,0.37,Low
+"From: no-reply@glovoapp.com
+To: popescu.tiberiuc@gmail.com
+Date: Sat, 05 Apr 2025 11:13:58 +0000
+Subject: Your order has been refunded
+
+ 
  
  
    
@@ -527,4 +537,4 @@ span.im {
  
  
 
-",1,,True,0.98,High
+",0.0,0.40306372549019615,Low

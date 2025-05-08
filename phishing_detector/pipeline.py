@@ -2,8 +2,13 @@
 
 import pickle
 import pandas as pd
-from .data_processing import preprocess_text, extract_email_domain
 import re
+from .data_processing import clean_text
+
+def extract_email_domain(email_address):
+    """Extract the domain from an email address."""
+    parts = email_address.split("@")
+    return parts[1] if len(parts) == 2 else ""
 
 class PhishingDetector:
     def __init__(self, model_path):
@@ -13,7 +18,7 @@ class PhishingDetector:
     
     def extract_urls(self, text):
         """Check if text contains URLs."""
-        url_pattern = re.compile(r'http\S+|www\S+|https\S+')
+        url_pattern = re.compile(r'http\\S+|www\\S+|https\\S+')
         if url_pattern.search(text):
             return 1
         return 0
@@ -21,8 +26,8 @@ class PhishingDetector:
     def process_email(self, sender, subject, body):
         """Process a single email and return phishing probability."""
         # Extract features
-        clean_subject = preprocess_text(subject)
-        clean_body = preprocess_text(body)
+        clean_subject = clean_text(subject)
+        clean_body = clean_text(body)
         combined_text = clean_subject + ' ' + clean_body
         sender_domain = extract_email_domain(sender)
         contains_urls = self.extract_urls(body)
