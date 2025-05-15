@@ -1,49 +1,44 @@
-# phishing_detector/model_training.py
-
 import pandas as pd
-import os
-import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
-from sklearn.metrics import classification_report, confusion_matrix
-
+from sklearn.metrics import classification_report
+import pickle
 from .data_processing import load_and_merge_datasets_from_kagglehub
+from sklearn.metrics import confusion_matrix, classification_report
 
 def create_features_and_train(model_output_path):
-    """Load data, train a model, and save it."""
-    # Load preprocessed dataset (combined_text + label)
     df = load_and_merge_datasets_from_kagglehub()
+    df['sender_domain'] = ""  # add dummy column for consistency
+    df['urls'] = 0            # add dummy column for consistency
 
-    # Split features and labels
-    X = df["combined_text"]
+    X = df[['combined_text', 'sender_domain', 'urls']]
     y = df["label"]
 
-    # Train-test split
+    # Combine text + structured features into plain text for old TF-IDF pipeline
+    X_combined = X['combined_text']
+
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42, stratify=y
+        X_combined, y, test_size=0.2, random_state=42, stratify=y
     )
 
-    # Create pipeline
     pipeline = Pipeline([
-        ('tfidf', TfidfVectorizer(max_features=5000)),
-        ('classifier', RandomForestClassifier(n_estimators=100, random_state=42))
+        ('tfidf', TfidfVectorizer(max_features=1000)),
+        ('classifier', LogisticRegression(
+            C=0.5,
+            solver='liblinear',
+            max_iter=1000,
+            random_state=42
+        ))
     ])
 
-    # Train model
     pipeline.fit(X_train, y_train)
-
-    # Evaluate
     y_pred = pipeline.predict(X_test)
-    print("Classification Report:")
-    print(classification_report(y_test, y_pred))
-    print("Confusion Matrix:")
-    print(confusion_matrix(y_test, y_pred))
+    print("Classification Report:\n", classification_report(y_test, y_pred))
 
-    # Save model
-    os.makedirs(os.path.dirname(model_output_path), exist_ok=True)
-    with open(model_output_path, 'wb') as f:
+    with open(model_output_path, "wb") as f:
         pickle.dump(pipeline, f)
 
-    return pipeline, (X_test, y_test)
+    print(f"Model saved to {model_output_path}")
+
