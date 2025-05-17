@@ -1,0 +1,1748 @@
+Delivered-To: popescu.tiberiuc@gmail.com
+Received: by 2002:a05:7301:1e94:b0:16b:e45:6a0 with SMTP id oo20csp4437322dyb;
+        Wed, 14 May 2025 10:21:39 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGfZFa7kiicNVRDIdPPtTPG403cnxcUCn1jo4L2KJqvtTduU8g/bMls5jiRtnFFC5lCkEHB
+X-Received: by 2002:a05:620a:2913:b0:7c5:55f9:4bb2 with SMTP id af79cd13be357-7cd2881a8ecmr644420185a.22.1747243299488;
+        Wed, 14 May 2025 10:21:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747243299; cv=none;
+        d=google.com; s=arc-20240605;
+        b=G0MQxguoE/DbNfdg+Sfk5YQnBY+FUMlK2pxbO9t45yWfPYf7LWP7uie+bqM2SvTKs6
+         827VHNHw3QCxXLNSqAATUmHtXMjskhIrHPnl58eOLsCKcoPvPxAc7RXTcl+xVEuda6KG
+         DvBIYFVFeSLoiW6xn1fkAPVCvfT+8g8fsy+Fe4YYx/xtMPA8iPnZxOx1vz20cuYaTpjg
+         9E7uyW8gqTstwbt/dj5gXj2awy+S8lpRZeFJ4EzDDzBl13ijJqhthPA3opqi7uZQqu4y
+         GnwbXLoJq4NLfwVP5l3l3V08h56mOYEquRFHMvb390Q50+ndZ0HYQD1RJZCS2oL0JA/5
+         ZaUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:list-unsubscribe-post:list-unsubscribe:feedback-id:subject
+         :message-id:mime-version:from:date:dkim-signature:dkim-signature;
+        bh=OpgyxS/foPzF2jzfm0Tp+cFLcmza2ylVXAZuGCYpIf4=;
+        fh=Wtnp91p2b/udLGPkjS+YvkY/uhfpLjClUbkYjPASBrw=;
+        b=eDyReygtK/66WZ9SwAcD2dzVwt+zzjTJsm3LE/0866+Y68P1ezT9wcO4uxYv0z9dVJ
+         Zy+eQUw27I2MWMiiVwn6EVnVNZbi9/CumSVwn9TOQ4i7cdaOPli/xBvJFJ5Qo/mODdET
+         SZ2dRBLRVa12i3P4Ucocuu9WKiIDxvLkVHIbXtbxUt9AYlZ7Iyy5W7kwnPEMxWQpsprE
+         qQVXMV/Y0E4GF4P2JirxGHH/Ab3XztGRP70aLV6Jn0p+lqKWGIb5XYMdJu/6T9v7gbyD
+         4VtMS81wtsANW6pNgCAEAas1pv5MoDShV7jyziirFSE1BMrQ+wtKaMurRi9auGtKJDYy
+         w7jA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=permerror (no key for signature) header.i=@landyachtz.com header.s=kl header.b=sKzSr01r;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=udK1ofQf;
+       spf=pass (google.com: domain of bounces+21210692-00a4-popescu.tiberiuc=gmail.com@email.landyachtz.com designates 149.72.90.8 as permitted sender) smtp.mailfrom="bounces+21210692-00a4-popescu.tiberiuc=gmail.com@email.landyachtz.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=landyachtz.com
+Return-Path: <bounces+21210692-00a4-popescu.tiberiuc=gmail.com@email.landyachtz.com>
+Received: from o1396.shared.klaviyomail.com (o1396.shared.klaviyomail.com. [149.72.90.8])
+        by mx.google.com with ESMTPS id af79cd13be357-7cd00fd450esi1337709185a.311.2025.05.14.10.21.39
+        for <popescu.tiberiuc@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 14 May 2025 10:21:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+21210692-00a4-popescu.tiberiuc=gmail.com@email.landyachtz.com designates 149.72.90.8 as permitted sender) client-ip=149.72.90.8;
+Authentication-Results: mx.google.com;
+       dkim=permerror (no key for signature) header.i=@landyachtz.com header.s=kl header.b=sKzSr01r;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=udK1ofQf;
+       spf=pass (google.com: domain of bounces+21210692-00a4-popescu.tiberiuc=gmail.com@email.landyachtz.com designates 149.72.90.8 as permitted sender) smtp.mailfrom="bounces+21210692-00a4-popescu.tiberiuc=gmail.com@email.landyachtz.com";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=landyachtz.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=landyachtz.com;
+	h=content-type:from:mime-version:subject:feedback-id:list-unsubscribe:
+	list-unsubscribe-post:to:cc:content-type:feedback-id:from:subject:to;
+	s=kl; bh=OpgyxS/foPzF2jzfm0Tp+cFLcmza2ylVXAZuGCYpIf4=;
+	b=sKzSr01rCuZJqVr1mGKHc0pKgi5lB1i+cSn6EUaFA0RViJ+rTsLroog1fAGLtkHO4eLy
+	/TQHhjSNtqvni2dn0jKJC3jrycy+gcmibineMELT476z9CSqPqTSOno97ifzEei/FRUF/r
+	lpE1lSjcLot8/ogUya5NW7rjFOQrosHeoo6kuzNpHDcJEPFJvm89Q+rwWSZKuttA7S7MUn
+	wtDe/jsZd3HW6VaILGZm9mjrazfdqQtWGZqjlcDJBoWMsUgGS7JuZ7ZWmiML9GY6QjevjW
+	fcf7+7xzbP4nX+Dn4OsMGJcrggeLssefiZnyd6HX/Zp7lKXXyntqiRbzl9+mIKWA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:feedback-id:list-unsubscribe:
+	list-unsubscribe-post:to:cc:content-type:feedback-id:from:subject:to;
+	s=smtpapi; bh=OpgyxS/foPzF2jzfm0Tp+cFLcmza2ylVXAZuGCYpIf4=;
+	b=udK1ofQf+a6Cp3fuXbJCe0E9f8t/TRxRKYGRbZelnJor9gCrgLAvtP+X0swgoKY7mqAx
+	LYeWgiHuwHH7vcYHhZh1aNTPLhBNKDG8I43EPW+Se0N/ESFEExNZn9LsGLGF+LQekxqLZt
+	QkDDX53e6AkZhnVPn9p1s7SBlE7Hdo7Qw=
+Received: by recvd-57d69887f8-wdnjt with SMTP id recvd-57d69887f8-wdnjt-1-6824D123-12
+	2025-05-14 17:21:39.231575977 +0000 UTC m=+3093207.211413598
+Received: from MjEyMTA2OTI (unknown)
+	by geopod-ismtpd-12 (SG) with HTTP
+	id HuQEtStwQHGyYo1ECsOstg
+	Wed, 14 May 2025 17:21:39.218 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=04123e8d1cc7aa1900f1c61afd023eb856c80aa5813f53f2ec1c50740ba9
+Date: Wed, 14 May 2025 17:21:39 +0000 (UTC)
+From: Landyachtz <info@landyachtz.com>
+Mime-Version: 1.0
+Message-ID: <HuQEtStwQHGyYo1ECsOstg@geopod-ismtpd-12>
+Subject: A Classic Cruiser with a Story to Tell
+Feedback-ID: 01JV3BTJW9MEX8TZ8W6Y6DGPBT:V4cGXW:28108867916:kl
+List-Unsubscribe: 
+ =?us-ascii?Q?=3Chttps=3A=2F=2Fmanage=2Ekmail-lists=2Ecom=2Fsubscriptions=2Funsubscribe=3Fa=3DV4?=
+ =?us-ascii?Q?cGXW&c=3D01GRSTWV2908HD8C1764NRHBW7&k=3D3e9?=
+ =?us-ascii?Q?51e57d25b379c00b8167d333c5fe3&g=3DUj8DTL&?=
+ =?us-ascii?Q?m=3D01JV3BTJX70524YNA6TWCYCZSY&r=3D01JV7X0Z?=
+ =?us-ascii?Q?1SEFC6CQG38K2STQ7Q=3E?=
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Kmail-Account: V4cGXW
+X-Kmail-Message: 01JV3BTJX70524YNA6TWCYCZSY
+X-Kmail-Ops: 01GRSTWV2908HD8C1764NRHBW7
+X-Report-Abuse: Please report any spam or abuse to: abuse@klaviyo.com
+X-SG-EID: 
+ =?us-ascii?Q?u001=2Eub4LGH5Fpfe0rqC+A0No+DdzOlRN90pFKPjDjQ0edJOgbgDCWPtpYTroc?=
+ =?us-ascii?Q?viT9Z9cGgbm8CKDTjQEOJ1DWMcP5kdcBtrb+yHf?=
+ =?us-ascii?Q?ZET8=2F0Hzo2dFRllf1EgllUoCqt2X+D9t+hyfV6b?=
+ =?us-ascii?Q?b2jIsN05Xe7FiGsCRpPo+OPtNNwe7q3FCZ8UqC+?=
+ =?us-ascii?Q?Pw6RJu29OqcAkdFzkpa7yuMSPnNVF0BahwJx7qE?=
+ =?us-ascii?Q?pOFiXyQD=2Ffmkbj5BE+W9oGP+fnbm1pkQQkmCllE?= =?us-ascii?Q?F4OR?=
+X-SG-ID: 
+ =?us-ascii?Q?u001=2ESdBcvi+Evd=2FbQef8eZF3BiU3Zi1S53GtqGa3TWBmqe75yn5aYrkvkfG+Z?=
+ =?us-ascii?Q?GKrHRvqBhWG3GYiGNAFk4x2BR1bb8I51WC0PE88?=
+ =?us-ascii?Q?mjXJ+OCeoVZIy1LjtCb9txZlB7KIcMuAoIu98Zj?=
+ =?us-ascii?Q?gcYWqYfg2y+VPpsA=2Fmb5A7N=2FBR2HLpdkkcMNmgz?=
+ =?us-ascii?Q?Ce3Pgxc9c1i0Z3lXancl0WOKbP4wiC7VjMiZ6S1?=
+ =?us-ascii?Q?vMD5gdfhnu6pFBUJxZMuMIZgiZCir1+dQ1QfVDS?=
+ =?us-ascii?Q?uFA0iMDw2YuO6uOF8o=2FxAqAl4LrjhXd2ZQtlcv9?=
+ =?us-ascii?Q?JYU9Mmyv6S2xEe+f9=2FdpqKrpsLDFL6A9dZUm+I6?=
+ =?us-ascii?Q?S3F1JEhiBJ7CpzsErL94tyrLudk0oPqWOwuJyGp?=
+ =?us-ascii?Q?O8fNcN5SzPHvNOM?=
+To: Tiberiu <popescu.tiberiuc@gmail.com>
+X-Entity-ID: u001.pS688YERaNWMIBPUFKmFnw==
+
+--04123e8d1cc7aa1900f1c61afd023eb856c80aa5813f53f2ec1c50740ba9
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Mime-Version: 1.0
+
+https://landyachtz.com/shop/all/skate/boards/cruisers/dinghy-legend/
+
+=C2=A0
+
+The Dinghy Legend is everything you want in a cruiser: light, nimble, and s=
+mooth as hell. Built with tough Canadian maple, this thing can take a beati=
+ng and keep rolling.=C2=A0=C2=A0
+
+https://landyachtz.com/shop/all/skate/boards/cruisers/dinghy-legend/
+
+=C2=A0
+The Shape 9 has a squared-off tail and stretched nose for better control wh=
+en you're weaving through the city.
+
+https://landyachtz.com/shop/all/skate/boards/cruisers/dinghy-legend/
+
+=C2=A0
+Plus, soft 63mm Fatty Hawgs wheels eat up cracks and rough pavement, so you=
+ don=E2=80=99t feel every pebble. Quick turns, easy to stash, always ready =
+to ride.
+
+https://landyachtz.com/shop/all/skate/boards/cruisers/dinghy-legend/
+
+https://www.instagram.com/james_overstreet_imagery
+
+https://www.instagram.com/james_overstreet_imagery
+
+The Artist Behind
+the Dinghy Legend
+James Overstreet Interview
+
+When did you get into art and who inspired you?
+When I was really young, it was just my mom and I, and she was the one who =
+got me into art. We would spend hours crafting and creating together - pain=
+ting, making little projects, and exploring different materials. Those mome=
+nts weren=E2=80=99t just about making things; they were about connection, i=
+magination, and fun.=C2=A0
+
+Looking back, I realize that=E2=80=99s where my love for art started. It wa=
+s something we shared, and it became a big part of who I am today. Creating=
+ with friends and peers has been a huge part of my inspiration. From doodli=
+ng throughout school with other classmates, making comics to spending almos=
+t every night in my early 20=E2=80=99s painting with close friends, learnin=
+g about paint, pushing each other to be better, just hanging out being frie=
+nds and living life.
+
+Where do you find inspiration now?
+I find inspiration in so many places. Movies, television, video games, and =
+comics all spark my imagination and influence my work. All of the amazing a=
+rtists throughout history is another huge source of inspiration, and one of=
+ my absolute favorite artists is Diego Vel=C3=A1zquez. His mastery of paint=
+ and the way he captured life on canvas continue to inspire me.
+
+I=E2=80=99m also deeply motivated by the people around me - my friends, pee=
+rs, family, and fellow artists. To this day, I take workshops and collabora=
+te with other artists, learning from their drive, passion, and knowledge. S=
+eeing their dedication pushes me to keep creating and growing as an artist.
+
+Any =E2=80=9Chappy little accidents=E2=80=9D that made it into your work?
+Happy little accidents happen all the time in my work! Over the years, I=E2=
+=80=99ve actually learned quite a few techniques and gained a better unders=
+tanding of the properties of paint through these unexpected moments. They o=
+ften lead to new discoveries and push my work/skills in exciting directions=
+.
+
+What advice would you give a younger version of yourself?
+Don=E2=80=99t be a dick.
+
+Tell us about your relationship with board sports.
+Both art and board sports have been a big part of my life=E2=80=94I=E2=80=
+=99ve spent most of my time either creating or skating. There are a lot of =
+similarities between the two, and the lessons I=E2=80=99ve learned in one o=
+ften influence the other. Both require hard work, dedication, and persevera=
+nce. Neither comes easy; you have to put in the time and effort to improve.=
+ Just like landing a trick takes countless tries, mastering a technique in =
+painting takes patience and practice.
+
+Both are forms of self-expression. Art and skating require learning from fa=
+ilure. Mistakes are part of the process in both. Falling in skating and mak=
+ing 'happy little accidents' in painting both lead to growth and unexpected=
+ discoveries.
+
+Pushing boundaries, whether it=E2=80=99s trying a new trick or experimentin=
+g with new techniques, both skateboarding and art push you to step out of y=
+our comfort zone and challenge yourself.
+
+Like art, skateboarding has introduced me to amazing people from all walks =
+of life, pushing, supporting and inspiring each other and forming friendshi=
+ps that will last a lifetime.
+
+Follow James =E2=9E=A4 [@james_overstreet_imagery](https://www.instagram.co=
+m/james_overstreet_imagery)
+
+=E2=80=8A
+
+Wanna see our
+new boards in action?
+
+We put together a full lineup walkthrough video so you can check out all th=
+e fresh rides up close.
+
+https://youtu.be/mbyCJZgfu_k?si=3D7XQbzwW9Ubi_ACca
+
+=C2=A0
+
+Scope out the new boards, find your next setup, and get hyped to skate.
+
+https://landyachtz.com/
+
+https://www.facebook.com/landyachtzlongboards/
+https://www.instagram.com/landyachtz/?hl=3Den
+[Custom](https://www.youtube.com/channel/UCBEOfO2uJJA77fTqB_5zIBg?sub_confi=
+rmation=3D1)
+https://twitter.com/Landyachtz
+[Tiktok](https://www.tiktok.com/@landyachtzofficial?lang=3Den)
+[Snapchat](https://www.snapchat.com/add/landyachtz_snap)
+
+Toll-Free: 1-855-758-4627
+
+We=E2=80=99ve got dealers all over the world and they=E2=80=99re here to he=
+lp you pick a board.
+
+[Find your local shop](https://landyachtz.com/apps/store-locator/)
+
+Copyright =C2=A9 2025 Landyachtz. All rights reserved.
+
+Mailing address: 1221 Glen Dr,=C2=A0Vancouver | BC | Canada
+No longer want to receive these emails? [Unsubscribe](https://manage.kmail-=
+lists.com/subscriptions/unsubscribe?a=3DV4cGXW&c=3D01GRSTWV2908HD8C1764NRHB=
+W7&k=3D3e951e57d25b379c00b8167d333c5fe3&g=3DUj8DTL&m=3D01JV3BTJX70524YNA6TW=
+CYCZSY&r=3D01JV7X0Z1SEFC6CQG38K2STQ7Q).
+--04123e8d1cc7aa1900f1c61afd023eb856c80aa5813f53f2ec1c50740ba9
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Mime-Version: 1.0
+
+<!DOCTYPE html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:o=3D"urn:=
+schemas-microsoft-com:office:office" xmlns:v=3D"urn:schemas-microsoft-com:v=
+ml"><head>
+<title>
+</title>
+<!--[if !mso]><!-->
+<meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible">
+<!--<![endif]-->
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type">
+<meta content=3D"width=3Ddevice-width, initial-scale=3D1" name=3D"viewport"=
+>
+<!--[if mso]>
+        <noscript>
+        <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml>
+        </noscript>
+        <![endif]-->
+<!--[if lte mso 11]>
+        <style type=3D"text/css" data-inliner=3D"ignore">
+          .mj-outlook-group-fix { width:100% !important; }
+        </style>
+        <![endif]-->
+<!--[if !mso]><!--><!--<![endif]-->
+<style>a:not([name]) {color:#000;font-weight:bold;text-decoration:none}
+a:link {color:#000;font-weight:bold;text-decoration:none}
+a:visited {color:#000;font-weight:bold;text-decoration:none}
+a:active {color:#000;font-weight:bold;text-decoration:none}
+a:hover {color:#000;font-weight:bold;text-decoration:none}</style><style>@i=
+mport url(https://static-forms.klaviyo.com/fonts/api/v1/V4cGXW/custom_fonts=
+.css);
+#outlook a {
+    padding: 0
+    }
+body {
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
+    }
+table, td {
+    border-collapse: collapse;
+    mso-table-lspace: 0;
+    mso-table-rspace: 0
+    }
+img {
+    border: 0;
+    line-height: 100%;
+    outline: none;
+    text-decoration: none;
+    -ms-interpolation-mode: bicubic
+    }
+p {
+    display: block;
+    margin: 13px 0
+    }
+@media only screen and (min-width: 480px) {
+    .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%
+        }
+    }
+.moz-text-html .mj-column-per-100 {
+    width: 100% !important;
+    max-width: 100%
+    }
+@media only screen and (max-width: 480px) {
+    div.kl-row.colstack div.kl-column {
+        display: block !important;
+        width: 100% !important
+        }
+    }
+@media only screen and (max-width: 480px) {
+    .component-wrapper .mob-no-spc {
+        padding-left: 0 !important;
+        padding-right: 0 !important
+        }
+    }
+@media only screen and (max-width: 480px) {
+    td.kl-img-base-auto-width {
+        width: 100% !important
+        }
+    }
+@media screen and (max-width: 480px) {
+    .kl-sl-stk {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 0 9px !important;
+        text-align: center !important
+        }
+    .kl-sl-stk.lbls {
+        padding: 0 !important
+        }
+    .kl-sl-stk.spcblk {
+        display: none !important
+        }
+    }
+.kl-button a {
+    display: block !important
+    }
+img {
+    border: 0;
+    height: auto;
+    line-height: 100%;
+    outline: none;
+    text-decoration: none;
+    max-width: 100%
+    }
+.root-container {
+    background-repeat: repeat !important;
+    background-size: auto !important;
+    background-position: left top !important
+    }
+.root-container-spacing {
+    padding-top: 10px !important;
+    padding-bottom: 20px !important;
+    font-size: 0 !important
+    }
+.content-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important
+    }
+.content-padding.first {
+    padding-top: 0 !important
+    }
+.content-padding.last {
+    padding-bottom: 0 !important
+    }
+@media only screen and (max-width: 480px) {
+    td.mobile-only {
+        display: table-cell !important
+        }
+    div.mobile-only {
+        display: block !important
+        }
+    table.mobile-only {
+        display: table !important
+        }
+    .desktop-only {
+        display: none !important
+        }
+    }
+@media only screen and (max-width: 480px) {
+    .table-mobile-only {
+        display: table-cell !important;
+        max-height: none !important
+        }
+    .table-mobile-only.block {
+        display: block !important
+        }
+    .table-mobile-only.inline-block {
+        display: inline-block !important
+        }
+    .table-desktop-only {
+        max-height: 0 !important;
+        display: none !important;
+        mso-hide: all !important;
+        overflow: hidden !important
+        }
+    }
+p {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 1em
+    }
+@media only screen and (max-width: 480px) {
+    body.mce-content-body, /* NOTE: needed for internal tinymce styles */.k=
+l-text > div, .kl-table-subblock div, .kl-split-subblock > div {
+        font-size: 14px !important;
+        line-height: 1.3 !important
+        }
+    }
+h1 {
+    color: #222;
+    font-family: Geneva, Arial;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.1;
+    letter-spacing: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: left
+    }
+@media only screen and (max-width: 480px) {
+    h1 {
+        font-size: 40px !important;
+        line-height: 1.3 !important
+        }
+    }
+h2 {
+    color: #222;
+    font-family: Geneva, Arial;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.1;
+    letter-spacing: 0;
+    margin: 0;
+    margin-bottom: 16px;
+    text-align: left
+    }
+@media only screen and (max-width: 480px) {
+    h2 {
+        font-size: 32px !important;
+        line-height: 1.3 !important
+        }
+    }
+h3 {
+    color: #222;
+    font-family: Geneva, Arial;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.1;
+    letter-spacing: 0;
+    margin: 0;
+    margin-bottom: 12px;
+    text-align: left
+    }
+@media only screen and (max-width: 480px) {
+    h3 {
+        font-size: 24px !important;
+        line-height: 1.3 !important
+        }
+    }
+h4 {
+    color: #222;
+    font-family: Geneva, Arial;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0;
+    margin: 0;
+    margin-bottom: 9px;
+    text-align: left
+    }
+@media only screen and (max-width: 480px) {
+    h4 {
+        font-size: 18px !important;
+        line-height: 1.3 !important
+        }
+    }
+@media only screen and (max-width: 480px) {
+    .root-container {
+        width: 100% !important
+        }
+    .root-container-spacing {
+        padding: 10px !important
+        }
+    .content-padding {
+        padding-left: 0 !important;
+        padding-right: 0 !important
+        }
+    .content-padding.first {
+        padding-top: 0 !important
+        }
+    .content-padding.last {
+        padding-bottom: 0 !important
+        }
+    .kl-column > .component-wrapper {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: unset !important
+        }
+    .kl-text {
+        padding-right: 18px !important;
+        padding-left: 18px !important
+        }
+    }</style></head>
+<body style=3D"word-spacing:normal;background-color:#FFFFFF;">
+<div style=3D"display:none;font-size:1px;color:#ffffff;line-height:1px;max-=
+height:0px;max-width:0px;opacity:0;overflow:hidden;">
+      Discover the board. Meet the artist. Get inspired.=E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =
+=E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=
+=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=
+=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=
+=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=87=CD=8F =E2=80=
+=87=CD=8F =E2=80=87=CD=8F =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =
+=C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=
+=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD =C2=AD
+    </div>
+<!-- TRACKING_PIXEL_TOP -->
+<div class=3D"root-container" id=3D"bodyTable" style=3D"background-color:#F=
+FFFFF;">
+<div class=3D"root-container-spacing">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kl-section" role=3D"presentation" style=3D"width:100%;">
+<tbody>
+<tr>
+<td>
+<!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"kl-section-outlook" style=3D"width:600px;" width=
+=3D"600" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-ru=
+le:exactly;"><![endif]-->
+<div style=3D"margin:0px auto;max-width:600px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;">
+<tbody>
+<tr>
+<td style=3D"direction:ltr;font-size:0px;padding:0px;text-align:center;">
+<!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0"><table align=3D"center" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" class=3D"" style=3D"width:600px;" width=3D"600" bgcolor=
+=3D"#030303" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-heigh=
+t-rule:exactly;"><![endif]-->
+<div style=3D"background:#030303;background-color:#030303;margin:0px auto;b=
+order-radius:20px 20px 0px 0px;max-width:600px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"background:#030303;background-color:#030303;wi=
+dth:100%;border-radius:20px 20px 0px 0px;">
+<tbody>
+<tr>
+<td style=3D"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;=
+padding-left:0px;padding-right:0px;padding-top:0px;text-align:center;">
+<!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0"><![endif]-->
+<div class=3D"content-padding first">
+<!--[if true]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"600" style=3D"width:600px;direction:ltr"><tr><![endif]-->
+<div class=3D"kl-row colstack" style=3D"display:table;table-layout:fixed;wi=
+dth:100%;">
+<!--[if true]><td style=3D"vertical-align:top;width:600px;"><![endif]-->
+<div class=3D"kl-column" style=3D"display:table-cell;vertical-align:top;wid=
+th:100%;">
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:0px;padding-right:0p=
+x;padding-bottom:0px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td style=3D"font-size:0px;word-break:break-word;">
+<div style=3D"height:20px;line-height:20px;">=E2=80=8A</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"mob-no-spc" style=3D"vertical-align:top;padding-top:0px;paddin=
+g-right:0px;padding-bottom:9px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-image" style=3D"font-size:0px;word-break:b=
+reak-word;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td class=3D"kl-img-base-auto-width" style=3D"border:0;padding:0px 10px 0px=
+ 10px;width:580px;" valign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;"><tbody><tr>
+<td valign=3D"top">
+<a class=3D"kl-img-link" style=3D"color:#000; font-weight:bold; text-decora=
+tion:none; display:block" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRS=
+VBPV0XV2GGPZ_0">
+<img src=3D"https://d3k81ch9hvuctc.cloudfront.net/company/V4cGXW/images/bc2=
+fef1b-06f6-4b07-80a7-883920aa0bd7.jpeg" style=3D"display:block;outline:none=
+;text-decoration:none;height:auto;font-size:13px;width:100%;" width=3D"580"=
+>
+</a>
+</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper kl-t=
+ext-table-layout" style=3D"font-size:0px;text-align:left;direction:ltr;vert=
+ical-align:top;width:100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:0px;padding-right:0p=
+x;padding-bottom:0px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"left" class=3D"kl-text" style=3D"font-size:0px;padding:0px;pad=
+ding-top:0px;padding-right:60px;padding-bottom:32px;padding-left:60px;word-=
+break:break-word;">
+<div style=3D"font-family:Geneva,Arial;font-size:14px;font-style:normal;fon=
+t-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#2222=
+22;"><p style=3D"line-height: 180%; text-align: center;"><span style=3D"fon=
+t-family: Geneva, Tahoma, Verdana, sans-serif; font-weight: 400; font-style=
+: normal; color: rgb(255, 251, 251); font-size: 16px;">&nbsp;</span></p>
+<p style=3D"padding-bottom:0; line-height:180%; text-align:center"><span st=
+yle=3D"color: rgb(255, 251, 251); font-size: 18px;">The Dinghy Legend is ev=
+erything you want in a cruiser: light, nimble, and smooth as hell. Built wi=
+th tough Canadian maple, this thing can take a beating and keep rolling.&nb=
+sp;&nbsp;<br></span></p></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"mob-no-spc" style=3D"vertical-align:top;padding-top:0px;paddin=
+g-right:0px;padding-bottom:9px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-image" style=3D"font-size:0px;word-break:b=
+reak-word;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td class=3D"" style=3D"border:0;padding:0px 10px 0px 10px;width:530px;" va=
+lign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;"><tbody><tr>
+<td valign=3D"top">
+<a class=3D"kl-img-link" style=3D"color:#000; font-weight:bold; text-decora=
+tion:none; display:block" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRS=
+VBPV0XV2GGPZ_1">
+<img src=3D"https://d3k81ch9hvuctc.cloudfront.net/company/V4cGXW/images/5dc=
+70609-ae5a-4aff-928e-b7109948f371.jpeg" style=3D"display:block;outline:none=
+;text-decoration:none;height:auto;font-size:13px;width:100%;" width=3D"530"=
+>
+</a>
+</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper kl-t=
+ext-table-layout" style=3D"font-size:0px;text-align:left;direction:ltr;vert=
+ical-align:top;width:100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:0px;padding-right:0p=
+x;padding-bottom:5px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"left" class=3D"kl-text" style=3D"font-size:0px;padding:0px;pad=
+ding-top:0px;padding-right:60px;padding-bottom:32px;padding-left:60px;word-=
+break:break-word;">
+<div style=3D"font-family:Geneva,Arial;font-size:14px;font-style:normal;fon=
+t-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#2222=
+22;"><div style=3D"text-align: center;"><span style=3D"font-size: 18px; col=
+or: rgb(255, 251, 251);">&nbsp;</span></div>
+<div style=3D"text-align: center;"><span style=3D"font-size: 18px; color: r=
+gb(255, 251, 251);">The Shape 9 has a squared-off tail and stretched nose f=
+or better control when you're weaving through the city.</span></div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"mob-no-spc" style=3D"vertical-align:top;padding-top:0px;paddin=
+g-right:0px;padding-bottom:9px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-image" style=3D"font-size:0px;word-break:b=
+reak-word;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td class=3D"" style=3D"border:0;padding:0px 10px 0px 10px;width:530px;" va=
+lign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;"><tbody><tr>
+<td valign=3D"top">
+<a class=3D"kl-img-link" style=3D"color:#000; font-weight:bold; text-decora=
+tion:none; display:block" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRS=
+VBPV0XV2GGPZ_2">
+<img src=3D"https://d3k81ch9hvuctc.cloudfront.net/company/V4cGXW/images/2d3=
+74392-c1ee-4f69-b079-a757843729fa.jpeg" style=3D"display:block;outline:none=
+;text-decoration:none;height:auto;font-size:13px;width:100%;" width=3D"530"=
+>
+</a>
+</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper kl-t=
+ext-table-layout" style=3D"font-size:0px;text-align:left;direction:ltr;vert=
+ical-align:top;width:100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:0px;padding-right:0p=
+x;padding-bottom:5px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"left" class=3D"kl-text" style=3D"font-size:0px;padding:0px;pad=
+ding-top:0px;padding-right:60px;padding-bottom:32px;padding-left:60px;word-=
+break:break-word;">
+<div style=3D"font-family:Geneva,Arial;font-size:14px;font-style:normal;fon=
+t-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#2222=
+22;"><div style=3D"text-align: center;"><span style=3D"font-size: 18px; col=
+or: rgb(255, 251, 251);">&nbsp;</span></div>
+<div style=3D"text-align: center;"><span style=3D"font-size: 18px; color: r=
+gb(255, 251, 251);">Plus, soft 63mm Fatty Hawgs wheels eat up cracks and ro=
+ugh pavement, so you don=E2=80=99t feel every pebble. Quick turns, easy to =
+stash, always ready to ride.</span></div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"mob-no-spc" style=3D"vertical-align:top;padding-top:0px;paddin=
+g-right:0px;padding-bottom:9px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-image" style=3D"font-size:0px;word-break:b=
+reak-word;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td class=3D"" style=3D"border:0;padding:0px 10px 0px 10px;width:530px;" va=
+lign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;"><tbody><tr>
+<td valign=3D"top">
+<a class=3D"kl-img-link" style=3D"color:#000; font-weight:bold; text-decora=
+tion:none; display:block" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRS=
+VBPV0XV2GGPZ_3">
+<img src=3D"https://d3k81ch9hvuctc.cloudfront.net/company/V4cGXW/images/3c0=
+d252b-aed2-499e-a442-2e50c718dc68.jpeg" style=3D"display:block;outline:none=
+;text-decoration:none;height:auto;font-size:13px;width:100%;" width=3D"530"=
+>
+</a>
+</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"mob-no-spc" style=3D"vertical-align:top;padding-top:0px;paddin=
+g-right:0px;padding-bottom:0px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"left" class=3D"kl-image" style=3D"font-size:0px;word-break:bre=
+ak-word;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td class=3D"" style=3D"border:0;padding:60px 60px 20px 60px;width:250px;" =
+valign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;"><tbody><tr>
+<td valign=3D"top">
+<a class=3D"kl-img-link" style=3D"color:#000; font-weight:bold; text-decora=
+tion:none; display:block" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRS=
+VBPV0XV2GGPZ_4">
+<img src=3D"https://d3k81ch9hvuctc.cloudfront.net/company/V4cGXW/images/2c6=
+0811a-609c-4cff-b267-a95446139652.png" style=3D"display:block;outline:none;=
+text-decoration:none;height:auto;font-size:13px;width:100%;" width=3D"250">
+</a>
+</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:0px;padding-right:0p=
+x;padding-bottom:0px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-image" style=3D"font-size:0px;word-break:b=
+reak-word;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td class=3D"" style=3D"border:0;padding:0px 0px 0px 0px;width:600px;" vali=
+gn=3D"top">
+<a class=3D"kl-img-link" style=3D"color:#000; font-weight:bold; text-decora=
+tion:none; display:block" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRS=
+VBPV0XV2GGPZ_5">
+<img src=3D"https://d3k81ch9hvuctc.cloudfront.net/company/V4cGXW/images/493=
+cdba1-fe51-45ea-89aa-6a8aa337cda5.png" style=3D"display:block;outline:none;=
+text-decoration:none;height:auto;font-size:13px;width:100%;" width=3D"600">
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper kl-t=
+ext-table-layout" style=3D"font-size:0px;text-align:left;direction:ltr;vert=
+ical-align:top;width:100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:40px;padding-right:0=
+px;padding-bottom:0px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"left" class=3D"kl-text" style=3D"font-size:0px;padding:0px;pad=
+ding-top:0px;padding-right:60px;padding-bottom:32px;padding-left:60px;word-=
+break:break-word;">
+<div style=3D"font-family:Geneva,Arial;font-size:14px;font-style:normal;fon=
+t-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#2222=
+22;"><p style=3D"line-height: 200%; text-align: left;"><span style=3D"font-=
+family: Geneva, Tahoma, Verdana, sans-serif; font-weight: 400; font-style: =
+normal; font-size: 16px;"><span style=3D"color: rgb(236, 33, 37);"><br></sp=
+an><span style=3D"color: rgb(255, 251, 251);"><span style=3D"color: rgb(234=
+, 23, 27); font-size: 29px;">The Artist Behind <br>the Dinghy Legend</span>=
+<br><span style=3D"font-size: 14px;">James Overstreet Interview</span></spa=
+n></span></p>
+<p style=3D"padding-bottom:0; line-height:150%; text-align:left"><span styl=
+e=3D"font-family: Geneva, Tahoma, Verdana, sans-serif; font-weight: 400; fo=
+nt-style: normal; font-size: 16px;"><span style=3D"color: rgb(255, 251, 251=
+);"><br><span style=3D"background-color: rgb(234, 23, 27); font-size: 18px;=
+">When did you get into art and who inspired you?</span><br>When I was real=
+ly young, it was just my mom and I, and she was the one who got me into art=
+. We would spend hours crafting and creating together - painting, making li=
+ttle projects, and exploring different materials. Those moments weren=E2=80=
+=99t just about making things; they were about connection, imagination, and=
+ fun.&nbsp;<br><br>Looking back, I realize that=E2=80=99s where my love for=
+ art started. It was something we shared, and it became a big part of who I=
+ am today. Creating with friends and peers has been a huge part of my inspi=
+ration. From doodling throughout school with other classmates, making comic=
+s to spending almost every night in my early 20=E2=80=99s painting with clo=
+se friends, learning about paint, pushing each other to be better, just han=
+ging out being friends and living life.<br><br><br><span style=3D"backgroun=
+d-color: rgb(234, 23, 27); font-size: 18px;">Where do you find inspiration =
+now?</span><br>I find inspiration in so many places. Movies, television, vi=
+deo games, and comics all spark my imagination and influence my work. All o=
+f the amazing artists throughout history is another huge source of inspirat=
+ion, and one of my absolute favorite artists is Diego Vel=C3=A1zquez. His m=
+astery of paint and the way he captured life on canvas continue to inspire =
+me. <br><br>I=E2=80=99m also deeply motivated by the people around me - my =
+friends, peers, family, and fellow artists. To this day, I take workshops a=
+nd collaborate with other artists, learning from their drive, passion, and =
+knowledge. Seeing their dedication pushes me to keep creating and growing a=
+s an artist.<br><br><br><span style=3D"background-color: rgb(234, 23, 27); =
+font-size: 18px;">Any =E2=80=9Chappy little accidents=E2=80=9D that made it=
+ into your work?</span><br>Happy little accidents happen all the time in my=
+ work! Over the years, I=E2=80=99ve actually learned quite a few techniques=
+ and gained a better understanding of the properties of paint through these=
+ unexpected moments. They often lead to new discoveries and push my work/sk=
+ills in exciting directions.<br><br><br><span style=3D"background-color: rg=
+b(234, 23, 27); font-size: 18px;">What advice would you give a younger vers=
+ion of yourself?</span><br>Don=E2=80=99t be a dick.<br><br><br><span style=
+=3D"background-color: rgb(234, 23, 27); font-size: 18px;">Tell us about you=
+r relationship with board sports.</span><br>Both art and board sports have =
+been a big part of my life=E2=80=94I=E2=80=99ve spent most of my time eithe=
+r creating or skating. There are a lot of similarities between the two, and=
+ the lessons I=E2=80=99ve learned in one often influence the other. Both re=
+quire hard work, dedication, and perseverance. Neither comes easy; you have=
+ to put in the time and effort to improve. Just like landing a trick takes =
+countless tries, mastering a technique in painting takes patience and pract=
+ice.<br><br>Both are forms of self-expression. Art and skating require lear=
+ning from failure. Mistakes are part of the process in both. Falling in ska=
+ting and making 'happy little accidents' in painting both lead to growth an=
+d unexpected discoveries.<br><br>Pushing boundaries, whether it=E2=80=99s t=
+rying a new trick or experimenting with new techniques, both skateboarding =
+and art push you to step out of your comfort zone and challenge yourself.<b=
+r><br>Like art, skateboarding has introduced me to amazing people from all =
+walks of life, pushing, supporting and inspiring each other and forming fri=
+endships that will last a lifetime.<br><br>Follow James =E2=9E=A4 <a style=
+=3D"color:#000; font-weight:bold; text-decoration:none" href=3D"https://ctr=
+k.klclick.com/l/01JV7X1HYQBTRSVBPV0XV2GGPZ_6"><span style=3D"color: rgb(234=
+, 23, 27);">@james_overstreet_imagery</span></a></span></span></p></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!--[if true]></td><![endif]-->
+</div>
+<!--[if true]></tr></table><![endif]-->
+</div>
+<!--[if mso | IE]></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kl-section" role=3D"presentation" style=3D"width:100%;">
+<tbody>
+<tr>
+<td>
+<!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"kl-section-outlook" style=3D"width:600px;" width=
+=3D"600" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-ru=
+le:exactly;"><![endif]-->
+<div style=3D"margin:0px auto;max-width:600px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;">
+<tbody>
+<tr>
+<td style=3D"direction:ltr;font-size:0px;padding:0px;text-align:center;">
+<!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0"><table align=3D"center" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" class=3D"" style=3D"width:600px;" width=3D"600" bgcolor=
+=3D"#030303" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-heigh=
+t-rule:exactly;"><![endif]-->
+<div style=3D"background:#030303;background-color:#030303;margin:0px auto;b=
+order-radius:0px 0px 0px 0px;max-width:600px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"background:#030303;background-color:#030303;wi=
+dth:100%;border-radius:0px 0px 0px 0px;">
+<tbody>
+<tr>
+<td style=3D"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;=
+padding-left:0px;padding-right:0px;padding-top:0px;text-align:center;">
+<!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0"><![endif]-->
+<div class=3D"content-padding">
+<!--[if true]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"600" style=3D"width:600px;direction:ltr"><tr><![endif]-->
+<div class=3D"kl-row colstack" style=3D"display:table;table-layout:fixed;wi=
+dth:100%;">
+<!--[if true]><td style=3D"vertical-align:top;width:600px;"><![endif]-->
+<div class=3D"kl-column" style=3D"display:table-cell;vertical-align:top;wid=
+th:100%;">
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:28px;padding-right:3=
+0px;padding-bottom:30px;padding-left:30px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"font-size:0px;padding:0px;word-break:break-wo=
+rd;">
+<p style=3D"padding-bottom:0; border-top:solid 1px #3A3838; font-size:1px; =
+margin:0 auto; width:100%">
+</p>
+<!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" style=3D"border-top:solid 1px #3A3838;font-size:1px;margin:=
+0px auto;width:540px;" role=3D"presentation" width=3D"540px" ><tr><td style=
+=3D"height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:0px;padding-right:0p=
+x;padding-bottom:0px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td style=3D"font-size:0px;word-break:break-word;">
+<div style=3D"height:10px;line-height:10px;">=E2=80=8A</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper kl-t=
+ext-table-layout" style=3D"font-size:0px;text-align:left;direction:ltr;vert=
+ical-align:top;width:100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:0px;padding-right:0p=
+x;padding-bottom:20px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"left" class=3D"kl-text" style=3D"font-size:0px;padding:0px;pad=
+ding-top:0px;padding-right:50px;padding-bottom:32px;padding-left:50px;word-=
+break:break-word;">
+<div style=3D"font-family:Geneva,Arial;font-size:14px;font-style:normal;fon=
+t-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#2222=
+22;"><div style=3D"text-align: center;"><span style=3D"font-size: 28px; fon=
+t-family: Geneva, Tahoma, Verdana, sans-serif; color: rgb(236, 33, 37); bac=
+kground-color: rgb(3, 3, 3); text-align: center;"><strong>Wanna see our<br>=
+new boards in action?</strong></span><br style=3D"font-size: 16px; font-fam=
+ily: Geneva, Tahoma, Verdana, sans-serif; color: rgb(34, 34, 34); backgroun=
+d-color: rgb(3, 3, 3); text-align: center;"><span style=3D"font-size: 16px;=
+ font-family: Geneva, Tahoma, Verdana, sans-serif; color: rgb(255, 251, 251=
+); background-color: rgb(3, 3, 3); text-align: center;"><br>We put together=
+ a full lineup walkthrough video so you can check out all the fresh rides u=
+p close.</span></div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:0px;padding-right:0p=
+x;padding-bottom:9px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-image" style=3D"font-size:0px;word-break:b=
+reak-word;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td class=3D"" style=3D"border:0;padding:0px 0px 0px 0px;width:500px;" vali=
+gn=3D"top">
+<a class=3D"kl-img-link" style=3D"color:#000; font-weight:bold; text-decora=
+tion:none; display:block" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRS=
+VBPV0XV2GGPZ_7">
+<img src=3D"https://d3k81ch9hvuctc.cloudfront.net/company/V4cGXW/images/3ae=
+f8a37-6e04-42e4-9010-3b2ae134c10c.jpeg" style=3D"display:block;outline:none=
+;text-decoration:none;height:auto;font-size:13px;width:100%;" width=3D"500"=
+>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper kl-t=
+ext-table-layout" style=3D"font-size:0px;text-align:left;direction:ltr;vert=
+ical-align:top;width:100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"vertical-align:top;padding-top:0px;padding-right:0p=
+x;padding-bottom:20px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"left" class=3D"kl-text" style=3D"font-size:0px;padding:0px;pad=
+ding-top:0px;padding-right:50px;padding-bottom:32px;padding-left:50px;word-=
+break:break-word;">
+<div style=3D"font-family:Geneva,Arial;font-size:14px;font-style:normal;fon=
+t-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#2222=
+22;"><div style=3D"text-align: center;"><span style=3D"color: rgb(236, 33, =
+37); font-size: 16px;">&nbsp;</span></div>
+<div style=3D"text-align: center;"><span style=3D"color: rgb(236, 33, 37); =
+font-size: 16px;"><br>Scope out the new boards, find your next setup, and g=
+et hyped to skate.</span></div></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!--[if true]></td><![endif]-->
+</div>
+<!--[if true]></tr></table><![endif]-->
+</div>
+<!--[if mso | IE]></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kl-section" role=3D"presentation" style=3D"width:100%;">
+<tbody>
+<tr>
+<td>
+<!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"kl-section-outlook" style=3D"width:600px;" width=
+=3D"600" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-ru=
+le:exactly;"><![endif]-->
+<div style=3D"margin:0px auto;max-width:600px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;">
+<tbody>
+<tr>
+<td style=3D"direction:ltr;font-size:0px;padding:0px;text-align:center;">
+<!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0"><table align=3D"center" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" class=3D"" style=3D"width:600px;" width=3D"600" bgcolor=
+=3D"#F9F9F9" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-heigh=
+t-rule:exactly;"><![endif]-->
+<div style=3D"background:#F9F9F9;background-color:#F9F9F9;margin:0px auto;b=
+order-radius:0px 0px 20px 20px;max-width:600px;">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"background:#F9F9F9;background-color:#F9F9F9;wi=
+dth:100%;border-radius:0px 0px 20px 20px;">
+<tbody>
+<tr>
+<td style=3D"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;=
+padding-left:0px;padding-right:0px;padding-top:0px;text-align:center;">
+<!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0"><![endif]-->
+<div class=3D"content-padding last">
+<!--[if true]><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"600" style=3D"width:600px;direction:ltr"><tr><![endif]-->
+<div class=3D"kl-row colstack" style=3D"display:table;table-layout:fixed;wi=
+dth:100%;">
+<!--[if true]><td style=3D"vertical-align:top;width:600px;"><![endif]-->
+<div class=3D"kl-column" style=3D"display:table-cell;vertical-align:top;wid=
+th:100%;">
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"background-color:#EBEBEB;vertical-align:top;padding=
+-top:60px;padding-right:0px;padding-bottom:28px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-image" style=3D"font-size:0px;word-break:b=
+reak-word;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:collapse;border-spacing:0px;">
+<tbody>
+<tr>
+<td class=3D"" style=3D"border:0;padding:0px 0px 0px 0px;background-color:#=
+EBEBEB;width:100px;" valign=3D"top">
+<a class=3D"kl-img-link" style=3D"color:#000; font-weight:bold; text-decora=
+tion:none; display:block" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRS=
+VBPV0XV2GGPZ_8">
+<img src=3D"https://d3k81ch9hvuctc.cloudfront.net/company/V4cGXW/images/456=
+487ee-37af-4f20-94ee-7e9d581f15fd.png" style=3D"display:block;outline:none;=
+text-decoration:none;height:auto;font-size:13px;width:100%;" width=3D"100">
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"background-color:#ebebeb;vertical-align:top;padding=
+-top:20px;padding-right:9px;padding-bottom:9px;padding-left:9px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td>
+<div style=3D"width:100%;text-align:center">
+<!--[if true]><table style=3D"all:unset;opacity:0;" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" ><tr><![endif]-->
+<!--[if !true]><!--><div class=3D"" style=3D"display:inline-block;padding-r=
+ight:25px;"><!--<![endif]-->
+<!--[if true]><td style=3D"padding-right:25px;"><![endif]-->
+<div style=3D"text-align: center;">
+<a style=3D"color:#000; font-weight:bold; text-decoration:none" target=3D"_=
+blank" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRSVBPV0XV2GGPZ_9">
+<img alt=3D"https://www.facebook.com/landyachtzlongboards/" src=3D"https://=
+d3k81ch9hvuctc.cloudfront.net/assets/email/buttons/default/facebook_96.png"=
+ style=3D"width:32px;" width=3D"32">
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=3D"" style=3D"display:inline-block;padding-r=
+ight:25px;"><!--<![endif]-->
+<!--[if true]><td style=3D"padding-right:25px;"><![endif]-->
+<div style=3D"text-align: center;">
+<a style=3D"color:#000; font-weight:bold; text-decoration:none" target=3D"_=
+blank" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRSVBPV0XV2GGPZ_10">
+<img alt=3D"https://www.instagram.com/landyachtz/?hl=3Den" src=3D"https://d=
+3k81ch9hvuctc.cloudfront.net/assets/email/buttons/default/instagram_96.png"=
+ style=3D"width:32px;" width=3D"32">
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=3D"" style=3D"display:inline-block;padding-r=
+ight:25px;"><!--<![endif]-->
+<!--[if true]><td style=3D"padding-right:25px;"><![endif]-->
+<div style=3D"text-align: center;">
+<a style=3D"color:#000; font-weight:bold; text-decoration:none" target=3D"_=
+blank" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRSVBPV0XV2GGPZ_11">
+<img alt=3D"Custom" src=3D"https://d3k81ch9hvuctc.cloudfront.net/assets/ema=
+il/buttons/default/youtube_96.png" style=3D"width:32px;" width=3D"32">
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=3D"" style=3D"display:inline-block;padding-r=
+ight:25px;"><!--<![endif]-->
+<!--[if true]><td style=3D"padding-right:25px;"><![endif]-->
+<div style=3D"text-align: center;">
+<a style=3D"color:#000; font-weight:bold; text-decoration:none" target=3D"_=
+blank" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRSVBPV0XV2GGPZ_12">
+<img alt=3D"https://twitter.com/Landyachtz" src=3D"https://d3k81ch9hvuctc.c=
+loudfront.net/assets/email/buttons/default/x_twitter_96.png" style=3D"width=
+:32px;" width=3D"32">
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=3D"" style=3D"display:inline-block;padding-r=
+ight:25px;"><!--<![endif]-->
+<!--[if true]><td style=3D"padding-right:25px;"><![endif]-->
+<div style=3D"text-align: center;">
+<a style=3D"color:#000; font-weight:bold; text-decoration:none" target=3D"_=
+blank" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRSVBPV0XV2GGPZ_13">
+<img alt=3D"Tiktok" src=3D"https://d3k81ch9hvuctc.cloudfront.net/assets/ema=
+il/buttons/default/tiktok_96.png" style=3D"width:32px;" width=3D"32">
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if !true]><!--><div class=3D"" style=3D"display:inline-block;"><!--<![=
+endif]-->
+<!--[if true]><td style=3D""><![endif]-->
+<div style=3D"text-align: center;">
+<a style=3D"color:#000; font-weight:bold; text-decoration:none" target=3D"_=
+blank" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRSVBPV0XV2GGPZ_14">
+<img alt=3D"Snapchat" src=3D"https://d3k81ch9hvuctc.cloudfront.net/assets/e=
+mail/buttons/default/snapchat_96.png" style=3D"width:32px;" width=3D"32">
+</a>
+</div>
+<!--[if true]></td><![endif]-->
+<!--[if !true]><!--></div><!--<![endif]-->
+<!--[if true]></tr></table><![endif]-->
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper kl-t=
+ext-table-layout" style=3D"font-size:0px;text-align:left;direction:ltr;vert=
+ical-align:top;width:100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"background-color:#ebebeb;vertical-align:top;padding=
+-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-text" style=3D"font-size:0px;padding:0px;p=
+adding-top:18px;padding-right:15px;padding-bottom:18px;padding-left:15px;wo=
+rd-break:break-word;">
+<div style=3D"font-family:Geneva,Arial;font-size:14px;font-style:normal;fon=
+t-weight:400;letter-spacing:0px;line-height:1.3;text-align:center;color:#22=
+2222;"><h3 style=3D"margin: 0px; padding: 0px; color: rgb(68, 68, 68); font=
+-family: Helvetica; font-size: 22px; font-weight: bold; line-height: 33px; =
+text-size-adjust: auto; text-align: center;"><span style=3D"font-family: he=
+lvetica, 'sans-serifhelvetica neue'; color: rgb(110, 110, 110);"><span styl=
+e=3D"font-size: 14px;">Toll-Free: 1-855-758-4627</span></span></h3>
+<p style=3D"padding-bottom:0; text-align:center"><span style=3D"color: rgb(=
+110, 110, 110); font-family: Helvetica; font-size: 12px; text-align: center=
+; caret-color: rgb(0, 0, 0);"><br>We=E2=80=99ve got dealers all over the wo=
+rld and they=E2=80=99re here to help you pick a board.</span></p></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"background-color:#ebebeb;vertical-align:top;padding=
+-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-button" style=3D"font-size:0px;padding:0px=
+;word-break:break-word;" vertical-align=3D"middle">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"border-col=
+lapse:separate;line-height:100%;">
+<tbody><tr>
+<td align=3D"center" bgcolor=3D"#6E6E6E" role=3D"presentation" style=3D"bor=
+der:none;border-radius:0px;cursor:auto;mso-padding-alt:15px 15px 15px 15px;=
+background:#6E6E6E;" valign=3D"middle">
+<a style=3D"color:#fff; font-weight:700; text-decoration:none; display:inli=
+ne-block; background:#6E6E6E; font-family:&quot;Helvetica Neue&quot;, Arial=
+; font-size:12px; line-height:100%; letter-spacing:0; margin:0; text-transf=
+orm:none; padding:15px 15px 15px 15px; mso-padding-alt:0; border-radius:0" =
+target=3D"_blank" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRSVBPV0XV2=
+GGPZ_15">
+              Find your local shop
+            </a>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper kl-t=
+ext-table-layout" style=3D"font-size:0px;text-align:left;direction:ltr;vert=
+ical-align:top;width:100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"background-color:#ebebeb;vertical-align:top;padding=
+-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-text" style=3D"font-size:0px;padding:0px;p=
+adding-top:18px;padding-right:15px;padding-bottom:18px;padding-left:15px;wo=
+rd-break:break-word;">
+<div style=3D"font-family:Geneva,Arial;font-size:14px;font-style:normal;fon=
+t-weight:400;letter-spacing:0px;line-height:1.3;text-align:center;color:#22=
+2222;"><p style=3D"padding-bottom:0"><span style=3D"color: rgb(110, 110, 11=
+0);"><em style=3D"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-fami=
+ly: Helvetica; font-size: 12px; text-align: center; text-size-adjust: auto;=
+"><br><span style=3D"color: rgb(110, 110, 110);">Copyright =C2=A9 2025 Land=
+yachtz. All rights reserved.</span></em></span></p></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper" sty=
+le=3D"font-size:0px;text-align:left;direction:ltr;vertical-align:top;width:=
+100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"background-color:#ebebeb;vertical-align:top;padding=
+-top:18px;padding-right:18px;padding-bottom:18px;padding-left:18px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" style=3D"font-size:0px;padding:0px;word-break:break-wo=
+rd;">
+<p style=3D"padding-bottom:0; border-top:solid 1px #ccc; font-size:1px; mar=
+gin:0 auto; width:100%">
+</p>
+<!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" style=3D"border-top:solid 1px #cccccc;font-size:1px;margin:=
+0px auto;width:564px;" role=3D"presentation" width=3D"564px" ><tr><td style=
+=3D"height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=3D"mj-column-per-100 mj-outlook-group-fix component-wrapper kl-t=
+ext-table-layout" style=3D"font-size:0px;text-align:left;direction:ltr;vert=
+ical-align:top;width:100%;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"width:100%;" width=3D"100%">
+<tbody>
+<tr>
+<td class=3D"" style=3D"background-color:#ebebeb;vertical-align:top;padding=
+-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"" width=3D"100%">
+<tbody>
+<tr>
+<td align=3D"center" class=3D"kl-text" style=3D"font-size:0px;padding:0px;p=
+adding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;word=
+-break:break-word;">
+<div style=3D"font-family:Geneva,Arial;font-size:11px;font-style:normal;fon=
+t-weight:400;letter-spacing:0px;line-height:1.3;text-align:center;color:#22=
+2222;"><p><span style=3D"color: rgb(110, 110, 110);"><span style=3D"font-fa=
+mily: helvetica, 'sans-serifhelvetica neue'; font-size: 11px; caret-color: =
+rgb(0, 0, 0); text-align: center; text-size-adjust: auto;">Mailing address:=
+ 1221 Glen Dr,&nbsp;</span><span style=3D"font-family: helvetica, 'sans-ser=
+ifhelvetica neue'; font-size: 11px; caret-color: rgb(0, 0, 0); text-align: =
+center; text-size-adjust: auto;">Vancouver | BC | Canada</span></span><br><=
+span style=3D"color: rgb(110, 110, 110);"><span style=3D"font-family: helve=
+tica, 'sans-serifhelvetica neue'; font-size: 11px;">No longer want to recei=
+ve these emails?</span><strong style=3D"font-family: helvetica, 'sans-serif=
+helvetica neue'; font-size: 11px; color: rgb(105, 105, 105);"> <a class=3D"=
+unsubscribe-link" style=3D"color:#000000;font-weight:bold;text-decoration:n=
+one;" href=3D"https://ctrk.klclick.com/l/01JV7X1HYQBTRSVBPV0XV2GGPZ_16">Uns=
+ubscribe</a>.</strong></span></p>
+<p>&nbsp;</p>
+<p style=3D"padding-bottom:0">&nbsp;</p></div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!--[if true]></td><![endif]-->
+</div>
+<!--[if true]></tr></table><![endif]-->
+</div>
+<!--[if mso | IE]></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<img src=3D"https://ctrk.klclick.com/o/01JV7X1HYQBTRSVBPV0XV2GGPZ" alt=3D""=
+ width=3D"1" height=3D"1" border=3D"0" style=3D"height:1px !important;width=
+:1px !important;border-width:0 !important;margin-top:0 !important;margin-bo=
+ttom:0 !important;margin-right:0 !important;margin-left:0 !important;paddin=
+g-top:0 !important;padding-bottom:0 !important;padding-right:0 !important;p=
+adding-left:0 !important;"/>
+
+</body></html>
+--04123e8d1cc7aa1900f1c61afd023eb856c80aa5813f53f2ec1c50740ba9--

@@ -1,0 +1,174 @@
+Delivered-To: popescu.tiberiuc@gmail.com
+Received: by 2002:a05:7301:1e94:b0:16b:e45:6a0 with SMTP id oo20csp1039357dyb;
+        Fri, 9 May 2025 03:40:59 -0700 (PDT)
+X-Received: by 2002:a05:6e02:3c81:b0:3d6:d3f7:8826 with SMTP id e9e14a558f8ab-3da7e217277mr33726555ab.20.1746787259502;
+        Fri, 09 May 2025 03:40:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1746787259; cv=none;
+        d=google.com; s=arc-20240605;
+        b=DCMG4JzgHevf6Bwc8rf6YqwXhMyO1AWJEBg6NPnqZnFLh0zbBxK7GGN7xXfItDuN1Y
+         GOopdZGmBP/8lXSEHpKkK03CnEHaRVa04X10z4WpwnYJBzEA+96ol+fNSEtnpCPDjng9
+         0RgOUkd4vKwULlVnWrhaybrQ2z49UlqNGnrFthWkL8DwUnkVJTL+qjuPnT5BT6sFXOl2
+         6xg4mFRCAcXzxU1B/sL+61nEfGHdajTu2MGmiOL1TTVWvY80aLFQIq4vd8hrr/hDRmIS
+         k4adqXujc1dhi4Ws/ENoumiFPcS1Diw5pzplsh2+5gKcvjwKufTISTSI8XoVR7QgO2Kj
+         tAkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:from:subject:message-id:feedback-id:date:mime-version
+         :dkim-signature;
+        bh=rbG6DRCuquH3XMYIhZSF5YcT9smE/6IirF3/1Z35GG4=;
+        fh=izrfyEdEP/E6akGl6iS3iao+EOeaMPBwhypGmqs2mxw=;
+        b=C4dhm3p/rdZg1O2Soig/w9bs+QJf2+yOliScgX7Au8BraCYJQ9owerebjRqBC5cY2Y
+         1w7n6yO+hMfb3ysEvWpK0dZ/y5O7G2nDFxTwvp1X1hBsfQ0bAjrmwnWMmhbuhGZInM1Q
+         glLbColvtWlc3qpFph5T+/OlzXS/AWu/mCOlbqGz/jH1B2/WXpudt4iMX5h0Br/RzS0u
+         s3g+wuHncR3CLpVrQQkqeDjShIrTA6TYIvt/MUGr5+6oGE+74UB6d3wThP/ZRrKAWkzv
+         cHqjZq/5NJK67rsMaxSCLy0y0S/DiyXHmv/unO/q5v9PAKddN51Oj/CeFQWTgZL7vEZv
+         EThQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@accounts.google.com header.s=20230601 header.b=fKlcEG3g;
+       spf=pass (google.com: domain of 3u9sdaagtadibc-fsdzmoqqcibhg.uccuzs.qca@gaia.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3u9sdaAgTADIbc-fSdZmOQQcibhg.UccUZS.Qca@gaia.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <3u9sdaAgTADIbc-fSdZmOQQcibhg.UccUZS.Qca@gaia.bounces.google.com>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id e9e14a558f8ab-3da7e1615a4sor7120985ab.13.2025.05.09.03.40.59
+        for <popescu.tiberiuc@gmail.com>
+        (Google Transport Security);
+        Fri, 09 May 2025 03:40:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3u9sdaagtadibc-fsdzmoqqcibhg.uccuzs.qca@gaia.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@accounts.google.com header.s=20230601 header.b=fKlcEG3g;
+       spf=pass (google.com: domain of 3u9sdaagtadibc-fsdzmoqqcibhg.uccuzs.qca@gaia.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3u9sdaAgTADIbc-fSdZmOQQcibhg.UccUZS.Qca@gaia.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=accounts.google.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=accounts.google.com; s=20230601; t=1746787259; x=1747392059; dara=google.com;
+        h=to:from:subject:message-id:feedback-id:date:mime-version:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rbG6DRCuquH3XMYIhZSF5YcT9smE/6IirF3/1Z35GG4=;
+        b=fKlcEG3gYMIAjs6ju1KE+bw9UCcoKFoIdeNT3gcy72K44z2yQatDbZODeALRrO9bVK
+         Fd3ENCsWCMSXYqgSbyttGJsLdSGHTqtoHrzNHmDirviL0NZO2GGgVv2/v/DZezL2K35a
+         3s+eskfyWyFZIPTtfik/ghPXkXIbXrpyTCxvZe7PRXwXFz2xJ2nDc5NzDSclHxv0Td5l
+         sMBM0T/DN3ofOajvN1zLdfW6SFanF3gj0BQLxY7FPyDraS3yWMpLEZo6ek9UGZKsiEpT
+         +2jI56kd1TXFStaUNyQQF2Mf7HpG4WEANnaWBdvVFP8XaVtVj40p9rdaYuLn30V95xLn
+         YFpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746787259; x=1747392059;
+        h=to:from:subject:message-id:feedback-id:date:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=rbG6DRCuquH3XMYIhZSF5YcT9smE/6IirF3/1Z35GG4=;
+        b=vAPUm+BAIa1B4HQ8VKYtWBmly5I0cbqlsB9qiG674NGdfRk4psXVDm4qDb7CL6fudB
+         vU1EPXpHM0GzuDG8fFWDR7Q7tiEEvSS/HFa2OwvaQDmxmMoIUgALopV1yieJguZWbX+f
+         GHxQl2AyuhFELZkSyqCCVND6iEhiEyzJH+NiFP9wiUgweoL4Te2zuUlWDJqVxqaa1jVt
+         pMQf3D5OUO3K6QYz39MK6rydo/uATpcKy/Sh7QGPCgaOXc40DMmHQBPwxJNP5X8hI7hH
+         kLXMrachjLqnQtHySju0u49fsgCkqWWVvSS+SHhYfemxt2hpRb7ei5SVRw8Pi70O3k09
+         V6cQ==
+X-Gm-Message-State: AOJu0YzwbWunxpJUyy7TLluCFW647N5IxmxCWfN5+us1mf/PEJ1RFMQo
+	9FzkhU19CfhHYfgRHcSUkZ7ubGIr5AfyqlKFTF9EiZWP8OCbEMlZA15Ed6jT9Ns4uWY3XqCVxsf
+	xfpJOji5WLw7Nm/eZpU2gIeL/2qyzbTo7dVD1XA==
+X-Google-Smtp-Source: AGHT+IFfi0DP8+BYSJn3Ho2fEE97l6mPKGj1cmaGAArUytHwkeudhCyKXir8V1Ma8d7k0QYTj6qKHn5qVBZWTJ+uLpRYqQ==
+MIME-Version: 1.0
+X-Received: by 2002:a92:c242:0:b0:3d9:644c:e3b7 with SMTP id
+ e9e14a558f8ab-3da7e20faa0mr34075585ab.15.1746787259228; Fri, 09 May 2025
+ 03:40:59 -0700 (PDT)
+Date: Fri, 09 May 2025 10:40:58 GMT
+X-Account-Notification-Type: 325
+Feedback-ID: 325:account-notifier
+X-Notifications: a47f7f5f20ca0000
+X-Notifications-Bounce-Info: AXXYx-IFoaxcUhQqXD8gznuXLIIhNwjJH6Ov0Ozf1R2tSFBfXxNX5cuzAPZvRwoASkqgHLIUoNIaPTwDURl5qC1E4zhaYoF_Tn2XUfUPy2av_Ne1eVCee8yMe-kFeEKJi7fKPg7izZX6aBZQ5hKr86pAc_yQTU7i-7xvhXD0BErStilGiaRGyzamfq-revHQKiQ59MLYTmYvpoDnB03z3VURnANjAwNjA0MDQxNTM1NTk2OTMzMg
+Message-ID: <0iDxWOLgY3FiprdQ2MKsrw@notifications.google.com>
+Subject: =?UTF-8?Q?Alert=C4=83_de_securitate?=
+From: Google <no-reply@accounts.google.com>
+To: popescu.tiberiuc@gmail.com
+Content-Type: multipart/alternative; boundary="00000000000015a1620634b19ac4"
+
+--00000000000015a1620634b19ac4
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+W2ltYWdlOiBHb29nbGVdDQpDb25lY3RhcmUgbm91xIMgbGEgY29udHVsIHTEg3UNCg0KDQpwb3Bl
+c2N1LnRpYmVyaXVjQGdtYWlsLmNvbQ0KQW0gb2JzZXJ2YXQgbyBub3XEgyBjb25lY3RhcmUgbGEg
+Q29udHVsIHTEg3UgR29vZ2xlLiBEYWPEgyB0dSBhaSBmxINjdXQNCnNvbGljaXRhcmVhLCBudSB0
+cmVidWllIHPEgyBpZWkgYWx0ZSBtxINzdXJpLiBEYWPEgyBudSwgdGUgdm9tIGFqdXRhIHPEgy3I
+m2kNCnNlY3VyaXplemkgY29udHVsLg0KVmVyaWZpY8SDIGFjdGl2aXRhdGVhDQo8aHR0cHM6Ly9h
+Y2NvdW50cy5nb29nbGUuY29tL0FjY291bnRDaG9vc2VyP0VtYWlsPXBvcGVzY3UudGliZXJpdWNA
+Z21haWwuY29tJmNvbnRpbnVlPWh0dHBzOi8vbXlhY2NvdW50Lmdvb2dsZS5jb20vYWxlcnQvbnQv
+MTc0Njc4NzI1ODAwMD9yZm4lM0QzMjUlMjZyZm5jJTNEMSUyNmVpZCUzRDkwMzU1MTM0ODU1Njk2
+MjM1NzMlMjZldCUzRDA+DQpQb8ibaSB2ZWRlYSBhY3Rpdml0YXRlYSBkZSBzZWN1cml0YXRlIMiZ
+aSBsYQ0KaHR0cHM6Ly9teWFjY291bnQuZ29vZ2xlLmNvbS9ub3RpZmljYXRpb25zDQpBaSBwcmlt
+aXQgYWNlc3QgZS1tYWlsIHBlbnRydSBhIHRlIGluZm9ybWEgZGVzcHJlIG1vZGlmaWPEg3JpbGUg
+aW1wb3J0YW50ZQ0KYWR1c2Ugc2VydmljaWlsb3IgyJlpIENvbnR1bHVpIEdvb2dsZS4NCsKpIDIw
+MjUgR29vZ2xlIElyZWxhbmQgTHRkLiwgR29yZG9uIEhvdXNlLCBCYXJyb3cgU3RyZWV0LCBEdWJs
+aW4gNCwgSXJlbGFuZA0K
+--00000000000015a1620634b19ac4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html lang=3D"en"><head><meta name=3D"format-detection" cont=
+ent=3D"email=3Dno"/><meta name=3D"format-detection" content=3D"date=3Dno"/>=
+<style nonce=3D"tQVUe3OAQlfRkQk6NlA-yQ">.awl a {color: #FFFFFF; text-decora=
+tion: none;} .abml a {color: #000000; font-family: Roboto-Medium,Helvetica,=
+Arial,sans-serif; font-weight: bold; text-decoration: none;} .adgl a {color=
+: rgba(0, 0, 0, 0.87); text-decoration: none;} .afal a {color: #b0b0b0; tex=
+t-decoration: none;} @media screen and (min-width: 600px) {.v2sp {padding: =
+6px 30px 0px;} .v2rsp {padding: 0px 10px;}} @media screen and (min-width: 6=
+00px) {.mdv2rw {padding: 40px 40px;}} </style><link href=3D"//fonts.googlea=
+pis.com/css?family=3DGoogle+Sans" rel=3D"stylesheet" type=3D"text/css" nonc=
+e=3D"tQVUe3OAQlfRkQk6NlA-yQ"/></head><body style=3D"margin: 0; padding: 0;"=
+ bgcolor=3D"#FFFFFF"><table width=3D"100%" height=3D"100%" style=3D"min-wid=
+th: 348px;" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" lang=3D"en"><t=
+r height=3D"32" style=3D"height: 32px;"><td></td></tr><tr align=3D"center">=
+<td><div itemscope itemtype=3D"//schema.org/EmailMessage"><div itemprop=3D"=
+action" itemscope itemtype=3D"//schema.org/ViewAction"><link itemprop=3D"ur=
+l" href=3D"https://accounts.google.com/AccountChooser?Email=3Dpopescu.tiber=
+iuc@gmail.com&amp;continue=3Dhttps://myaccount.google.com/alert/nt/17467872=
+58000?rfn%3D325%26rfnc%3D1%26eid%3D9035513485569623573%26et%3D0"/><meta ite=
+mprop=3D"name" content=3D"Verific=C4=83 activitatea"/></div></div><table bo=
+rder=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"padding-bottom: 20p=
+x; max-width: 516px; min-width: 220px;"><tr><td width=3D"8" style=3D"width:=
+ 8px;"></td><td><div style=3D"border-style: solid; border-width: thin; bord=
+er-color:#dadce0; border-radius: 8px; padding: 40px 20px;" align=3D"center"=
+ class=3D"mdv2rw"><img src=3D"https://www.gstatic.com/images/branding/googl=
+elogo/2x/googlelogo_color_74x24dp.png" width=3D"74" height=3D"24" aria-hidd=
+en=3D"true" style=3D"margin-bottom: 16px;" alt=3D"Google"><div style=3D"fon=
+t-family: &#39;Google Sans&#39;,Roboto,RobotoDraft,Helvetica,Arial,sans-ser=
+if;border-bottom: thin solid #dadce0; color: rgba(0,0,0,0.87); line-height:=
+ 32px; padding-bottom: 24px;text-align: center; word-break: break-word;"><d=
+iv style=3D"font-size: 24px;">Conectare nou=C4=83 la contul t=C4=83u </div>=
+<table align=3D"center" style=3D"margin-top:8px;"><tr style=3D"line-height:=
+ normal;"><td align=3D"right" style=3D"padding-right:8px;"><img width=3D"20=
+" height=3D"20" style=3D"width: 20px; height: 20px; vertical-align: sub; bo=
+rder-radius: 50%;;" src=3D"https://lh3.googleusercontent.com/a/ACg8ocKG7voB=
+Zt1GUHvGCFtrno9BPZaugczkWqlAEmZJnwsEwU-Wtg=3Ds96-c" alt=3D""></td><td><a st=
+yle=3D"font-family: &#39;Google Sans&#39;,Roboto,RobotoDraft,Helvetica,Aria=
+l,sans-serif;color: rgba(0,0,0,0.87); font-size: 14px; line-height: 20px;">=
+popescu.tiberiuc@gmail.com</a></td></tr></table> </div><div style=3D"font-f=
+amily: Roboto-Regular,Helvetica,Arial,sans-serif; font-size: 14px; color: r=
+gba(0,0,0,0.87); line-height: 20px;padding-top: 20px; text-align: center;">=
+Am observat o nou=C4=83 conectare la Contul t=C4=83u Google. Dac=C4=83 tu a=
+i f=C4=83cut solicitarea, nu trebuie s=C4=83 iei alte m=C4=83suri. Dac=C4=
+=83 nu, te vom ajuta s=C4=83-=C8=9Bi securizezi contul.<div style=3D"paddin=
+g-top: 32px; text-align: center;"><a href=3D"https://accounts.google.com/Ac=
+countChooser?Email=3Dpopescu.tiberiuc@gmail.com&amp;continue=3Dhttps://myac=
+count.google.com/alert/nt/1746787258000?rfn%3D325%26rfnc%3D1%26eid%3D903551=
+3485569623573%26et%3D0" target=3D"_blank" link-id=3D"main-button-link" styl=
+e=3D"font-family: &#39;Google Sans&#39;,Roboto,RobotoDraft,Helvetica,Arial,=
+sans-serif; line-height: 16px; color: #ffffff; font-weight: 400; text-decor=
+ation: none;font-size: 14px;display:inline-block;padding: 10px 24px;backgro=
+und-color: #4184F3; border-radius: 5px; min-width: 90px;">Verific=C4=83 act=
+ivitatea</a></div></div><div style=3D"padding-top: 20px; font-size: 12px; l=
+ine-height: 16px; color: #5f6368; letter-spacing: 0.3px; text-align: center=
+">Po=C8=9Bi vedea activitatea de securitate =C8=99i la<br><a style=3D"color=
+: rgba(0, 0, 0, 0.87);text-decoration: inherit;">https://myaccount.google.c=
+om/notifications</a></div></div><div style=3D"text-align: left;"><div style=
+=3D"font-family: Roboto-Regular,Helvetica,Arial,sans-serif;color: rgba(0,0,=
+0,0.54); font-size: 11px; line-height: 18px; padding-top: 12px; text-align:=
+ center;"><div>Ai primit acest e-mail pentru a te informa despre modific=C4=
+=83rile importante aduse serviciilor =C8=99i Contului Google.</div><div sty=
+le=3D"direction: ltr;">&copy; 2025 Google Ireland Ltd., <a class=3D"afal" s=
+tyle=3D"font-family: Roboto-Regular,Helvetica,Arial,sans-serif;color: rgba(=
+0,0,0,0.54); font-size: 11px; line-height: 18px; padding-top: 12px; text-al=
+ign: center;">Gordon House, Barrow Street, Dublin 4, Ireland</a></div></div=
+></div></td><td width=3D"8" style=3D"width: 8px;"></td></tr></table></td></=
+tr><tr height=3D"32" style=3D"height: 32px;"><td></td></tr></table></body><=
+/html>
+--00000000000015a1620634b19ac4--

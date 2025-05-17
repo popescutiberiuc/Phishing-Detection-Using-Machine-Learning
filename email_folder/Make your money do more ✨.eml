@@ -1,0 +1,792 @@
+Delivered-To: popescu.tiberiuc@gmail.com
+Received: by 2002:a05:7301:1e94:b0:16b:e45:6a0 with SMTP id oo20csp4785655dyb;
+        Wed, 14 May 2025 23:28:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHmThGsNhdrmtewDS3EUH7eimZFvr0MjgZVsDYj5HBNCqn6Z6HzLVVAFQvA+LxAV/EjpWTt
+X-Received: by 2002:a05:6902:1589:b0:e78:f538:1c56 with SMTP id 3f1490d57ef6-e7b3d4b8a3amr8481176276.4.1747290529205;
+        Wed, 14 May 2025 23:28:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1747290529; cv=none;
+        d=google.com; s=arc-20240605;
+        b=VJk/PFsQjnraXPubjzPLCXRO5UMpAB9mMVy7W+wQZoH56tSXYKQyeCS6gPrK4F/Vyu
+         2GCr0cuD73+rhcAo4OjyALoToMgQPa9N3fK/JDEnNZMBwjX9O6jsvFf1S30dFwAmqpJi
+         ac33u6+9Gl4l7GSv8Ch2Ih7W3L0vpiMNx97qYS0/ze/7dQ5Im1fXC2KV7hc/DkYsqWgO
+         xP9Me5Nm/+7g7oB1cHwe7WiK1i2UBOfHiuKlVpbKQ8B2fFlN1uB9Xy5x3Xy8n0RHYeIq
+         2HjxTfiP3bvMORXkWQRPVf+hqQEhYdg/OHLViRgEXpBqewq4shDu/l6z7/asXORjSSLn
+         USLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-id:list-unsubscribe-post:list-unsubscribe:from:mime-version
+         :date:to:message-id:subject:content-transfer-encoding:dkim-signature;
+        bh=kwqhTjaQw+CHBIGjgMNfpDxHOP0aX/ck85VQoWNg5vc=;
+        fh=izrfyEdEP/E6akGl6iS3iao+EOeaMPBwhypGmqs2mxw=;
+        b=ieLwZw22FumcPnRd0HHlZVv19JLsPW+t5b2I/kCAkCG4B+LF8fx6QvSr0ZqO8JEKyS
+         qBGEzwsFFuGH1sqS+NqUQXXdgxoECA7xfG7ckDQjh/UM8Bi2ipeh07AJLbtGqkgiaXH5
+         5ygoyS7tm2IjxK5MqJopAamV4LG7iED0y2J/Wl2m+IukNZpcjn/8xx3p+S2r0mnde1dL
+         3Jb5LKoPN29FonToAOvkC1/IyNq9teLglA4p+dQkEYW+usyQvMCm8ln7Kljsec7RbCZJ
+         F/00uxAtJj/ikl2laGPsEEsUVcsqoBKiIn0pEGgIOKdaUIM46hGQA0bAd0yM5V+O/CQz
+         QoNg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@revolut.com header.s=scph0616 header.b=NTefsiO7;
+       spf=pass (google.com: domain of msprvs1=20230fh-s95oi=bounces-63739@sp-bounce.revolut.com designates 192.174.91.94 as permitted sender) smtp.mailfrom="msprvs1=20230FH-s95oi=bounces-63739@sp-bounce.revolut.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=revolut.com
+Return-Path: <msprvs1=20230FH-s95oi=bounces-63739@sp-bounce.revolut.com>
+Received: from mta-91-94.sparkpostmail.com (mta-91-94.sparkpostmail.com. [192.174.91.94])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e7ac930907asi4536024276.145.2025.05.14.23.28.48
+        for <popescu.tiberiuc@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 May 2025 23:28:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=20230fh-s95oi=bounces-63739@sp-bounce.revolut.com designates 192.174.91.94 as permitted sender) client-ip=192.174.91.94;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@revolut.com header.s=scph0616 header.b=NTefsiO7;
+       spf=pass (google.com: domain of msprvs1=20230fh-s95oi=bounces-63739@sp-bounce.revolut.com designates 192.174.91.94 as permitted sender) smtp.mailfrom="msprvs1=20230FH-s95oi=bounces-63739@sp-bounce.revolut.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=revolut.com
+Return-Path: <msprvs1=20230FH-s95oi=bounces-63739@sp-bounce.revolut.com>
+X-MSFBL: CBOt3jOTUIvhPfFY2d6FLRxWwFNSrmVoq1PRcjBMPLU=|eyJtZXNzYWdlX2lkIjo
+	iNjgwYmEwODkyNTY4ZjhlYTY2MDkiLCJyIjoicG9wZXNjdS50aWJlcml1Y0BnbWF
+	pbC5jb20iLCJjdXN0b21lcl9pZCI6IjYzNzM5Iiwic3ViYWNjb3VudF9pZCI6IjA
+	iLCJ0ZW5hbnRfaWQiOiJzcGMifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=revolut.com;
+	s=scph0616; t=1747290528; i=@revolut.com;
+	bh=kwqhTjaQw+CHBIGjgMNfpDxHOP0aX/ck85VQoWNg5vc=;
+	h=Content-Type:Subject:Message-ID:To:Date:From:List-Unsubscribe:
+	 List-Unsubscribe-Post:From:To:Cc:Subject;
+	b=NTefsiO7R78zIFfyERgGn2RfyiV4KjlnkAQEM0odmYAw0QCPgq4dl7wso8/O6Rfx4
+	 rezRDi7yVKDF+nUD/5DVP1TyI1f/ELAAwxyTdndcaakXP/K/Z1+e3bo9z0ZX1EyonI
+	 3tcHz+J1ZI7vfTrpk4RUDtP6LIbYImlptecGIRsA=
+Received: from [10.90.1.114] ([10.90.1.114])
+	by i-06c1808c9ac6a33be.mta1vrest.sd.prd.sparkpost (ecelerity 4.8.0.74368 r(msys-ecelerity:tags/4.8.0.17)) with REST
+	id 90/66-47434-0A985286; Thu, 15 May 2025 06:28:48 +0000
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+Subject: =?utf-8?B?TWFrZSB5b3VyIG1vbmV5IGRvIG1vcmUg4pyo?=
+Message-ID: <90.66.47434.0A985286@i-06c1808c9ac6a33be.mta1vrest.sd.prd.sparkpost>
+To: popescu.tiberiuc@gmail.com
+Date: Thu, 15 May 2025 06:28:48 +0000
+MIME-Version: 1.0
+From: "Revolut" <no-reply@revolut.com>
+List-Unsubscribe: <mailto:unsubscribe@unsub.spmta.com?subject=unsubscribe:eUkC3iVMImOLlNfZppdmZjEbvT1BVCMTfv8VrjlprUU~|eyAicmNwdF90byI6ICJwb3Blc2N1LnRpYmVyaXVjQGdtYWlsLmNvbSIsICJ0ZW5hbnRfaWQiOiAic3BjIiwgImN1c3RvbWVyX2lkIjogIjYzNzM5IiwgIm1lc3NhZ2VfaWQiOiAiNjgwYmEwODkyNTY4ZjhlYTY2MDkiLCAic3ViYWNjb3VudF9pZCI6ICIwIiB9>,<https://unsubscribe.spmta.com/u/TXMHU90LDY12Xc_p4Fue3w~~/AAD4-xA~/Yx93NFcjvVxvTkXbALvya5-plDtZC93BYya0dtLlnhe3tmEXH0WKc8zDdvQxxbJFRS2g6AHd6RyKAHSE4qZ-xg~~>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Id: <spc.63739.0.sparkpostmail.com>
+
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head><title></title><!--[if !mso]><!--><meta http-equiv=3D"X-UA-Compat=
+ible" content=3D"IE=3Dedge"><!--<![endif]--><meta http-equiv=3D"Content-Typ=
+e" content=3D"text/html; charset=3DUTF-8"><meta name=3D"viewport" content=
+=3D"width=3Ddevice-width,initial-scale=3D1"><style type=3D"text/css">#outlo=
+ok a { padding:0; }=0A      body { margin:0;padding:0;-webkit-text-size-adj=
+ust:100%;-ms-text-size-adjust:100%; }=0A      table, td { border-collapse:c=
+ollapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }=0A      img { border:0=
+;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interp=
+olation-mode:bicubic; }=0A      p { display:block;margin:13px 0; }</style><=
+!--[if mso]>=0A    <noscript>=0A    <xml>=0A    <o:OfficeDocumentSettings>=
+=0A      <o:AllowPNG/>=0A      <o:PixelsPerInch>96</o:PixelsPerInch>=0A    =
+</o:OfficeDocumentSettings>=0A    </xml>=0A    </noscript>=0A    <![endif]-=
+-><!--[if lte mso 11]>=0A    <style type=3D"text/css">=0A      .mj-outlook-=
+group-fix { width:100% !important; }=0A    </style>=0A    <![endif]--><!--[=
+if !mso]><!--><link href=3D"https://assets.revolut.com/email/fonts/Rev10/re=
+v10-fonts.css=3Fv=3D629b8290170e4b3b575939d87ff33f4e332c2274" rel=3D"styles=
+heet" type=3D"text/css"><style type=3D"text/css">@import url(https://assets=
+.revolut.com/email/fonts/Rev10/rev10-fonts.css=3Fv=3D629b8290170e4b3b57593=
+9d87ff33f4e332c2274);</style><!--<![endif]--><style type=3D"text/css">@medi=
+a only screen and (min-width:512px) {=0A        .mj-column-per-100 { width:=
+100% !important; max-width: 100%; }=0A.mj-column-per-50 { width:50% !import=
+ant; max-width: 50%; }=0A      }</style><style media=3D"screen and (min-wid=
+th:512px)">.moz-text-html .mj-column-per-100 { width:100% !important; max-w=
+idth: 100%; }=0A.moz-text-html .mj-column-per-50 { width:50% !important; ma=
+x-width: 50%; }</style><style type=3D"text/css">@media only screen and (min=
+-width:512px)=0A        and (min-device-width:801px) {=0A          .rev-ret=
+ail-header-cfxP7a0RHv img {=0A            margin: 40px auto 16px !important=
+;=0A          }=0A        }=0A=0A      .rev-retail-header-cfxP7a0RHv-logo t=
+able tr td {=0A        width: 100px !important;=0A      }=0A    =0A=0A     =
+@media only screen and (min-width:512px) and (min-device-width:801px) {=0A =
+     .rev-title-njMcfLVk0q div {=0A        font-size: 48px !important; =0A =
+       padding: 0 56px !important; =0A        line-height: 117% !important;=
+=0A      }=0A    }=0A  =0A=0A    @media only screen and (min-width:512px) a=
+nd (min-device-width:801px) {=0A      .rev-text-1x60Gi2GVI {=0A        padd=
+ing: 8px 80px !important;=0A      }=0A    }=0A  =0A=0A      @media only scr=
+een and (min-width:512px)=0A        and (min-device-width:801px) {=0A      =
+    .rev-button-YvtOQrYcdW {=0A            padding: 0 56px !important;=0A  =
+        }=0A      }=0A=0A      =0A    =0A=0A    @media only screen and (min=
+-width:512px)=0A      and (min-device-width:801px) {=0A      .rev-image-Y7a=
+9XKJ--w {=0A        padding: 0 0 !important;=0A      }=0A    }=0A  =0A=0A  =
+  @media only screen and (min-width:512px) and (min-device-width:801px) {=
+=0A      .rev-text-2iifpOSpaF {=0A        padding: 8px 80px !important;=0A =
+     }=0A    }=0A  =0A=0A    .rev-image-text-Ui5T05mUk6 {=0A      padding: =
+16px 24px;=0A    }=0A=0A    @media only screen and (min-width:512px) and (m=
+in-device-width:801px) {=0A      .rev-image-text-Ui5T05mUk6 {=0A        pad=
+ding: 16px 80px !important;=0A      }=0A    }=0A  =0A=0A    .rev-image-text=
+-gXuhcIJRQ-o {=0A      padding: 16px 24px;=0A    }=0A=0A    @media only scr=
+een and (min-width:512px) and (min-device-width:801px) {=0A      .rev-image=
+-text-gXuhcIJRQ-o {=0A        padding: 16px 80px !important;=0A      }=0A  =
+  }=0A  =0A=0A    .rev-image-text-i78G8FvC0T9 {=0A      padding: 16px 24px;=
+=0A    }=0A=0A    @media only screen and (min-width:512px) and (min-device-=
+width:801px) {=0A      .rev-image-text-i78G8FvC0T9 {=0A        padding: 16p=
+x 80px !important;=0A      }=0A    }=0A  =0A=0A    @media only screen and (=
+min-width:512px) and (min-device-width:801px) {=0A      .rev-text-r1ATUANyM=
+E8 {=0A        padding: 8px 80px !important;=0A      }=0A    }=0A  =0A=0A  =
+    @media only screen and (min-width:512px)=0A        and (min-device-widt=
+h:801px) {=0A          .rev-button-V1vV_SyXFJH {=0A            padding: 0 5=
+6px !important;=0A          }=0A      }=0A=0A      =0A    =0A=0A    @media =
+only screen and (min-width:512px) and (min-device-width:801px) {=0A      .r=
+ev-text-W4R5DVSLIjD {=0A        padding: 8px 80px !important;=0A      }=0A =
+   }=0A  =0A=0A    @media only screen and (min-width:512px) and (min-device=
+-width:801px) {=0A      .rev-text--ZZX9_jT5wY {=0A        padding: 8px 80px=
+ !important;=0A      }=0A    }=0A  =0A=0A    @media only screen and (min-wi=
+dth:512px) and (min-device-width:801px) {=0A      .rev-text-HlUDWHPhDLf {=
+=0A        padding: 8px 80px !important;=0A      }=0A    }=0A  =0A=0A      =
+.rev-footer-unsubscribe-KnMmqBggrxz a {=0A        color: #75808A !importan=
+t;=0A        text-decoration: underline !important;=0A      }=0A=0A      .u=
+ndefined-logo table tr td {=0A        width: 88px !important;=0A      }=0A=
+=0A      @media only screen and (min-width:512px)=0A        and (min-device=
+-width:801px) {=0A        .rev-footer-unsubscribe-KnMmqBggrxz div {=0A     =
+     text-align: right !important;=0A        }=0A      }=0A    =0A    =0A=
+=0A    @media only screen and (max-width:511px) {=0A      table.mj-full-wid=
+th-mobile { width: 100% !important; }=0A      td.mj-full-width-mobile { wid=
+th: auto !important; }=0A    }</style><style type=3D"text/css">@media only =
+screen and (min-width:512px)=0A            and (min-device-width:801px) {=
+=0A              h1 {=0A                font-size: 24px !important;=0A     =
+         }=0A          =0A              h2 {=0A                font-size: 3=
+4px !important;=0A              }=0A          =0A              h3 {=0A     =
+           font-size: 20px !important;=0A              }=0A          =0A   =
+           h4 {=0A                font-size: 24px !important;=0A           =
+   }=0A          =0A              h5 {=0A                font-size: 24px !i=
+mportant;=0A              }=0A=0A              blockquote {=0A             =
+   padding: 32px 48px !important;=0A              }=0A            }=0A     =
+     }</style></head><body style=3D"word-spacing:normal;">=0D=0A<div style=
+=3D"color:transparent;visibility:hidden;opacity:0;font-size:0px;border:0;ma=
+x-height:1px;width:1px;margin:0px;padding:0px;border-width:0px!important;di=
+splay:none!important;line-height:0px!important;"><img border=3D"0" width=3D=
+"1" height=3D"1" src=3D"https://click.revolut.com/q/umBGYgk4nU3UCGaIAioMlQ~=
+~/AAD4-xA~/d13OriRL6uWwKMiPXPm15NtvlEanGfZaofyac-eNAdKruYBXSpxU-byS8crOeDRX=
+mzcqzOOtRHCTe2esh3xecQ~~" alt=3D""/></div>=0D=0A<div><table align=3D"center=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"background:#ffffff;background-color:#ffffff;width:100%;"><tbody><tr>=
+<td><!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:700px;"=
+ width=3D"700" bgcolor=3D"#ffffff" ><tr><td style=3D"line-height:0px;font-s=
+ize:0px;mso-line-height-rule:exactly;"><![endif]--><div style=3D"margin:0px=
+ auto;max-width:700px;"><table align=3D"center" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><t=
+r><td style=3D"direction:ltr;font-size:0px;padding:0;text-align:center;"><!=
+--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0"><tr><td align=3D"center" class=3D"" width=3D"700px" ><ta=
+ble align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"rev-retail-header-cfxP7a0RHv-outlook" role=3D"presentation" style=3D"wi=
+dth:700px;" width=3D"700" bgcolor=3D"#FFFFFF" ><tr><td style=3D"line-height=
+:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div class=3D=
+"rev-retail-header-cfxP7a0RHv" style=3D"background:#FFFFFF;background-color=
+:#FFFFFF;margin:0px auto;max-width:700px;"><table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"b=
+ackground:#FFFFFF;background-color:#FFFFFF;width:100%;"><tbody><tr><td styl=
+e=3D"direction:ltr;font-size:0px;padding:0;text-align:center;"><!--[if mso =
+| IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:700px;" ><![e=
+ndif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font=
+-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align=
+:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" r=
+ole=3D"presentation" style=3D"vertical-align:top;" width=3D"100%"><tbody><t=
+r><td align=3D"center" class=3D"rev-retail-header-cfxP7a0RHv-logo" style=3D=
+"font-size:0px;padding:32px 24px 8px;word-break:break-word;"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"b=
+order-collapse:collapse;border-spacing:0px;"><tbody><tr><td style=3D"width:=
+652px;"><a href=3D"https%3A%2F%2Fwww.revolut.com%2F" target=3D"_blank" styl=
+e=3D"color: #0666EB; text-decoration: none;"><img alt=3D"Revolut" src=3D"ht=
+tps:&#x2F;&#x2F;assets.revolut.com&#x2F;email&#x2F;rev10&#x2F;logo-black-wi=
+th-bg.png" style=3D"border:0;display:block;outline:none;text-decoration:non=
+e;height:auto;width:100%;font-size:13px;" width=3D"652" height=3D"auto"></a=
+></td></tr></tbody></table></td></tr></tbody></table></div><!--[if mso | IE=
+]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso=
+ | IE]></td></tr></table></td></tr><tr><td align=3D"center" class=3D"" widt=
+h=3D"700px" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" class=3D"" role=3D"presentation" style=3D"width:700px;" width=3D=
+"700" bgcolor=3D"#FFFFFF" ><tr><td style=3D"line-height:0px;font-size:0px;m=
+so-line-height-rule:exactly;"><![endif]--><div style=3D"background:#FFFFFF;=
+background-color:#FFFFFF;margin:0px auto;max-width:700px;"><table align=3D"=
+center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" style=3D"background:#FFFFFF;background-color:#FFFFFF;width:100%;"><tbod=
+y><tr><td style=3D"direction:ltr;font-size:0px;padding:0;text-align:center;=
+"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;wid=
+th:700px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fi=
+x" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-bloc=
+k;vertical-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D=
+"vertical-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"c=
+enter" class=3D"rev-title-njMcfLVk0q" style=3D"font-size:0px;padding:16px 2=
+4px;word-break:break-word;"><div style=3D"font-family:Aeonik Pro, Inter, Ar=
+ial, sans-serif;font-size:34px;font-style:normal;font-weight:900;letter-spa=
+cing:-0.2px;line-height:119%;text-align:center;color:#1A1C1F;">Start invest=
+ing with =E2=82=AC1</div></td></tr></tbody></table></td></tr></tbody></tabl=
+e></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody><=
+/table></div><!--[if mso | IE]></td></tr></table></td></tr><tr><td align=3D=
+"center" class=3D"" width=3D"700px" ><table align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=
+=3D"width:700px;" width=3D"700" bgcolor=3D"#FFFFFF" ><tr><td style=3D"line-=
+height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div st=
+yle=3D"background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-widt=
+h:700px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" style=3D"background:#FFFFFF;background-color:=
+#FFFFFF;width:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;pa=
+dding:0;text-align:center;"><!--[if mso | IE]><table role=3D"presentation" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=
+=3D"vertical-align:top;width:700px;" ><![endif]--><div class=3D"mj-column-p=
+er-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;directi=
+on:ltr;display:inline-block;vertical-align:top;width:100%;"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%"><tbody><tr><td style=3D"vertical-align:top;padding:0;"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%"><tbody><tr><td align=3D"center" class=3D"rev-text-1x60Gi2GVI" style=3D=
+"font-size:0px;padding:8px 24px;word-break:break-word;"><div style=3D"font-=
+family:Inter, Arial, sans-serif;font-size:22px;font-style:normal;font-weigh=
+t:400;line-height:130%;text-align:center;color:#1A1C1F;"><p style=3D"margin=
+: 16px 0;">Not sure where to start with stocks=3F Explore our features to g=
+et your foot in the trading floor door</p></div></td></tr></tbody></table><=
+/td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif=
+]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table></t=
+d></tr><tr><td align=3D"center" class=3D"" width=3D"700px" ><table align=3D=
+"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rev-butt=
+on-YvtOQrYcdW-outlook" role=3D"presentation" style=3D"width:700px;" width=
+=3D"700" bgcolor=3D"#FFFFFF" ><tr><td style=3D"line-height:0px;font-size:0p=
+x;mso-line-height-rule:exactly;"><![endif]--><div class=3D"rev-button-YvtOQ=
+rYcdW" style=3D"background:#FFFFFF;background-color:#FFFFFF;margin:0px auto=
+;max-width:700px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" role=3D"presentation" style=3D"background:#FFFFFF;backgrou=
+nd-color:#FFFFFF;width:100%;"><tbody><tr><td style=3D"direction:ltr;font-si=
+ze:0px;padding:0 24px;text-align:center;"><!--[if mso | IE]><table role=3D"=
+presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td clas=
+s=3D"" style=3D"vertical-align:top;width:652px;" ><![endif]--><div class=3D=
+"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:=
+left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"><ta=
+ble border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" =
+width=3D"100%"><tbody><tr><td style=3D"vertical-align:top;padding:0;"><tabl=
+e border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" wi=
+dth=3D"100%"><tbody><tr><td align=3D"center" style=3D"font-size:0px;padding=
+:0;padding-top:24px;padding-right:0;padding-bottom:24px;padding-left:0;word=
+-break:break-word;"><table cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" width=3D"NaN" border=3D"0" style=3D"color:#000000;font-family:Int=
+er, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;wid=
+th:auto;border:0;"><tr><td align=3D"center" bgcolor=3D"#4F55F1" role=3D"pre=
+sentation" style=3D"border-radius:32px;font-style:normal;text-align:center;=
+border:none;cursor:auto;height:56px;" valign=3D"middle"><a href=3D"https://=
+revolut.com/app/trading/startstocksonboarding=3Ftracking_id=3Df8b64738-53a4=
+-3227-9702-ea65529e8823&utm_source=3Demail&utm_campaign=3Dx-sell-generic" s=
+tyle=3D"font-size: 18px; font-style: normal; font-weight: 500; vertical-ali=
+gn: middle; background: none; color: #FFFFFF; display: table-cell; margin: =
+0; padding: 16px 24px; text-decoration: none;" target=3D"_blank" ><!--[if m=
+so]>&nbsp;&nbsp;&nbsp;<![endif]-->Start investing<!--[if mso]>&nbsp;&nbsp;&=
+nbsp;<![endif]--></a></td></tr></table></td></tr></tbody></table></td></tr>=
+</tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td>=
+</tr></tbody></table></div><!--[if mso | IE]></td></tr></table></td></tr><t=
+r><td class=3D"" width=3D"700px" ><table align=3D"center" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"w=
+idth:700px;" width=3D"700" ><tr><td style=3D"line-height:0px;font-size:0px;=
+mso-line-height-rule:exactly;"><![endif]--><div style=3D"margin:0px auto;ma=
+x-width:700px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr><td st=
+yle=3D"direction:ltr;font-size:0px;padding:0;text-align:center;"><!--[if ms=
+o | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:700px;" ><!=
+[endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"fo=
+nt-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-ali=
+gn:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vertical-alig=
+n:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" r=
+ole=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"center" class=
+=3D"rev-image-Y7a9XKJ--w" style=3D"font-size:0px;padding:0 0;word-break:bre=
+ak-word;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"p=
+resentation" style=3D"border-collapse:collapse;border-spacing:0px;"><tbody>=
+<tr><td style=3D"width:700px;"><img src=3D"https://assets.revolut.com/publi=
+shed-assets-v3/24cd46e8-c8f7-4458-8833-2c95f70ef138/4a269fc9-8ac8-458d-b7e5=
+-bbea4b40a51c.png" style=3D"border:0;display:block;outline:none;text-decora=
+tion:none;height:auto;width:100%;font-size:13px;" width=3D"700" height=3D"a=
+uto"></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody>=
+</table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></t=
+body></table></div><!--[if mso | IE]></td></tr></table></td></tr><tr><td al=
+ign=3D"left" class=3D"" width=3D"700px" ><table align=3D"center" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" sty=
+le=3D"width:700px;" width=3D"700" bgcolor=3D"#FFFFFF" ><tr><td style=3D"lin=
+e-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div =
+style=3D"background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-wi=
+dth:700px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" style=3D"background:#FFFFFF;background-colo=
+r:#FFFFFF;width:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;=
+padding:0;text-align:center;"><!--[if mso | IE]><table role=3D"presentation=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=
+=3D"vertical-align:top;width:700px;" ><![endif]--><div class=3D"mj-column-p=
+er-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;directi=
+on:ltr;display:inline-block;vertical-align:top;width:100%;"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%"><tbody><tr><td style=3D"vertical-align:top;padding:0;"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%"><tbody><tr><td align=3D"left" class=3D"rev-text-2iifpOSpaF" style=3D"f=
+ont-size:0px;padding:8px 24px;word-break:break-word;"><div style=3D"font-fa=
+mily:Inter, Arial, sans-serif;font-size:16px;font-style:normal;font-weight:=
+400;line-height:130%;text-align:left;color:#1A1C1F;"><p style=3D"margin: 16=
+px 0;">Hi Tiberiu-Costin,</p><p style=3D"margin: 16px 0;">No time to resear=
+ch stocks=3F Worried about the cost=3F We=E2=80=99ve removed the barriers f=
+or you, so starting to trade is easier than ever. Take a look:</p></div></t=
+d></tr></tbody></table></td></tr></tbody></table></div><!--[if mso | IE]></=
+td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | I=
+E]></td></tr></table></td></tr><tr><td align=3D"left" class=3D"" width=3D"7=
+00px" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"rev-image-text-Ui5T05mUk6-outlook" role=3D"presentation" st=
+yle=3D"width:700px;" width=3D"700" bgcolor=3D"#FFFFFF" ><tr><td style=3D"li=
+ne-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div=
+ class=3D"rev-image-text-Ui5T05mUk6" style=3D"background:#FFFFFF;background=
+-color:#FFFFFF;margin:0px auto;max-width:700px;"><table align=3D"center" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"background:#FFFFFF;background-color:#FFFFFF;width:100%;"><tbody><tr><td=
+ style=3D"direction:ltr;font-size:0px;padding:0;text-align:center;"><!--[if=
+ mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0"><tr><td class=3D"" style=3D"" ><table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation"=
+ style=3D"width:700px;" width=3D"700" ><tr><td style=3D"line-height:0px;fon=
+t-size:0px;mso-line-height-rule:exactly;"><![endif]--><div style=3D"margin:=
+0px auto;max-width:700px;"><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody=
+><tr><td style=3D"direction:ltr;font-size:0px;padding:0 0 16px 0;text-align=
+:center;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:t=
+op;width:700px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-gr=
+oup-fix" style=3D"font-size:0px;text-align:left;direction:ltr;display:inlin=
+e-block;vertical-align:top;width:100%;"><table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td st=
+yle=3D"vertical-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td alig=
+n=3D"center" style=3D"font-size:0px;padding:0;word-break:break-word;"><tabl=
+e border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"border-collapse:collapse;border-spacing:0px;"><tbody><tr><td style=
+=3D"width:700px;"><img src=3D"https://assets.revolut.com/published-assets-v=
+3/543e70e9-2664-49d0-a4d4-af2d6a757cc9/f7f1a23a-d938-4bf0-9a6b-9bfe2b6df65d=
+.png" style=3D"border:0;border-radius:8px;display:block;outline:none;text-=
+decoration:none;height:auto;width:100%;font-size:13px;" width=3D"700" heigh=
+t=3D"auto"></td></tr></tbody></table></td></tr></tbody></table></td></tr></=
+tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></=
+tr></tbody></table></div><!--[if mso | IE]></td></tr></table></td><td class=
+=3D"" style=3D"" ><table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:700px;" wid=
+th=3D"700" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-=
+rule:exactly;"><![endif]--><div style=3D"margin:0px auto;max-width:700px;">=
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"width:100%;"><tbody><tr><td style=3D"direction=
+:ltr;font-size:0px;padding:0;text-align:center;"><!--[if mso | IE]><table r=
+ole=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><=
+td align=3D"left" class=3D"" style=3D"" ><![endif]--><div style=3D"font-fam=
+ily:Inter, Arial, sans-serif;font-size:16px;font-style:normal;font-weight:n=
+ormal;line-height:130%;text-align:left;color:#1A1C1F;"><h3 style=3D"font-we=
+ight: 700; line-height: 119%; margin: 0; padding: 0; font-size: 20px; paddi=
+ng-top: 16px;">Build up your knowledge base</h3><p style=3D"margin: 16px 0;=
+">You don&#39;t need a finance degree to trade with confidence. Our Learn c=
+ourses show you the stocks building blocks. Plus, stay informed with person=
+alised alerts, company performance data, and market news.</p></div><!--[if =
+mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div><!-=
+-[if mso | IE]></td></tr></table></td></tr></table><![endif]--></td></tr></=
+tbody></table></div><!--[if mso | IE]></td></tr></table></td></tr><tr><td a=
+lign=3D"left" class=3D"" width=3D"700px" ><table align=3D"center" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rev-image-text-gXuhcIJRQ-o=
+-outlook" role=3D"presentation" style=3D"width:700px;" width=3D"700" bgcolo=
+r=3D"#FFFFFF" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-heig=
+ht-rule:exactly;"><![endif]--><div class=3D"rev-image-text-gXuhcIJRQ-o" sty=
+le=3D"background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-width=
+:700px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"background:#FFFFFF;background-color:#=
+FFFFFF;width:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;pad=
+ding:0;text-align:center;"><!--[if mso | IE]><table role=3D"presentation" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D=
+"" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" class=3D"" role=3D"presentation" style=3D"width:700px;" width=3D"700" ><t=
+r><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"=
+><![endif]--><div style=3D"margin:0px auto;max-width:700px;"><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"width:100%;"><tbody><tr><td style=3D"direction:ltr;font-si=
+ze:0px;padding:0 0 16px 0;text-align:center;"><!--[if mso | IE]><table role=
+=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td =
+class=3D"" style=3D"vertical-align:top;width:700px;" ><![endif]--><div clas=
+s=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-al=
+ign:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"=
+><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" width=3D"100%"><tbody><tr><td style=3D"vertical-align:top;padding:0;"><=
+table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation=
+" width=3D"100%"><tbody><tr><td align=3D"center" style=3D"font-size:0px;pad=
+ding:0;word-break:break-word;"><table border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" role=3D"presentation" style=3D"border-collapse:collapse;border-=
+spacing:0px;"><tbody><tr><td style=3D"width:700px;"><img src=3D"https://ass=
+ets.revolut.com/published-assets-v3/93f2adad-047f-4c08-bd17-3a0b36dcec79/86=
+13cfa3-df98-4ef1-8db0-13d138f2b118.png" style=3D"border:0;border-radius:8px=
+;display:block;outline:none;text-decoration:none;height:auto;width:100%;fon=
+t-size:13px;" width=3D"700" height=3D"auto"></td></tr></tbody></table></td>=
+</tr></tbody></table></td></tr></tbody></table></div><!--[if mso | IE]></td=
+></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]=
+></td></tr></table></td><td class=3D"" style=3D"" ><table align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"present=
+ation" style=3D"width:700px;" width=3D"700" ><tr><td style=3D"line-height:0=
+px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div style=3D"m=
+argin:0px auto;max-width:700px;"><table align=3D"center" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;">=
+<tbody><tr><td style=3D"direction:ltr;font-size:0px;padding:0;text-align:ce=
+nter;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0"><tr><td align=3D"left" class=3D"" style=3D"" ><=
+![endif]--><div style=3D"font-family:Inter, Arial, sans-serif;font-size:16p=
+x;font-style:normal;font-weight:normal;line-height:130%;text-align:left;col=
+or:#1A1C1F;"><h3 style=3D"font-weight: 700; line-height: 119%; margin: 0; p=
+adding: 0; font-size: 20px; padding-top: 16px;">Don&#39;t know where to sta=
+rt=3F</h3><p style=3D"margin: 16px 0;">There&#39;s 2,000+ stocks to explore=
+ from some of the most influential companies on the planet. Use our most po=
+pular or first-time traders widget to see what&#39;s in right now. You can =
+even automate your stock purchases to daily, monthly, or weekly, so you don=
+&#39;t have to lift a finger.</p></div><!--[if mso | IE]></td></tr></table>=
+<![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></t=
+able></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if =
+mso | IE]></td></tr></table></td></tr><tr><td align=3D"left" class=3D"" wid=
+th=3D"700px" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" class=3D"rev-image-text-i78G8FvC0T9-outlook" role=3D"presentati=
+on" style=3D"width:700px;" width=3D"700" bgcolor=3D"#FFFFFF" ><tr><td style=
+=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-=
+-><div class=3D"rev-image-text-i78G8FvC0T9" style=3D"background:#FFFFFF;bac=
+kground-color:#FFFFFF;margin:0px auto;max-width:700px;"><table align=3D"cen=
+ter" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"=
+ style=3D"background:#FFFFFF;background-color:#FFFFFF;width:100%;"><tbody><=
+tr><td style=3D"direction:ltr;font-size:0px;padding:0;text-align:center;"><=
+!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0"><tr><td class=3D"" style=3D"" ><table align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"present=
+ation" style=3D"width:700px;" width=3D"700" ><tr><td style=3D"line-height:0=
+px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div style=3D"m=
+argin:0px auto;max-width:700px;"><table align=3D"center" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;">=
+<tbody><tr><td style=3D"direction:ltr;font-size:0px;padding:0 0 16px 0;text=
+-align:center;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-a=
+lign:top;width:700px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outl=
+ook-group-fix" style=3D"font-size:0px;text-align:left;direction:ltr;display=
+:inline-block;vertical-align:top;width:100%;"><table border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr>=
+<td style=3D"vertical-align:top;padding:0;"><table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><t=
+d align=3D"center" style=3D"font-size:0px;padding:0;word-break:break-word;"=
+><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" style=3D"border-collapse:collapse;border-spacing:0px;"><tbody><tr><td s=
+tyle=3D"width:700px;"><img src=3D"https://assets.revolut.com/published-asse=
+ts-v3/ecdc96fb-c096-42e3-9da8-de3c402300fc/892ee973-66a2-4d78-8d4d-8636b98b=
+71b7.png" style=3D"border:0;border-radius:8px;display:block;outline:none;te=
+xt-decoration:none;height:auto;width:100%;font-size:13px;" width=3D"700" he=
+ight=3D"auto"></td></tr></tbody></table></td></tr></tbody></table></td></tr=
+></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td=
+></tr></tbody></table></div><!--[if mso | IE]></td></tr></table></td><td cl=
+ass=3D"" style=3D"" ><table align=3D"center" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width:700px;" =
+width=3D"700" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-heig=
+ht-rule:exactly;"><![endif]--><div style=3D"margin:0px auto;max-width:700px=
+;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ role=3D"presentation" style=3D"width:100%;"><tbody><tr><td style=3D"direct=
+ion:ltr;font-size:0px;padding:0;text-align:center;"><!--[if mso | IE]><tabl=
+e role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><t=
+r><td align=3D"left" class=3D"" style=3D"" ><![endif]--><div style=3D"font-=
+family:Inter, Arial, sans-serif;font-size:16px;font-style:normal;font-weigh=
+t:normal;line-height:130%;text-align:left;color:#1A1C1F;"><h3 style=3D"font=
+-weight: 700; line-height: 119%; margin: 0; padding: 0; font-size: 20px; pa=
+dding-top: 16px;">Commission fees=3F Forget about it</h3><p style=3D"margin=
+: 16px 0;">Don=E2=80=99t let extra costs get in your way =E2=80=94 enjoy co=
+mmission-free trading so your money can start doing more for you (no commis=
+sion fees within your plan allowance, other fees may apply).</p></div><!--[=
+if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div>=
+<!--[if mso | IE]></td></tr></table></td></tr></table><![endif]--></td></tr=
+></tbody></table></div><!--[if mso | IE]></td></tr></table></td></tr><tr><t=
+d align=3D"left" class=3D"" width=3D"700px" ><table align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation"=
+ style=3D"width:700px;" width=3D"700" bgcolor=3D"#FFFFFF" ><tr><td style=3D=
+"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><=
+div style=3D"background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;ma=
+x-width:700px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" style=3D"background:#FFFFFF;background-=
+color:#FFFFFF;width:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:=
+0px;padding:0;text-align:center;"><!--[if mso | IE]><table role=3D"presenta=
+tion" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" s=
+tyle=3D"vertical-align:top;width:700px;" ><![endif]--><div class=3D"mj-colu=
+mn-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;dir=
+ection:ltr;display:inline-block;vertical-align:top;width:100%;"><table bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D=
+"100%"><tbody><tr><td style=3D"vertical-align:top;padding:0;"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"1=
+00%"><tbody><tr><td align=3D"left" class=3D"rev-text-r1ATUANyME8" style=3D"=
+font-size:0px;padding:8px 24px;word-break:break-word;"><div style=3D"font-f=
+amily:Inter, Arial, sans-serif;font-size:16px;font-style:normal;font-weight=
+:400;line-height:130%;text-align:left;color:#1A1C1F;"><h3 style=3D"font-wei=
+ght: 700; line-height: 119%; margin: 0; padding: 0; font-size: 20px; paddin=
+g-top: 16px;">Are there any risks=3F</h3><p style=3D"margin: 16px 0;">With =
+any investment there are risks involved, and the value can fluctuate due to=
+ changes in market conditions, or even fall to zero. It&#39;s possible that=
+ you could lose all the money you invested. You can learn more on <a href=
+=3D"https://click.revolut.com/f/a/xx8B_m2l6PtijZvgnHV5fQ~~/AAD4-xA~/4BBxeQw=
+8PwCA9-jlpoS_DOa3VDvlNv55G66uSOYzDKNnzNv7xIMhHe_ADfwf3RMPdltKeH520KyaaGk3Px=
+fkDeP0QrfyTtGNTxn39r_EitEh2HfnCscaathitO4l3dp0gw9gLgzs8NRzsxYRODUYybbOVHpgt=
+GmRYX4G9zRaVoy70ABff3msSGes41eseYae" style=3D"color: #0666EB; text-decorati=
+on: none;">our dedicated risk page</a>.</p></div></td></tr></tbody></table>=
+</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endi=
+f]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table></=
+td></tr><tr><td align=3D"center" class=3D"" width=3D"700px" ><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rev-b=
+utton-V1vV_SyXFJH-outlook" role=3D"presentation" style=3D"width:700px;" wid=
+th=3D"700" bgcolor=3D"#FFFFFF" ><tr><td style=3D"line-height:0px;font-size:=
+0px;mso-line-height-rule:exactly;"><![endif]--><div class=3D"rev-button-V1v=
+V_SyXFJH" style=3D"background:#FFFFFF;background-color:#FFFFFF;margin:0px a=
+uto;max-width:700px;"><table align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation" style=3D"background:#FFFFFF;backg=
+round-color:#FFFFFF;width:100%;"><tbody><tr><td style=3D"direction:ltr;font=
+-size:0px;padding:0 24px;text-align:center;"><!--[if mso | IE]><table role=
+=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td =
+class=3D"" style=3D"vertical-align:top;width:652px;" ><![endif]--><div clas=
+s=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-al=
+ign:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"=
+><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" width=3D"100%"><tbody><tr><td style=3D"vertical-align:top;padding:0;"><=
+table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation=
+" width=3D"100%"><tbody><tr><td align=3D"center" style=3D"font-size:0px;pad=
+ding:0;padding-top:24px;padding-right:0;padding-bottom:24px;padding-left:0;=
+word-break:break-word;"><table cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" width=3D"NaN" border=3D"0" style=3D"color:#000000;font-family=
+:Inter, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto=
+;width:auto;border:0;"><tr><td align=3D"center" bgcolor=3D"#4F55F1" role=3D=
+"presentation" style=3D"border-radius:32px;font-style:normal;text-align:cen=
+ter;border:none;cursor:auto;height:56px;" valign=3D"middle"><a href=3D"http=
+s://revolut.com/app/trading/startstocksonboarding=3Ftracking_id=3Df8b64738-=
+53a4-3227-9702-ea65529e8823" style=3D"font-size: 18px; font-style: normal; =
+font-weight: 500; vertical-align: middle; background: none; color: #FFFFFF;=
+ display: table-cell; margin: 0; padding: 16px 24px; text-decoration: none;=
+" target=3D"_blank" ><!--[if mso]>&nbsp;&nbsp;&nbsp;<![endif]-->Start inves=
+ting<!--[if mso]>&nbsp;&nbsp;&nbsp;<![endif]--></a></td></tr></table></td><=
+/tr></tbody></table></td></tr></tbody></table></div><!--[if mso | IE]></td>=
+</tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]>=
+</td></tr></table></td></tr><tr><td align=3D"left" class=3D"" width=3D"700p=
+x" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" class=3D"" role=3D"presentation" style=3D"width:700px;" width=3D"700" bgc=
+olor=3D"#FFFFFF" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-h=
+eight-rule:exactly;"><![endif]--><div style=3D"background:#FFFFFF;backgroun=
+d-color:#FFFFFF;margin:0px auto;max-width:700px;"><table align=3D"center" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"background:#FFFFFF;background-color:#FFFFFF;width:100%;"><tbody><tr><td=
+ style=3D"direction:ltr;font-size:0px;padding:0;text-align:center;"><!--[if=
+ mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:700px;" =
+><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D=
+"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-=
+align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vertical-a=
+lign:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"left" class=
+=3D"rev-text-W4R5DVSLIjD" style=3D"font-size:0px;padding:8px 24px;word-brea=
+k:break-word;"><div style=3D"font-family:Inter, Arial, sans-serif;font-size=
+:16px;font-style:normal;font-weight:400;line-height:130%;text-align:left;co=
+lor:#1A1C1F;"><p style=3D"margin: 16px 0;">Ready to explore a whole new way=
+ to make your money do more for you=3F Tap above to take a look around our =
+features, and find a way to trade that suits you.</p></div></td></tr></tbod=
+y></table></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></tab=
+le><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr>=
+</table></td></tr><tr><td align=3D"left" class=3D"" width=3D"700px" ><table=
+ align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D=
+"" role=3D"presentation" style=3D"width:700px;" width=3D"700" bgcolor=3D"#F=
+FFFFF" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule=
+:exactly;"><![endif]--><div style=3D"background:#FFFFFF;background-color:#F=
+FFFFF;margin:0px auto;max-width:700px;"><table align=3D"center" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"backgr=
+ound:#FFFFFF;background-color:#FFFFFF;width:100%;"><tbody><tr><td style=3D"=
+direction:ltr;font-size:0px;padding:0;text-align:center;"><!--[if mso | IE]=
+><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0"><tr><td class=3D"" style=3D"vertical-align:top;width:700px;" ><![endif]=
+--><div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size=
+:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;=
+width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vertical-align:top=
+;padding:0;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"left" class=3D"rev=
+-text--ZZX9_jT5wY" style=3D"font-size:0px;padding:8px 24px;word-break:break=
+-word;"><div style=3D"font-family:Inter, Arial, sans-serif;font-size:16px;f=
+ont-style:normal;font-weight:400;line-height:130%;text-align:left;color:#1A=
+1C1F;"><p style=3D"margin: 16px 0;">=E2=80=94 Team Revolut</p></div></td></=
+tr></tbody></table></td></tr></tbody></table></div><!--[if mso | IE]></td><=
+/tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]><=
+/td></tr></table></td></tr><tr><td align=3D"left" class=3D"" width=3D"700px=
+" ><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ class=3D"" role=3D"presentation" style=3D"width:700px;" width=3D"700" bgco=
+lor=3D"#FFFFFF" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-he=
+ight-rule:exactly;"><![endif]--><div style=3D"background:#FFFFFF;background=
+-color:#FFFFFF;margin:0px auto;max-width:700px;"><table align=3D"center" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"background:#FFFFFF;background-color:#FFFFFF;width:100%;"><tbody><tr><td=
+ style=3D"direction:ltr;font-size:0px;padding:0;text-align:center;"><!--[if=
+ mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:700px;" =
+><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix" style=3D=
+"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-=
+align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vertical-a=
+lign:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"left" class=
+=3D"rev-text-HlUDWHPhDLf" style=3D"font-size:0px;padding:8px 24px;word-brea=
+k:break-word;"><div style=3D"font-family:Inter, Arial, sans-serif;font-size=
+:14px;font-style:normal;font-weight:400;line-height:130%;text-align:left;co=
+lor:#1A1C1F;"><p style=3D"margin: 16px 0;">Investment services are provided=
+ by Revolut Securities Europe UAB (305799582) - an investment firm authoris=
+ed and regulated by the Bank of Lithuania. Revolut Securities Europe UAB do=
+es not provide investment advice. Capital at risk. Returns are not guarante=
+ed. You may receive less than your original investment or lose the entire v=
+alue of the initial investment. Past performance and forecasts are not a re=
+liable indicator of future results. Returns may be affected by currency flu=
+ctuations. Further information can be found on our Risk Disclosure and Trad=
+ing FAQ. Revolut=E2=80=99s cryptocurrency and commodities services are offe=
+red by Revolut Ltd (No. 08804411).</p></div></td></tr></tbody></table></td>=
+</tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->=
+</td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table></td></=
+tr><tr><td class=3D"" width=3D"700px" ><table align=3D"center" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" class=3D"rev-footer-kYGzbFM4tH5-outloo=
+k" role=3D"presentation" style=3D"width:700px;" width=3D"700" ><tr><td styl=
+e=3D"line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]=
+--><div class=3D"rev-footer-kYGzbFM4tH5" style=3D"margin:0px auto;max-width=
+:700px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr><td style=3D"=
+direction:ltr;font-size:0px;padding:32px 24px 64px;text-align:center;"><!--=
+[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:652px=
+;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix" style=
+=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertic=
+al-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vertica=
+l-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"center"=
+ style=3D"font-size:0px;padding:0 0 48px;word-break:break-word;"><p style=
+=3D"border-top: solid 1px #F3F4F5; font-size: 1px; margin: 0px auto; width:=
+ 100%;"></p><!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" style=3D"border-top:solid 1px #F3F4F5;font-size=
+:1px;margin:0px auto;width:652px;" role=3D"presentation" width=3D"652px" ><=
+tr><td style=3D"height:0;line-height:0;"> &nbsp;=0A</td></tr></table><![end=
+if]--></td></tr><tr><td style=3D"font-size:0px;word-break:break-word;"><!--=
+[if mso | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" class=3D"" role=3D"presentation" style=3D"width:652px;" width=
+=3D"652" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-ru=
+le:exactly;"><![endif]--><div style=3D"margin:0px auto;max-width:652px;"><t=
+able align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"width:100%;"><tbody><tr><td style=3D"direction:l=
+tr;font-size:0px;padding:0;text-align:center;"><!--[if mso | IE]><table rol=
+e=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td=
+ class=3D"" style=3D"vertical-align:top;width:652px;" ><![endif]--><div cla=
+ss=3D"mj-column-per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-a=
+lign:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;=
+"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentat=
+ion" width=3D"100%"><tbody><tr><td style=3D"vertical-align:top;padding:0;">=
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" width=3D"100%"><tbody><a border=3D"0" href=3D"https://twitter.com/Revolu=
+tApp" style=3D"color: #0666EB; margin-right: 16px; text-decoration: none;" =
+><img alt width=3D"24px" src=3D"https://assets.revolut.com/email/_shared/so=
+cial-x.png"> </a><a border=3D"0" href=3D"https://www.facebook.com/revolutap=
+p" style=3D"color: #0666EB; margin-right: 16px; text-decoration: none;" ><i=
+mg alt width=3D"24px" src=3D"https://assets.revolut.com/email/_shared/socia=
+l-facebook.png"> </a><a border=3D"0" href=3D"https://www.instagram.com/revo=
+lutapp" style=3D"color: #0666EB; margin-right: 16px; text-decoration: none;=
+" ><img alt width=3D"24px" src=3D"https://assets.revolut.com/email/_shared/=
+social-instagram.png"> </a><a border=3D"0" href=3D"https://www.linkedin.com=
+/company/5356541=3Ftrk=3Dvsrp_companies_res_name&trkInfo=3DVSRPsearchId%3A1=
+002816921436132308450%2CVSRPtargetId%3A5356541%2CVSRPcmpt%3Aprimary" style=
+=3D"color: #0666EB; margin-right: 16px; text-decoration: none;" ><img alt w=
+idth=3D"24px" src=3D"https://assets.revolut.com/email/_shared/social-linked=
+in.png"></a></tbody></table></td></tr></tbody></table></div><!--[if mso | I=
+E]></td></tr></table><![endif]--></td></tr></tbody></table></div><!--[if ms=
+o | IE]></td></tr></table><![endif]--></td></tr><tr><td style=3D"font-size:=
+0px;word-break:break-word;"><!--[if mso | IE]><table align=3D"center" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation=
+" style=3D"width:652px;" width=3D"652" ><tr><td style=3D"line-height:0px;fo=
+nt-size:0px;mso-line-height-rule:exactly;"><![endif]--><div style=3D"margin=
+:0px auto;max-width:652px;"><table align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbod=
+y><tr><td style=3D"direction:ltr;font-size:0px;padding:0;text-align:center;=
+"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;wid=
+th:652px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fi=
+x" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-bloc=
+k;vertical-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D=
+"vertical-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"l=
+eft" style=3D"font-size:0px;padding:16px 0;word-break:break-word;"><div sty=
+le=3D"font-family:Inter, Arial, sans-serif;font-size:14px;line-height:143%;=
+text-align:left;color:#75808A;"> <div style=3D"displayhttps:&#x2F;&#x2F;for=
+ms.revolut.com&#x2F;e122e70d-3cd9-4da2-b57c-1332a981f236=3FmessageId=3D09bb=
+d902-5b7e-4e1a-bd2f-360a68c7e3ac: none;"> We want to hear from you =E2=80=
+=94 <a target=3D"_blank" style=3D"color: #8b959e; text-decoration: none;" h=
+ref=3D"https://click.revolut.com/f/a/ulf6Gmnl2k5X68tlFKI_jA~~/AAD4-xA~/ToeB=
+64Wl3qeeRH8M-WexiXX97UYplP22G7E7vmOozLaiNOpM3HkZKyOFLfd4gvlk6ntQdOw5PU6JudL=
+YdxjuC2LqNH73cnE70xpvEB8Z4x7Md96zHkulGBU_jqH2TyCgEaUjFGer57QsdUsskTVVX6KNSn=
+v9fbu6165ufPAknGtjewJF6yEnO9pHcifmF0OwH_QAjsj8AXv1bmdcE1nF5HdPi1hLoIijvrqZp=
+FKOhys~"><span style=3D"text-decoration-color: #8B959E; text-decoration: un=
+derline;">tell us about this email</span> =F0=9F=91=8D =F0=9F=91=8E</a> <br=
+ /><br /> </div> =C2=A9 2025 Revolut Ltd <br /><br />  To find out which Re=
+volut entity you receive services from, or if you have any questions, pleas=
+e reach out to us via in-app chat in the Revolut app. <br /><br /> E-money =
+and payment services are provided by Revolut Ltd (No. 08804411), which is a=
+uthorised by the Financial Conduct Authority under the Electronic Money Reg=
+ulations 2011 (FRN: 900562). <br /><br />  Cryptocurrency services are prov=
+ided by Revolut Ltd, which is registered with the Financial Conduct Authori=
+ty under the Money Laundering, Terrorist Financing and Transfer of Funds (I=
+nformation on the Payer) Regulations 2017. <br /><br />  Commodities tradin=
+g services are provided by Revolut Ltd and are not regulated by the Financi=
+al Conduct Authority. Insurance products and services are arranged by Revol=
+ut Ltd, an appointed representative (FRN: 975775) of Revolut Travel Ltd, wh=
+ich is authorised and regulated by the Financial Conduct Authority (FRN: 78=
+0586). Revolut Travel Ltd (No. 10618740) undertakes insurance distribution.=
+<br /><br />  Investment services are provided by Revolut Trading Ltd (No. =
+11567840), which is authorised and regulated by the Financial Conduct Autho=
+rity (FRN: 933846). The registered address of Revolut Ltd, Revolut Travel L=
+td, and Revolut Trading Ltd is at 7 Westferry Circus, Canary Wharf, London,=
+ England, E14 4HD.=0A </div></td></tr></tbody></table></td></tr></tbody></t=
+able></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbod=
+y></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr><=
+tr><td style=3D"font-size:0px;padding:0;word-break:break-word;"><!--[if mso=
+ | IE]><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"" role=3D"presentation" style=3D"width:652px;" width=3D"652=
+" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exac=
+tly;"><![endif]--><div style=3D"margin:0px auto;max-width:652px;"><table al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pre=
+sentation" style=3D"width:100%;"><tbody><tr><td style=3D"direction:ltr;font=
+-size:0px;padding:0;text-align:center;"><!--[if mso | IE]><table role=3D"pr=
+esentation" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=
+=3D"" style=3D"vertical-align:top;width:326px;" ><![endif]--><div class=3D"=
+mj-column-per-50 mj-outlook-group-fix" style=3D"font-size:0px;text-align:le=
+ft;direction:ltr;display:inline-block;vertical-align:top;width:100%;"><tabl=
+e border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"vertical-align:top;" width=3D"100%"><tbody><tr><td align=3D"left" cl=
+ass=3D"undefined-logo" style=3D"font-size:0px;padding:0 0 32px;word-break:b=
+reak-word;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"border-collapse:collapse;border-spacing:0px;"><tbod=
+y><tr><td style=3D"width:326px;"><a href=3D"https%3A%2F%2Fwww.revolut.com%2=
+F" target=3D"_blank" style=3D"color: #0666EB; text-decoration: none;"><img =
+alt=3D"Revolut" src=3D"https:&#x2F;&#x2F;assets.revolut.com&#x2F;email&#x2F=
+;rev10&#x2F;logo-grey.png" style=3D"border:0;display:block;outline:none;tex=
+t-decoration:none;height:auto;width:100%;font-size:13px;" width=3D"326" hei=
+ght=3D"auto"></a></td></tr></tbody></table></td></tr></tbody></table></div>=
+<!--[if mso | IE]></td><td class=3D"" style=3D"vertical-align:top;width:326=
+px;" ><![endif]--><div class=3D"mj-column-per-50 mj-outlook-group-fix" styl=
+e=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;verti=
+cal-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td style=3D"vertic=
+al-align:top;padding:0;"><table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" width=3D"100%"><tbody><tr><td align=3D"left" c=
+lass=3D"rev-footer-unsubscribe-KnMmqBggrxz" style=3D"font-size:0px;padding:=
+0;word-break:break-word;"><div style=3D"font-family:Inter, Arial, sans-seri=
+f;font-size:14px;line-height:1;text-align:left;color:#75808A;"><a href=3D"h=
+ttps://click.revolut.com/f/a/NZQS6pHaFaYbVCcbBhC5iw~~/AAD4-xA~/5OLcBT3UAM-T=
+-segC0D0eQpfpoSmLwwdvdkbepkcZMdHNeXHAktDtQwHem3U8fT85XOC4ZKOz4J5PxYu7c4tIio=
+qXTLPloW0e2Bz6hWNkV_tREkCt5gkyMKYKm8Kf2hBME7n-Qo6GMzfurNIa6nF3YaxTi0t4lnN7J=
+0uxkBPpKcJ71vMXsK1HqR9e-QnHDBORNEFDL_sUysTEgdR8C0fVZGJHtZarG2swtB1JUaIHbMc7=
+PmlDAIjJ4sYHMiR9nn_Xl_XTNjfT34mpNw5x3WrMg~~" title=3D"unsubscribe" style=3D=
+"color: #8b959e; text-decoration: none;"> =0AUnsubscribe=0A </a></div></td>=
+</tr></tbody></table></td></tr></tbody></table></div><!--[if mso | IE]></td=
+></tr></table><![endif]--></td></tr></tbody></table></div><!--[if mso | IE]=
+></td></tr></table><![endif]--></td></tr></tbody></table></td></tr></tbody>=
+</table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></t=
+body></table></div><!--[if mso | IE]></td></tr></table></td></tr></table><!=
+[endif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></tab=
+le><![endif]--></td></tr></tbody></table></div>=0D=0A<img border=3D"0" widt=
+h=3D"1" height=3D"1" alt=3D"" src=3D"https://click.revolut.com/q/wKQML0O4Fg=
+hlpbNL4033pw~~/AAD4-xA~/VnnYCI60xQ11QU1K8KntJ9xR-XCKLHk6ZhKeg3wIld1vyTW2f73=
+TfQK21vim8gb4sI7L79dvg28svWpYRdjCCQ~~">=0D=0A</body></html>
+

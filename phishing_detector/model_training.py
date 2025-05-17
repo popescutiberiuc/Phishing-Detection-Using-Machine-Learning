@@ -24,12 +24,13 @@ def create_features_and_train(model_output_path):
     )
 
     pipeline = Pipeline([
-        ('tfidf', TfidfVectorizer(max_features=1000)),
+        ('tfidf', TfidfVectorizer(max_features=5000, ngram_range=(1,2), min_df=2)),
         ('classifier', LogisticRegression(
             C=0.5,
             solver='liblinear',
             max_iter=1000,
-            random_state=42
+            random_state=42,
+            class_weight='balanced'
         ))
     ])
 
@@ -41,4 +42,3 @@ def create_features_and_train(model_output_path):
         pickle.dump(pipeline, f)
 
     print(f"Model saved to {model_output_path}")
-

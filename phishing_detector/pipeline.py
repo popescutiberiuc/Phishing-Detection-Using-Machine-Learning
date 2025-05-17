@@ -31,8 +31,9 @@ class PhishingDetector:
 
         # only pass combined_text to model pipeline
         X_text = email_df['combined_text']
-        prediction = self.model.predict(X_text)[0]
+        threshold = 0.6
         probability = self.model.predict_proba(X_text)[0][1]
+        prediction = 1 if probability > threshold else 0
 
         return {
             'is_phishing': bool(prediction),

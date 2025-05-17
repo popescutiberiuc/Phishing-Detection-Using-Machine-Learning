@@ -1,9 +1,14 @@
 filename,sender,subject,is_phishing,phishing_probability,confidence
-Notificare Pluxee.eml,noreply@pay.pluxee.ro,Notificare Pluxee,False,0.39864582946935573,Low
-sample-1.eml,banco.bradesco@atendimento.com.br,CLIENTE PRIME - BRADESCO LIVELO: Seu cartão tem 92.990 pontos LIVELO expirando hoje!,True,0.9410716668363962,High
-sample-1015.eml,cartorio02@uorak.com,Ação Trabalhista !,True,0.9381035004527795,High
-sample-1016.eml,nemani.tukunia@postfiji.com.fj,"Attention:I am Diplomatic agent Mr.Wood Forest,",True,0.773986492187885,Medium
-sample-1017.eml,noreply-supportbinancewallet.irs@auswestbc.com.au,[Binance] Withdraw Successful - 2023-07-30 51:51:51(UTC),True,0.8414725596237268,Medium
-sample-1018.eml,sonyundefinedralph@gmail.com,Crédito IR Liberado - maHSkh0WLRUIpDf6t,True,0.7875516190409987,Medium
-sample-1019.eml,sel553r@gmail.com,Crédito IR Liberado - v5V0ZVRe1HjazliqQoYz,True,0.7875516190409987,Medium
-Your order has been refunded.eml,no-reply@glovoapp.com,Your order has been refunded,True,0.9202358113150142,High
+A Classic Cruiser with a Story to Tell.eml,info@landyachtz.com,A Classic Cruiser with a Story to Tell,False,0.528855793852962,Low
+Alertă de securitate.eml,no-reply@accounts.google.com,Alertă de securitate,False,0.507185280892672,Low
+Make your money do more ✨.eml,no-reply@revolut.com,Make your money do more ✨,True,0.7755665304015302,Medium
+Notificare Pluxee.eml,noreply@pay.pluxee.ro,Notificare Pluxee,False,0.4892692450254542,Low
+sample-1.eml,banco.bradesco@atendimento.com.br,CLIENTE PRIME - BRADESCO LIVELO: Seu cartão tem 92.990 pontos LIVELO expirando hoje!,True,0.9094570063492988,High
+sample-1015.eml,cartorio02@uorak.com,Ação Trabalhista !,True,0.8204395547543628,Medium
+sample-1016.eml,nemani.tukunia@postfiji.com.fj,"Attention:I am Diplomatic agent Mr.Wood Forest,",True,0.818252679968655,Medium
+sample-1017.eml,noreply-supportbinancewallet.irs@auswestbc.com.au,[Binance] Withdraw Successful - 2023-07-30 51:51:51(UTC),True,0.7529256033553714,Medium
+sample-1018.eml,sonyundefinedralph@gmail.com,Crédito IR Liberado - maHSkh0WLRUIpDf6t,True,0.8927216667843513,Medium
+sample-1019.eml,sel553r@gmail.com,Crédito IR Liberado - v5V0ZVRe1HjazliqQoYz,True,0.8927216667843513,Medium
+"Unient, Google and others are hiring in Bucharest, Bucuresti. Apply Now..eml",noreply@glassdoor.com,"Unient, Google and others are hiring in Bucharest, Bucuresti. Apply
+ Now.",False,0.5026091169062661,Low
+Your order has been refunded.eml,no-reply@glovoapp.com,Your order has been refunded,True,0.821647300631708,Medium
