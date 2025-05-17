@@ -1,23 +1,20 @@
-# run.py
-
 import argparse
 import os
 import pandas as pd
-import pickle
 from phishing_detector.pipeline import PhishingDetector
-from phishing_detector.email_parser import process_eml_directory, parse_eml_file, load_labeled_eml_dataset
+from phishing_detector.email_parser import parse_eml_file, load_labeled_eml_dataset
 from phishing_detector.model_training import create_features_and_train
 from sklearn.metrics import confusion_matrix, classification_report
 
 def train_model():
-    create_features_and_train("models/phishing_detector_model.pkl")
+    create_features_and_train()
 
-def evaluate_real_dataset():
-    model_path = "models/phishing_detector_model.pkl"
+def evaluate_real_dataset(model_type):
+    model_path = f"models/phishing_detector_model_{model_type}.pkl"
     dataset_path = "real_eml_dataset"
 
     if not os.path.exists(model_path):
-        print("❌ Model file not found. Train model first with --train.")
+        print(f"❌ Model file not found at {model_path}. Train model first with --train.")
         return
 
     print("✅ Loading real-world test dataset...")
@@ -28,36 +25,37 @@ def evaluate_real_dataset():
 
     print(f"Real-world test set size: {len(y_real)} emails")
 
-    with open(model_path, "rb") as f:
-        model = pickle.load(f)
+    detector = PhishingDetector(model_type=model_type)
+    y_pred = []
 
-    print("\n📋 Evaluating on real-world dataset...")
-    y_pred = model.predict(X_real)
+    for i, text in enumerate(X_real):
+        result = detector.process_email("", "", text)
+        y_pred.append(int(result['is_phishing']))
 
-    print("\nConfusion Matrix:")
+    print("\n📋 Evaluation Report:")
     print(confusion_matrix(y_real, y_pred))
-    print("\nClassification Report:")
     print(classification_report(y_real, y_pred))
 
-def analyze_folder(folder_path):
-    model_path = "models/phishing_detector_model.pkl"
+def analyze_folder(folder_path, model_type):
+    model_path = f"models/phishing_detector_model_{model_type}.pkl"
 
     if not os.path.exists(model_path):
-        print("❌ Model file not found. Train model first with --train.")
+        print(f"❌ Model file not found at {model_path}. Train model first with --train.")
         return
 
     print(f"📥 Scanning emails from folder: {folder_path}")
-    email_files = []
-    for root, dirs, files in os.walk(folder_path):
-        for file in files:
-            if file.lower().endswith('.eml'):
-                email_files.append(os.path.join(root, file))
+    email_files = [
+        os.path.join(root, file)
+        for root, _, files in os.walk(folder_path)
+        for file in files
+        if file.lower().endswith('.eml')
+    ]
 
     if not email_files:
         print("⚠️ No .eml files found in folder. Exiting.")
         return
 
-    detector = PhishingDetector(model_path)
+    detector = PhishingDetector(model_type=model_type)
     predictions = []
 
     for file_path in email_files:
@@ -92,17 +90,18 @@ def analyze_folder(folder_path):
 
 def main():
     parser = argparse.ArgumentParser(description="Phishing Detection Pipeline")
-    parser.add_argument("--train", action="store_true", help="Train model on Kaggle dataset")
+    parser.add_argument("--train", action="store_true", help="Train both models")
     parser.add_argument("--evaluate", action="store_true", help="Evaluate model on real_eml_dataset")
     parser.add_argument("--folder", type=str, help="Path to folder of .eml files to analyze")
+    parser.add_argument("--model", type=str, default="lr", choices=["lr", "rf"], help="Model type: lr or rf")
     args = parser.parse_args()
 
     if args.train:
         train_model()
     elif args.evaluate:
-        evaluate_real_dataset()
+        evaluate_real_dataset(args.model)
     elif args.folder:
-        analyze_folder(args.folder)
+        analyze_folder(args.folder, args.model)
     else:
         parser.print_help()
 
