@@ -6,8 +6,13 @@ from phishing_detector.email_parser import parse_eml_file, load_labeled_eml_data
 from phishing_detector.model_training import create_features_and_train
 from sklearn.metrics import confusion_matrix, classification_report
 
+# Ensemble weights
+LR_WEIGHT = 0.65  # weight for logistic regression
+RF_WEIGHT = 0.35  # weight for random forest
+
 def train_model():
     create_features_and_train()
+
 
 def evaluate_real_dataset(model_type):
     model_path = f"models/phishing_detector_model_{model_type}.pkl"
@@ -23,26 +28,30 @@ def evaluate_real_dataset(model_type):
     X_real = test_df["combined_text"]
     y_real = test_df["label"]
 
-    print(f"Real-world test set size: {len(y_real)} emails")
-
-    detector = PhishingDetector(model_type=model_type)
-    y_pred = []
-
-    for i, text in enumerate(X_real):
-        result = detector.process_email("", "", text)
-        y_pred.append(int(result['is_phishing']))
+    if model_type in ("lr", "rf"):
+        detector = PhishingDetector(model_type=model_type)
+        y_pred = []
+        for text in X_real:
+            result = detector.process_email("", "", text)
+            y_pred.append(int(result['is_phishing']))
+    else:
+        # ensemble: load both detectors
+        lr_det = PhishingDetector(model_type="lr")
+        rf_det = PhishingDetector(model_type="rf")
+        y_pred = []
+        for text in X_real:
+            lr_res = lr_det.process_email("", "", text)
+            rf_res = rf_det.process_email("", "", text)
+            # weighted ensemble probability
+            prob = (LR_WEIGHT * lr_res['phishing_probability'] + RF_WEIGHT * rf_res['phishing_probability']) / (LR_WEIGHT + RF_WEIGHT)
+            y_pred.append(int(prob > 0.5))
 
     print("\n📋 Evaluation Report:")
     print(confusion_matrix(y_real, y_pred))
     print(classification_report(y_real, y_pred))
 
+
 def analyze_folder(folder_path, model_type):
-    model_path = f"models/phishing_detector_model_{model_type}.pkl"
-
-    if not os.path.exists(model_path):
-        print(f"❌ Model file not found at {model_path}. Train model first with --train.")
-        return
-
     print(f"📥 Scanning emails from folder: {folder_path}")
     email_files = [
         os.path.join(root, file)
@@ -55,31 +64,50 @@ def analyze_folder(folder_path, model_type):
         print("⚠️ No .eml files found in folder. Exiting.")
         return
 
-    detector = PhishingDetector(model_type=model_type)
-    predictions = []
+    # load detectors
+    if model_type in ("lr", "rf"):
+        detector = PhishingDetector(model_type=model_type)
+        lr_det = rf_det = None
+    else:
+        lr_det = PhishingDetector(model_type="lr")
+        rf_det = PhishingDetector(model_type="rf")
+        detector = None
 
+    predictions = []
     for file_path in email_files:
         filename = os.path.basename(file_path)
         email_data = parse_eml_file(file_path)
+        if not email_data:
+            continue
+        sender = email_data['sender']
+        subject = email_data['subject']
+        body = email_data['body']
 
-        if email_data:
-            sender = email_data['sender']
-            subject = email_data['subject']
-            body = email_data['body']
-
+        if model_type in ("lr", "rf"):
             result = detector.process_email(sender, subject, body)
+            pred = result['is_phishing']
+            prob = result['phishing_probability']
+            conf = result.get('confidence')
+        else:
+            # ensemble
+            lr_res = lr_det.process_email(sender, subject, body)
+            rf_res = rf_det.process_email(sender, subject, body)
+            # weighted ensemble probability
+            prob = (LR_WEIGHT * lr_res['phishing_probability'] + RF_WEIGHT * rf_res['phishing_probability']) / (LR_WEIGHT + RF_WEIGHT)
+            pred = bool(prob > 0.7)
+            conf = None
 
-            predictions.append({
-                'filename': filename,
-                'sender': sender,
-                'subject': subject,
-                'is_phishing': result['is_phishing'],
-                'phishing_probability': result['phishing_probability'],
-                'confidence': result['confidence']
-            })
+        predictions.append({
+            'filename': filename,
+            'sender': sender,
+            'subject': subject,
+            'is_phishing': pred,
+            'phishing_probability': prob,
+            'confidence': conf
+        })
 
-            print(f"📧 {filename}: {'Phishing' if result['is_phishing'] else 'Not Phishing'} "
-                  f"(prob: {result['phishing_probability']:.2f}, confidence: {result['confidence']})")
+        print(f"📧 {filename}: {'Phishing' if pred else 'Not Phishing'} "
+              f"(prob: {prob:.2f}{', '+conf if conf else ''})")
 
     results_df = pd.DataFrame(predictions)
     try:
@@ -88,12 +116,13 @@ def analyze_folder(folder_path, model_type):
     except PermissionError:
         print("\n❌ Cannot write results file. Is it open in Excel or another program?")
 
+
 def main():
     parser = argparse.ArgumentParser(description="Phishing Detection Pipeline")
     parser.add_argument("--train", action="store_true", help="Train both models")
     parser.add_argument("--evaluate", action="store_true", help="Evaluate model on real_eml_dataset")
     parser.add_argument("--folder", type=str, help="Path to folder of .eml files to analyze")
-    parser.add_argument("--model", type=str, default="lr", choices=["lr", "rf"], help="Model type: lr or rf")
+    parser.add_argument("--model", type=str, default="lr", choices=["lr", "rf", "ens"], help="Model type: lr, rf, or ens")
     args = parser.parse_args()
 
     if args.train:

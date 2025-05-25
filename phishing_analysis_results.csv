@@ -1,14 +1,14 @@
 filename,sender,subject,is_phishing,phishing_probability,confidence
-A Classic Cruiser with a Story to Tell.eml,info@landyachtz.com,A Classic Cruiser with a Story to Tell,False,0.528855793852962,Low
-Alertă de securitate.eml,no-reply@accounts.google.com,Alertă de securitate,False,0.507185280892672,Low
-Make your money do more ✨.eml,no-reply@revolut.com,Make your money do more ✨,True,0.7755665304015302,Low
-Notificare Pluxee.eml,noreply@pay.pluxee.ro,Notificare Pluxee,False,0.4892692450254542,Low
-sample-1.eml,banco.bradesco@atendimento.com.br,CLIENTE PRIME - BRADESCO LIVELO: Seu cartão tem 92.990 pontos LIVELO expirando hoje!,True,0.9094570063492988,Medium
-sample-1015.eml,cartorio02@uorak.com,Ação Trabalhista !,True,0.8204395547543628,Medium
-sample-1016.eml,nemani.tukunia@postfiji.com.fj,"Attention:I am Diplomatic agent Mr.Wood Forest,",True,0.818252679968655,Medium
-sample-1017.eml,noreply-supportbinancewallet.irs@auswestbc.com.au,[Binance] Withdraw Successful - 2023-07-30 51:51:51(UTC),True,0.7529256033553714,Low
-sample-1018.eml,sonyundefinedralph@gmail.com,Crédito IR Liberado - maHSkh0WLRUIpDf6t,True,0.8927216667843513,Medium
-sample-1019.eml,sel553r@gmail.com,Crédito IR Liberado - v5V0ZVRe1HjazliqQoYz,True,0.8927216667843513,Medium
+A Classic Cruiser with a Story to Tell.eml,info@landyachtz.com,A Classic Cruiser with a Story to Tell,False,0.4662562660044253,
+Alertă de securitate.eml,no-reply@accounts.google.com,Alertă de securitate,False,0.6372067011865842,
+Make your money do more ✨.eml,no-reply@revolut.com,Make your money do more ✨,True,0.7211182447609946,
+Notificare Pluxee.eml,noreply@pay.pluxee.ro,Notificare Pluxee,False,0.5070250092665453,
+sample-1.eml,banco.bradesco@atendimento.com.br,CLIENTE PRIME - BRADESCO LIVELO: Seu cartão tem 92.990 pontos LIVELO expirando hoje!,True,0.9306470541270442,
+sample-1015.eml,cartorio02@uorak.com,Ação Trabalhista !,True,0.7920343543062194,
+sample-1016.eml,nemani.tukunia@postfiji.com.fj,"Attention:I am Diplomatic agent Mr.Wood Forest,",True,0.7348642419796257,
+sample-1017.eml,noreply-supportbinancewallet.irs@auswestbc.com.au,[Binance] Withdraw Successful - 2023-07-30 51:51:51(UTC),False,0.6664118091816594,
+sample-1018.eml,sonyundefinedralph@gmail.com,Crédito IR Liberado - maHSkh0WLRUIpDf6t,True,0.7608409226269803,
+sample-1019.eml,sel553r@gmail.com,Crédito IR Liberado - v5V0ZVRe1HjazliqQoYz,True,0.7608409226269803,
 "Unient, Google and others are hiring in Bucharest, Bucuresti. Apply Now..eml",noreply@glassdoor.com,"Unient, Google and others are hiring in Bucharest, Bucuresti. Apply
- Now.",False,0.5026091169062661,Low
-Your order has been refunded.eml,no-reply@glovoapp.com,Your order has been refunded,True,0.821647300631708,Medium
+ Now.",False,0.452695925989073,
+Your order has been refunded.eml,no-reply@glovoapp.com,Your order has been refunded,False,0.6659737829653802,
