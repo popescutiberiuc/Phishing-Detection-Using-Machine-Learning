@@ -15,12 +15,24 @@ def train_model():
 
 
 def evaluate_real_dataset(model_type):
-    model_path = f"models/phishing_detector_model_{model_type}.pkl"
     dataset_path = "real_eml_dataset"
 
-    if not os.path.exists(model_path):
-        print(f"❌ Model file not found at {model_path}. Train model first with --train.")
-        return
+    # ensure the required model files exist
+    if model_type in ("lr", "rf"):
+        model_path = f"models/phishing_detector_model_{model_type}.pkl"
+        if not os.path.exists(model_path):
+            print(f"❌ Model file not found at {model_path}. Train model first with --train.")
+            return
+    else:  # ensemble: check both
+        missing = []
+        for m in ("lr", "rf"):
+            p = f"models/phishing_detector_model_{m}.pkl"
+            if not os.path.exists(p):
+                missing.append(p)
+        if missing:
+            print("❌ Missing model files for ensemble:", ", ".join(missing))
+            print("   Train with --train to generate phishing_detector_model_lr.pkl and _rf.pkl")
+            return
 
     print("✅ Loading real-world test dataset...")
     test_df = load_labeled_eml_dataset(dataset_path)
@@ -28,27 +40,31 @@ def evaluate_real_dataset(model_type):
     X_real = test_df["combined_text"]
     y_real = test_df["label"]
 
+    # single‐model evaluation
     if model_type in ("lr", "rf"):
         detector = PhishingDetector(model_type=model_type)
-        y_pred = []
-        for text in X_real:
-            result = detector.process_email("", "", text)
-            y_pred.append(int(result['is_phishing']))
+        y_pred = [
+            int(detector.process_email("", "", txt)["is_phishing"])
+            for txt in X_real
+        ]
+
+    # ensemble evaluation
     else:
-        # ensemble: load both detectors
         lr_det = PhishingDetector(model_type="lr")
         rf_det = PhishingDetector(model_type="rf")
         y_pred = []
-        for text in X_real:
-            lr_res = lr_det.process_email("", "", text)
-            rf_res = rf_det.process_email("", "", text)
-            # weighted ensemble probability
-            prob = (LR_WEIGHT * lr_res['phishing_probability'] + RF_WEIGHT * rf_res['phishing_probability']) / (LR_WEIGHT + RF_WEIGHT)
+        for txt in X_real:
+            lr_p = lr_det.process_email("", "", txt)["phishing_probability"]
+            rf_p = rf_det.process_email("", "", txt)["phishing_probability"]
+            # weighted average (weights sum to 1.0)
+            prob = LR_WEIGHT * lr_p + RF_WEIGHT * rf_p
+            # **use 0.6 cutoff** to match your design
             y_pred.append(int(prob > 0.5))
 
     print("\n📋 Evaluation Report:")
     print(confusion_matrix(y_real, y_pred))
     print(classification_report(y_real, y_pred))
+
 
 
 def analyze_folder(folder_path, model_type):
