@@ -55,11 +55,4 @@ def load_and_merge_datasets_from_kagglehub():
     kaggle_df["combined_text"] = kaggle_df["combined_text"].fillna("").astype(str)
     kaggle_df = kaggle_df[["combined_text", "label"]]
 
-    # ✅ NEW: Load real-world dataset
-    #real_eml_path = "real_eml_dataset"   # or whatever folder you choose
-    #real_df = load_labeled_eml_dataset(real_eml_path)
-
-    # Combine datasets
-    #df = pd.concat([kaggle_df, real_df], ignore_index=True)
-    #print(f"Kaggle samples: {len(kaggle_df)}, Real-world samples: {len(real_df)}, Total: {len(df)}")
     return kaggle_df

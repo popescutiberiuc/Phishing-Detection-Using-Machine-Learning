@@ -5,10 +5,10 @@ from phishing_detector.pipeline import PhishingDetector
 
 app = FastAPI()
 
-# Allow the extension to connect to this API (CORS configuration)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow Chrome Extensions
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -30,7 +30,7 @@ async def predict(email: EmailRequest):
     lr_result = lr_detector.process_email(email.sender, email.subject, email.body)
     rf_result = rf_detector.process_email(email.sender, email.subject, email.body)
 
-    # Ensemble prediction (same weighting you used in your project)
+    # Ensemble prediction
     LR_WEIGHT = 0.65
     RF_WEIGHT = 0.35
     combined_prob = (LR_WEIGHT * lr_result['phishing_probability'] + RF_WEIGHT * rf_result['phishing_probability']) / (LR_WEIGHT + RF_WEIGHT)

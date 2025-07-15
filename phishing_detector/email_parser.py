@@ -86,7 +86,7 @@ def save_emails_to_csv(df, output_path):
     print(f"Saved {len(df)} emails to {output_path}")
 
 def load_labeled_eml_dataset(folder_path):
-    """Load manually labeled eml dataset from folder structure."""
+
     data = []
     for label_folder, label in [('phishing', 1), ('ham', 0)]:
         path = os.path.join(folder_path, label_folder)

@@ -8,15 +8,15 @@ document.getElementById('analyzeButton').addEventListener('click', async () => {
         if (injectionResults && injectionResults[0] && injectionResults[0].result) {
             const emailData = injectionResults[0].result;
 
-            // Handle case where email is not opened
+            // not on email page case
             if (emailData.error) {
                 document.getElementById('result').innerText = emailData.error;
                 return;
             }
 
             try {
-                // Send POST request to your Python API
-                const response = await fetch('http://127.0.0.1:8000/predict', { // Adjust to your API URL
+                
+                const response = await fetch('http://127.0.0.1:8000/predict', { 
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(emailData)
@@ -40,11 +40,11 @@ document.getElementById('analyzeButton').addEventListener('click', async () => {
 
 function extractEmailContent() {
     try {
-        // Detect Gmail opened email view
+        
         let subjectElement = document.querySelector('h2.hP');
         let bodyElement = document.querySelector('div.a3s');
 
-        // If Gmail elements are not found, return error
+        // error if no gmail elements are found
         if (!subjectElement || !bodyElement) {
             return { error: "Please open an email first before using the Phishing Detector." };
         }

@@ -1,4 +1,3 @@
-# phishing_detector/feature_extraction.py
 
 import re
 from phishing_detector.utils import clean_text

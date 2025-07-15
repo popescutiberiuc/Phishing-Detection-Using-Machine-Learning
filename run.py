@@ -7,8 +7,8 @@ from phishing_detector.model_training import create_features_and_train
 from sklearn.metrics import confusion_matrix, classification_report
 
 # Ensemble weights
-LR_WEIGHT = 0.65  # weight for logistic regression
-RF_WEIGHT = 0.35  # weight for random forest
+LR_WEIGHT = 0.65  
+RF_WEIGHT = 0.35  
 
 def train_model():
     create_features_and_train()
@@ -17,24 +17,24 @@ def train_model():
 def evaluate_real_dataset(model_type):
     dataset_path = "real_eml_dataset"
 
-    # ensure the required model files exist
+    # model file check
     if model_type in ("lr", "rf"):
         model_path = f"models/phishing_detector_model_{model_type}.pkl"
         if not os.path.exists(model_path):
-            print(f"❌ Model file not found at {model_path}. Train model first with --train.")
+            print(f" Model file not found at {model_path}. Train model first with --train.")
             return
-    else:  # ensemble: check both
+    else:  
         missing = []
         for m in ("lr", "rf"):
             p = f"models/phishing_detector_model_{m}.pkl"
             if not os.path.exists(p):
                 missing.append(p)
         if missing:
-            print("❌ Missing model files for ensemble:", ", ".join(missing))
+            print(" Missing model files for ensemble:", ", ".join(missing))
             print("   Train with --train to generate phishing_detector_model_lr.pkl and _rf.pkl")
             return
 
-    print("✅ Loading real-world test dataset...")
+    print(" Loading real-world test dataset...")
     test_df = load_labeled_eml_dataset(dataset_path)
 
     X_real = test_df["combined_text"]
@@ -56,19 +56,17 @@ def evaluate_real_dataset(model_type):
         for txt in X_real:
             lr_p = lr_det.process_email("", "", txt)["phishing_probability"]
             rf_p = rf_det.process_email("", "", txt)["phishing_probability"]
-            # weighted average (weights sum to 1.0)
             prob = LR_WEIGHT * lr_p + RF_WEIGHT * rf_p
-            # **use 0.6 cutoff** to match your design
             y_pred.append(int(prob > 0.5))
 
-    print("\n📋 Evaluation Report:")
+    print("\n Evaluation Report:")
     print(confusion_matrix(y_real, y_pred))
     print(classification_report(y_real, y_pred))
 
 
 
 def analyze_folder(folder_path, model_type):
-    print(f"📥 Scanning emails from folder: {folder_path}")
+    print(f" Scanning emails from folder: {folder_path}")
     email_files = [
         os.path.join(root, file)
         for root, _, files in os.walk(folder_path)
@@ -77,7 +75,7 @@ def analyze_folder(folder_path, model_type):
     ]
 
     if not email_files:
-        print("⚠️ No .eml files found in folder. Exiting.")
+        print(" No .eml files found in folder. Exiting.")
         return
 
     # load detectors
@@ -122,15 +120,15 @@ def analyze_folder(folder_path, model_type):
             'confidence': conf
         })
 
-        print(f"📧 {filename}: {'Phishing' if pred else 'Not Phishing'} "
+        print(f" {filename}: {'Phishing' if pred else 'Not Phishing'} "
               f"(prob: {prob:.2f}{', '+conf if conf else ''})")
 
     results_df = pd.DataFrame(predictions)
     try:
         results_df.to_csv("phishing_analysis_results.csv", index=False)
-        print(f"\n✅ Results saved to phishing_analysis_results.csv")
+        print(f"\n Results saved to phishing_analysis_results.csv")
     except PermissionError:
-        print("\n❌ Cannot write results file. Is it open in Excel or another program?")
+        print("\n Cannot write results file. Is it open in Excel or another program?")
 
 
 def main():
